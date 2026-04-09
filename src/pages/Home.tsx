@@ -19,9 +19,9 @@ const steps = [
   {
     icon: "local_shipping",
     number: "03",
-    title: "Choose & Get it Delivered",
+    title: "Choose & Close the Deal",
     description:
-      "Pick the offer that works for you. A runner brings it to your door, confirmed with a secure PIN.",
+      "Pick the best offer. Meet the seller to collect, or request a PIN-secured delivery straight to your door — whatever works for you.",
   },
 ];
 

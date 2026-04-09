@@ -173,9 +173,9 @@ export default function Home() {
       {/* ── Hero ── */}
       <section className="max-w-7xl mx-auto px-6 mb-32 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
-          Stop searching.{" "}
+          Post what you need.{" "}
           <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
-            Start asking.
+            Get offers in minutes.
           </span>
         </h1>
         <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mb-10">

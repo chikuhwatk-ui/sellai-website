@@ -9,9 +9,9 @@ const painPoints = [
   },
   {
     icon: "wrong_location",
-    title: "Zero Local Availability",
+    title: "No Structure, No Safety Net",
     description:
-      "Most gig apps ignore underserved areas. Sellai's AI matches demand to nearby runners — no dead zones.",
+      "Arranging deliveries through groups or DMs means no route guidance, no payment guarantee, and no backup if something goes wrong. Sellai gives you structure.",
   },
 ];
 

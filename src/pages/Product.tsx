@@ -410,6 +410,74 @@ export default function Product() {
         </div>
       </section>
 
+      {/* ── Old Way vs Sellai Way ── */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="text-center mb-16">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
+            The Shift
+          </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
+            The old way vs the Sellai way
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Old Way */}
+          <div className="bg-surface-container-low rounded-[2rem] p-8 border border-outline-variant/20">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-red-500 text-xl">history</span>
+              </div>
+              <h3 className="text-xl font-bold text-on-surface-variant">The old way</h3>
+            </div>
+            <div className="flex flex-col gap-4">
+              {[
+                "Search groups & marketplaces",
+                "Scroll through hundreds of listings",
+                "DM sellers, wait for replies",
+                "Negotiate price back and forth",
+                "Arrange your own transport",
+                "Hope it's what you ordered",
+              ].map((step, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-on-surface-variant/10 flex items-center justify-center shrink-0">
+                    <span className="text-sm font-bold text-on-surface-variant">{i + 1}</span>
+                  </div>
+                  <p className="text-on-surface-variant text-sm">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sellai Way */}
+          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-[#10B981]/30 shadow-lg shadow-emerald-900/5">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-[#10B981]/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-[#059669] text-xl">bolt</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#059669]">The Sellai way</h3>
+            </div>
+            <div className="flex flex-col gap-4">
+              {[
+                "Post what you need",
+                "Verified sellers send offers",
+                "Compare prices & trust scores",
+                "Accept the best offer",
+                "Runner delivers to your door",
+                "Confirm with PIN — done",
+              ].map((step, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-[#10B981]/15 flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[#059669] text-lg">check</span>
+                  </div>
+                  <p className="text-on-surface font-medium text-sm">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Download ── */}
       <DownloadSection variant="accent" />
     </main>

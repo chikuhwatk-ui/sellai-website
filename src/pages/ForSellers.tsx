@@ -230,6 +230,62 @@ export default function ForSellers() {
         </div>
       </section>
 
+      {/* ── Why Groups Aren't Enough ── */}
+      <section className="max-w-5xl mx-auto px-6 mb-32">
+        <div className="text-center mb-12">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
+            The Upgrade
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope]">
+            Why groups and marketplaces aren't enough
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            {
+              old: "You post and hope someone sees it",
+              sellai: "Buyers post demands — you respond to guaranteed interest",
+              icon: "visibility",
+            },
+            {
+              old: "Spam drowns out your offers",
+              sellai: "Credits filter out noise — only serious sellers respond",
+              icon: "filter_alt",
+            },
+            {
+              old: "No delivery — buyer arranges pickup",
+              sellai: "Runners deliver for you — you focus on selling",
+              icon: "local_shipping",
+            },
+            {
+              old: "No trust signal — you're one of thousands",
+              sellai: "Verification badge + trust score make you stand out",
+              icon: "verified",
+            },
+          ].map((item) => (
+            <div
+              key={item.icon}
+              className="bg-white/55 backdrop-blur-xl rounded-2xl p-6 border border-white/40 flex items-start gap-4"
+            >
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="material-symbols-outlined text-primary text-xl">
+                  {item.icon}
+                </span>
+              </div>
+              <div>
+                <p className="text-on-surface-variant text-sm line-through decoration-red-400/50 mb-1.5">
+                  {item.old}
+                </p>
+                <p className="text-on-surface font-semibold text-sm">
+                  {item.sellai}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ── Process ── */}
       <section className="max-w-7xl mx-auto px-6 mb-32">
         <div className="text-center mb-16">

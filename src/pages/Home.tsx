@@ -80,36 +80,91 @@ const roles = [
 
 const valueProps = [
   {
-    icon: "money_off",
-    title: "Zero Upfront Cost",
-    description: "List your products for free. Only pay per offer with affordable credit bundles.",
+    icon: "person_search",
+    title: "Buyers Find You",
+    description: "No more posting in 20 groups hoping someone sees it. Buyers post what they need — you respond to real demand.",
+  },
+  {
+    icon: "local_shipping",
+    title: "Delivery, Handled",
+    description: "No more meeting strangers in parking lots. Runners deliver to the buyer's door, confirmed with a secure PIN.",
   },
   {
     icon: "verified_user",
-    title: "Verified Sellers",
-    description: "Every seller passes identity checks before they can make offers.",
-  },
-  {
-    icon: "pin_drop",
-    title: "PIN-Secured Delivery",
-    description: "Every handoff confirmed with a unique PIN. You pay only when you receive.",
+    title: "Verified & Accountable",
+    description: "No more guessing who you're dealing with. Every seller is identity-verified. Every transaction is tracked.",
   },
   {
     icon: "flag",
     title: "Built for Zimbabwe",
-    description: "Local payments via Paynow. Designed for how commerce actually works here.",
+    description: "Not a social network with a marketplace bolted on. Purpose-built for local commerce with Paynow payments.",
+  },
+];
+
+const painPointFrustrations = [
+  {
+    icon: "forum",
+    text: "Scrolling through 200 messages to find one serious seller",
+  },
+  {
+    icon: "photo_camera",
+    text: "Meeting a stranger to buy something that doesn't match the photos",
+  },
+  {
+    icon: "money_off",
+    text: "Sending money with no guarantee of delivery",
   },
 ];
 
 const comparisons = [
-  { feature: "Smart demand matching", traditional: false, sellai: true },
-  { feature: "PIN-verified delivery", traditional: false, sellai: true },
-  { feature: "Real-time delivery tracking", traditional: false, sellai: true },
-  { feature: "Verified seller network", traditional: false, sellai: true },
-  { feature: "Credit-based system", traditional: false, sellai: true },
-  { feature: "Static product listings", traditional: true, sellai: false },
-  { feature: "Manual search required", traditional: true, sellai: false },
-  { feature: "No delivery integration", traditional: true, sellai: false },
+  {
+    feature: "Buyers come to you",
+    whatsapp: false,
+    facebook: false,
+    sellai: true,
+  },
+  {
+    feature: "Verified sellers",
+    whatsapp: false,
+    facebook: false,
+    sellai: true,
+  },
+  {
+    feature: "Built-in delivery",
+    whatsapp: false,
+    facebook: false,
+    sellai: true,
+  },
+  {
+    feature: "Real-time tracking",
+    whatsapp: false,
+    facebook: false,
+    sellai: true,
+  },
+  {
+    feature: "Price competition",
+    whatsapp: false,
+    facebook: "partial" as const,
+    sellai: true,
+  },
+  {
+    feature: "Spam filtering",
+    whatsapp: false,
+    facebook: "partial" as const,
+    sellai: true,
+  },
+  {
+    feature: "Integrated local payments",
+    whatsapp: false,
+    facebook: false,
+    sellai: true,
+  },
+  {
+    feature: "Trust scores & reputation",
+    whatsapp: false,
+    facebook: "partial" as const,
+    sellai: true,
+  },
 ];
 
 export default function Home() {
@@ -321,9 +376,12 @@ export default function Home() {
       {/* ── Why Local Traders Choose Sellai ── */}
       <section className="bg-[#111e16] py-24 mb-32">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white text-center mb-16">
-            Why local traders choose Sellai
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white text-center mb-4">
+            What groups and marketplaces can't give you
           </h2>
+          <p className="text-white/50 text-lg text-center mb-16 max-w-2xl mx-auto">
+            WhatsApp and Facebook got local commerce started. Sellai is where it grows up.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {valueProps.map((vp) => (
               <div key={vp.title} className="text-center">
@@ -344,23 +402,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Why Sellai (Comparison) ── */}
-      <section className="max-w-4xl mx-auto px-6 mb-32">
+      {/* ── Sound Familiar? ── */}
+      <section className="max-w-7xl mx-auto px-6 mb-16">
+        <div className="text-center mb-16">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
+            Sound Familiar?
+          </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
+            We've all been there
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {painPointFrustrations.map((item) => (
+            <div
+              key={item.icon}
+              className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 flex flex-col items-center text-center"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6">
+                <span className="material-symbols-outlined text-red-500 text-3xl">
+                  {item.icon}
+                </span>
+              </div>
+              <p className="text-on-surface text-lg leading-relaxed font-medium">
+                {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p className="text-center text-on-surface-variant text-lg mt-10 font-medium">
+          Sellai was designed to fix exactly this.
+        </p>
+      </section>
+
+      {/* ── Comparison Table ── */}
+      <section className="max-w-5xl mx-auto px-6 mb-32">
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
             The Difference
           </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Why Sellai?
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
+            You already use these. See what Sellai adds.
           </h2>
         </div>
 
-        <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 overflow-hidden">
-          <div className="grid grid-cols-[1fr_auto_auto] gap-x-8 gap-y-4 items-center">
+        <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-6 md:p-8 border border-white/40 overflow-x-auto">
+          <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-6 md:gap-x-10 gap-y-4 items-center min-w-[500px]">
             {/* Header */}
             <div />
-            <span className="text-sm font-bold text-on-surface-variant text-center">
-              Traditional
+            <span className="text-sm font-bold text-on-surface-variant text-center whitespace-nowrap">
+              WhatsApp Groups
+            </span>
+            <span className="text-sm font-bold text-on-surface-variant text-center whitespace-nowrap">
+              FB Marketplace
             </span>
             <span className="text-sm font-bold text-[#059669] text-center">
               Sellai
@@ -372,12 +466,27 @@ export default function Home() {
                   {row.feature}
                 </span>
                 <span className="flex justify-center">
-                  {row.traditional ? (
-                    <span className="material-symbols-outlined text-amber-500">
+                  {row.whatsapp ? (
+                    <span className="material-symbols-outlined text-[#059669]">
                       check_circle
                     </span>
                   ) : (
-                    <span className="material-symbols-outlined text-red-400">
+                    <span className="material-symbols-outlined text-red-400/70">
+                      cancel
+                    </span>
+                  )}
+                </span>
+                <span className="flex justify-center">
+                  {row.facebook === true ? (
+                    <span className="material-symbols-outlined text-[#059669]">
+                      check_circle
+                    </span>
+                  ) : row.facebook === "partial" ? (
+                    <span className="material-symbols-outlined text-amber-500">
+                      remove_circle
+                    </span>
+                  ) : (
+                    <span className="material-symbols-outlined text-red-400/70">
                       cancel
                     </span>
                   )}
@@ -388,7 +497,7 @@ export default function Home() {
                       check_circle
                     </span>
                   ) : (
-                    <span className="material-symbols-outlined text-red-400">
+                    <span className="material-symbols-outlined text-red-400/70">
                       cancel
                     </span>
                   )}

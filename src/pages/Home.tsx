@@ -34,9 +34,9 @@ const miniFeatures = [
 
 const trustBadges = [
   { icon: "pin_drop", label: "PIN-Secured Deliveries", description: "Every handoff confirmed with a unique PIN code." },
-  { icon: "verified_user", label: "Seller Identity Verification", description: "Every seller passes identity checks before making offers." },
+  { icon: "verified_user", label: "Seller Verification", description: "Every seller passes identity checks before they can respond to demands." },
+  { icon: "how_to_reg", label: "Buyer Verification", description: "Buyers are verified too — sellers know exactly who they're fulfilling for." },
   { icon: "my_location", label: "Real-Time Delivery Tracking", description: "Track your runner from pickup to your doorstep." },
-  { icon: "toll", label: "Credit-Based Offers", description: "Sellers use credits to send offers — no spam, only serious replies." },
 ];
 
 const roles = [
@@ -302,12 +302,10 @@ export default function Home() {
               </span>
             </div>
             <h3 className="text-2xl font-bold mb-3 text-[#111e16]">
-              Verified & Trusted
+              Trust Goes Both Ways
             </h3>
             <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
-              Every transaction is protected with real safeguards. PIN-secured
-              deliveries, identity-verified sellers, and a credit system that
-              keeps offers serious.
+              Sellers are verified before they can make offers. Buyers are verified before sellers fulfil. Every transaction protected — no guesswork on either side.
             </p>
             <div className="flex flex-col gap-4">
               {trustBadges.map((badge) => (

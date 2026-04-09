@@ -72,7 +72,7 @@ const roles = [
     accentBg: "bg-amber-500/10",
     accentBorder: "border-amber-500/20",
     description:
-      "Pick up and deliver orders in your area. Earn on your own schedule with flexible gigs.",
+      "Pick up and deliver orders in your area. Earn on your own schedule with flexible runs.",
     link: "/for-runners",
     cta: "Learn More",
   },
@@ -80,51 +80,60 @@ const roles = [
 
 const valueProps = [
   {
-    icon: "person_search",
-    title: "Buyers Find You",
-    description: "No more posting in 20 groups hoping someone sees it. Buyers post what they need — you respond to real demand.",
+    icon: "campaign",
+    title: "Post Once, Get Offers",
+    description: "No more posting in 20 groups and being ignored. Post your demand once — verified sellers come to you with real prices. No DM for price.",
   },
   {
-    icon: "local_shipping",
-    title: "Delivery, Handled",
-    description: "No more meeting strangers in parking lots. Runners deliver to the buyer's door, confirmed with a secure PIN.",
+    icon: "storefront",
+    title: "Real Demand",
+    description: "Every buyer on Sellai is actively looking. No passive scrollers — respond to buyers who already want what you sell.",
   },
   {
-    icon: "verified_user",
-    title: "Verified & Accountable",
-    description: "No more guessing who you're dealing with. Every seller is identity-verified. Every transaction is tracked.",
+    icon: "my_location",
+    title: "Tracked Delivery",
+    description: "Request a verified runner and track your order live. No more hoping it arrives.",
   },
   {
-    icon: "flag",
-    title: "Built for Zimbabwe",
-    description: "Not a social network with a marketplace bolted on. Purpose-built for local commerce with Paynow payments.",
+    icon: "handshake",
+    title: "Mutual Trust",
+    description: "Sellers are verified. Buyers are verified. Every party accountable — no strangers, no guesswork.",
   },
 ];
 
 const painPointFrustrations = [
   {
-    icon: "forum",
-    text: "Scrolling through 200 messages to find one serious seller",
+    icon: "mark_chat_read",
+    headline: "Seen. Ignored. Out of Stock.",
+    text: "You find a listing, DM the seller, wait — and finally get 'sold out' two days later. Your time wasted, still empty-handed.",
   },
   {
-    icon: "photo_camera",
-    text: "Meeting a stranger to buy something that doesn't match the photos",
+    icon: "trending_up",
+    headline: "Paid for Reach. Got Nothing.",
+    text: "You boosted the post, watched the impressions climb, and waited. Not a single serious buyer. Just numbers on a screen.",
   },
   {
-    icon: "money_off",
-    text: "Sending money with no guarantee of delivery",
+    icon: "location_off",
+    headline: "Order Placed. Runner Vanished.",
+    text: "The seller says it's on the way. The buyer is waiting outside. Nobody knows where the runner is or when they'll arrive.",
   },
 ];
 
 const comparisons = [
   {
-    feature: "Buyers come to you",
+    feature: "Real-time demand notifications",
     whatsapp: false,
     facebook: false,
     sellai: true,
   },
   {
     feature: "Verified sellers",
+    whatsapp: false,
+    facebook: false,
+    sellai: true,
+  },
+  {
+    feature: "Mutual user verification",
     whatsapp: false,
     facebook: false,
     sellai: true,
@@ -142,27 +151,21 @@ const comparisons = [
     sellai: true,
   },
   {
-    feature: "Price competition",
-    whatsapp: false,
-    facebook: "partial" as const,
-    sellai: true,
-  },
-  {
     feature: "Spam filtering",
     whatsapp: false,
     facebook: "partial" as const,
     sellai: true,
   },
   {
-    feature: "Integrated local payments",
-    whatsapp: false,
-    facebook: false,
-    sellai: true,
-  },
-  {
     feature: "Trust scores & reputation",
     whatsapp: false,
     facebook: "partial" as const,
+    sellai: true,
+  },
+  {
+    feature: "No 'DM for price'",
+    whatsapp: false,
+    facebook: false,
     sellai: true,
   },
 ];
@@ -179,8 +182,7 @@ export default function Home() {
           </span>
         </h1>
         <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          The marketplace connecting buyers with verified local sellers and
-          reliable delivery runners across Zimbabwe.
+          Verified sellers respond to your demand. Collect or get it delivered — you decide.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
@@ -386,6 +388,7 @@ export default function Home() {
           <p className="text-white/50 text-lg text-center mb-16 max-w-2xl mx-auto">
             WhatsApp and Facebook got local commerce started. Sellai is where it grows up.
           </p>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {valueProps.map((vp) => (
               <div key={vp.title} className="text-center">
@@ -428,7 +431,10 @@ export default function Home() {
                   {item.icon}
                 </span>
               </div>
-              <p className="text-on-surface text-lg leading-relaxed font-medium">
+              <h3 className="text-lg font-extrabold text-on-surface mb-3 font-[Manrope]">
+                {item.headline}
+              </h3>
+              <p className="text-on-surface-variant text-base leading-relaxed">
                 {item.text}
               </p>
             </div>

@@ -12,7 +12,7 @@ export function DownloadSection({ variant = 'default' }: { variant?: 'default' |
           Download the Sellai App
         </h2>
         <p className={`text-lg mb-12 max-w-2xl mx-auto leading-relaxed ${isDark ? 'text-slate-400' : isAccent ? 'text-on-primary-container/80' : 'text-on-surface-variant'}`}>
-          Available on iOS and Android. Join the marketplace that puts local commerce first.
+          Available on iOS and Android. The marketplace where buyers post demands and verified sellers respond.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a

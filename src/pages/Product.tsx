@@ -45,14 +45,18 @@ export default function Product() {
               <span className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 mb-2 block">
                 Your demand
               </span>
-              <p className="text-on-surface font-semibold text-base mb-3">5kg Fresh Tomatoes</p>
+              <p className="text-on-surface font-semibold text-base mb-3">Floral Dress</p>
+              <div className="flex items-center gap-2 text-xs text-on-surface-variant mb-3 bg-surface-container rounded-lg px-3 py-2 w-fit">
+                <span className="material-symbols-outlined text-base text-primary">attach_file</span>
+                <span className="font-medium">reference.jpg</span>
+              </div>
               <div className="flex items-center gap-2 text-sm text-on-surface-variant mb-2">
                 <span className="material-symbols-outlined text-base text-primary">location_on</span>
                 Harare CBD
               </div>
               <div className="flex items-center gap-2 text-sm text-on-surface-variant">
                 <span className="material-symbols-outlined text-base text-primary">schedule</span>
-                ASAP
+                Today
               </div>
             </div>
           </div>
@@ -64,13 +68,13 @@ export default function Product() {
             </div>
             <h3 className="text-xl font-bold mb-3 text-[#111e16]">Compare Offers</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Verified sellers compete for your business. Pick the best fit.
+              Verified sellers respond with offers. Compare and pick the best fit.
             </p>
             {/* Mockup — two offer cards */}
             <div className="flex flex-col gap-3">
               <div className="bg-surface-container-lowest rounded-2xl p-5 shadow-lg border-2 border-[#10B981]/30">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold text-sm text-[#111e16]">FarmFresh Direct</span>
+                  <span className="font-bold text-sm text-[#111e16]">Lustre Boutique</span>
                   <span className="text-[#059669] font-extrabold text-lg">$12.00</span>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-on-surface-variant">
@@ -86,7 +90,7 @@ export default function Product() {
               </div>
               <div className="bg-surface-container-lowest rounded-2xl p-5 shadow-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold text-sm text-[#111e16]">Organic Corner</span>
+                  <span className="font-bold text-sm text-[#111e16]">Thread & Soul</span>
                   <span className="text-on-surface-variant font-extrabold text-lg">$14.50</span>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-on-surface-variant">
@@ -108,15 +112,15 @@ export default function Product() {
             <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-[#059669] text-3xl">local_shipping</span>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Track Delivery</h3>
+            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Track Your Runner</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Follow your runner in real time and confirm handoff with a PIN.
+              If you request delivery, track your runner live and confirm the handoff with a secure PIN. Or simply arrange a pickup — your call.
             </p>
             {/* Mockup */}
             <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-[#10B981]/15 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[#059669] text-xl">directions_run</span>
+                  <span className="material-symbols-outlined text-[#059669] text-xl">electric_bike</span>
                 </div>
                 <div>
                   <p className="font-bold text-sm text-[#111e16]">Marcus N.</p>
@@ -155,17 +159,17 @@ export default function Product() {
               </div>
               <h3 className="text-xl font-bold mb-3 text-[#111e16]">See Live Demands</h3>
               <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-                Browse real-time requests from buyers in your area.
+                See real-time buyer requests in your area, matched to exactly what you sell.
               </p>
               {/* Mockup */}
               <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
                 <div className="flex items-start gap-3 mb-3">
                   <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-blue-600 text-lg">inventory_2</span>
+                    <span className="material-symbols-outlined text-blue-600 text-lg">smartphone</span>
                   </div>
                   <div>
-                    <p className="font-bold text-sm text-[#111e16]">Eco-Friendly Packaging</p>
-                    <p className="text-xs text-on-surface-variant mt-1">Bulk order, 50 units</p>
+                    <p className="font-bold text-sm text-[#111e16]">iPhone 15 Pro Max</p>
+                    <p className="text-xs text-on-surface-variant mt-1">256GB, Space Black — 1 unit</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-xs text-on-surface-variant pt-3 border-t border-outline-variant/20">
@@ -188,18 +192,18 @@ export default function Product() {
               </div>
               <h3 className="text-xl font-bold mb-3 text-[#111e16]">Send Your Offer</h3>
               <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-                Set your price and delivery terms. One credit per offer.
+                Set your price and terms. One credit per offer.
               </p>
               {/* Mockup */}
               <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-on-surface-variant">Your price</span>
-                    <span className="font-extrabold text-lg text-[#059669]">$12.00</span>
+                    <span className="font-extrabold text-lg text-[#059669]">$980.00</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-on-surface-variant">Delivery</span>
-                    <span className="font-semibold text-sm text-[#111e16]">Same day</span>
+                    <span className="text-xs text-on-surface-variant">Condition</span>
+                    <span className="font-semibold text-sm text-[#111e16]">Brand new, sealed</span>
                   </div>
                   <div className="pt-3 border-t border-outline-variant/20 flex items-center justify-between">
                     <span className="text-xs text-on-surface-variant">Credit cost</span>
@@ -336,27 +340,24 @@ export default function Product() {
             <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-[#059669] text-3xl">payments</span>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Get Paid</h3>
+            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Earn Cash Directly</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Fast, transparent payouts after every completed delivery.
+              Your client pays you in person. Sellai deducts a transparent 10% commission — no waiting, no platform payouts, cash in hand.
             </p>
             {/* Mockup */}
             <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-              <div className="text-center mb-4">
-                <p className="text-[10px] uppercase tracking-wider text-on-surface-variant/60 mb-1">Today's earnings</p>
-                <p className="font-extrabold text-3xl text-[#111e16]">$24.00</p>
-              </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-on-surface-variant">Commission</span>
-                  <span className="font-semibold text-[#111e16]">10%</span>
+                  <span className="text-on-surface-variant">Order value</span>
+                  <span className="font-semibold text-[#111e16]">$50.00</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-on-surface-variant">Commission (10%)</span>
+                  <span className="font-semibold text-error">— $5.00</span>
                 </div>
                 <div className="flex items-center justify-between text-sm pt-3 border-t border-outline-variant/20">
-                  <span className="text-on-surface-variant">Payout via</span>
-                  <span className="font-semibold text-[#059669] flex items-center gap-1">
-                    <span className="material-symbols-outlined text-sm">account_balance</span>
-                    Paynow
-                  </span>
+                  <span className="text-on-surface-variant font-semibold">You keep</span>
+                  <span className="font-extrabold text-[#059669] text-lg">$45.00</span>
                 </div>
               </div>
             </div>

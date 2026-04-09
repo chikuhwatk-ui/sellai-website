@@ -28,32 +28,6 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "Tendai Moyo",
-    role: "Founder & CEO",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAqhMdjVNWyO1vewZresZMn5ALvXD5Ok5V1Z8ikjRcwto78BKD-N9l0FLr7EI37TS5ca0vC8Kxe6yRb3Z_KOHn_GKFGQmHGZ3NFmK9-lDTOF7Zwp4I74EBwJh_9bjJV6S-ozAnDp1I5uSSC6pg9mfd_Nt1EOUl-WzeVdj-pAao7nLgX6psypM3GWynh4AabB2lCT375q_YwdMdsydTSrSh-QeKdVDuy4JbfdMe25A_zRg0M7LtfukrS7TW5UDdb4wcvZTmsQ2seTOI",
-  },
-  {
-    name: "Sarah Nkosi",
-    role: "Head of Operations",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDUcSvsLvpo_mXHYdRRP3Pp7s2eXpuNJdCkEDNTSnj7UUARL53bO0cifoP7MYrvnrtlDs652yzg5n3AC1PCfRgUWsl4aRaBVArsHR8zShcpWRTXMtiCxGrYUpgpcrM5LUWDVSmCe0wDQeYsC53Y_iGSPYrs2Wo5aC6ORlUNa5KheCWIviQUvXyuM9kvk7cOAP-8Cb0xdJ5ItR5qbCGZOZgCgQCIOTF_FCQrQvmjcuMpJ_uwN8clJ6yHCCMPEBcHCMIwCg75RFbsS_g",
-  },
-  {
-    name: "David Zulu",
-    role: "CTO",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC4ikL41jqyXlEeVYKYyAZygjUylbhKd8R7wWPZeM3ELtGBzJZqC7ezY-jviL8Rm_I7nqKvxR2_tc7l3GHTUDO2V8hsBtZ_60qGKwdbuNYLjc6bGK4zgxiO48zYsOzfyyHYMoaWjXLCLi8NUvFUNNzf00NaZsTduSB3EQYR0d8kMUzO6NP4k5atsRQeBq2EgJZu8BCcTR4nGBZJiyaxdNtkH3djWi7gjZIwyPnnSEzPGr7yDCW4YiL3xhEAczM2mm2DHAxXxWCs6dQ",
-  },
-  {
-    name: "Amara Okafor",
-    role: "Product Design",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDI-GsNbQ94t_W6IFZuNLi17LJ25p2NGxZf8G1qbo3e9fPaDZkbZoSExHXw3aofHn9ze35sxEiYfgcAW6MXtKTFFZClzBSLO77QuWYbB5TZZqq-HwqQWh5WfqI60ElxlYFFC-ei7F_qF9ux4nNiNbaHIN9sVr95P-A6RVC5ZYm6PL2bqeNh7eR6gBZdkHTRVWN2v1W-iTfEt25DGGtMjdNpmm8FKHKB1vOOX7I3sIhzOWn3s46V99v4XWATZ1kJOMisb7ZSX4Mg5VA",
-  },
-];
 
 export default function About() {
   return (
@@ -128,44 +102,71 @@ export default function About() {
 
       {/* -- Origin Story -- */}
       <section className="mb-32 -mx-6 md:-mx-8">
-        <div className="bg-[#0E1B13] rounded-[2.5rem] mx-6 md:mx-8 px-10 md:px-16 py-16 md:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text */}
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-4 block">
-                Our Origin
-              </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white mb-6">
-                Born from a simple observation
-              </h2>
-              <p className="text-white/70 text-lg leading-relaxed mb-6">
-                In 2021, Tendai Moyo watched a street vendor in Harare lose an
-                entire day's income because a buyer couldn't find her stall
-                after it moved. Meanwhile, that same buyer searched for hours
-                for a product that was two blocks away.
+        <div className="bg-[#0E1B13] rounded-[2.5rem] mx-6 md:mx-8 px-10 md:px-16 py-16 md:py-24">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-6 block">
+              Our Story
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white mb-8">
+              Built in Zimbabwe, for Zimbabwe.
+            </h2>
+
+            <div className="space-y-6 text-white/70 text-lg leading-relaxed text-left md:text-center">
+              <p>
+                We watched a street vendor in Harare lose an entire day's income
+                because a buyer couldn't find her stall after it moved.
+                Meanwhile, that same buyer searched for hours for a product that
+                was two blocks away.
               </p>
-              <p className="text-white/70 text-lg leading-relaxed">
-                That disconnect — abundance on one side, scarcity on the other,
-                separated only by information — became the founding problem of
-                Sellai. We set out to build a bridge: an AI layer that
-                understands context, location, and intent, connecting informal
-                markets to modern demand in real time.
+              <p>
+                Abundance on one side. Scarcity on the other. Separated only by
+                information.
+              </p>
+              <p>
+                We'd tried everything ourselves — posting in WhatsApp groups,
+                scrolling Facebook Marketplace, asking around. The tools existed,
+                but none of them were{" "}
+                <em className="text-white/90">built for this</em>. None of them
+                understood what it means to buy and sell locally in Zimbabwe —
+                the trust gap, the delivery problem, the payment friction.
+              </p>
+              <p className="text-white/90 font-medium">
+                So we built the platform we wished existed.
               </p>
             </div>
 
-            {/* Portrait + badge */}
-            <div className="flex flex-col items-center">
-              <div className="relative">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk4MNAiU4TMacSF3URVkcUOujYbO_04yprCYR_REgfXw7wtUD-xebTEfodsGLMZISqHcIs-hJr0LX1WQA19auygQlitra5O0AKRrQgKARK2VoHPBJHqq5J8kM9kADpyyzhG-KqpzN_NpJq-grYfPBc8nV_tqUUa_rq2AHKHdTwlB-h6TNYm6WF3Dcfp6sjpuZnSDg6cp3KbHBNJo-788fZfLF9iiDlRDN4evHFItADRoUf6pn1RKG3mMhmhjKU4GGZ-60wZmgKcu8"
-                  alt="Tendai Moyo, Founder"
-                  className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-emerald-500/30"
-                />
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white/15 backdrop-blur-xl rounded-full px-6 py-3 border border-white/20 whitespace-nowrap">
-                  <p className="text-white text-sm font-semibold">
-                    Founded 2021 &middot; Harare, Zimbabwe
-                  </p>
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-emerald-400 text-xl">
+                    location_on
+                  </span>
                 </div>
+                <span className="text-white/60 text-sm font-medium">
+                  Harare, Zimbabwe
+                </span>
+              </div>
+              <div className="hidden sm:block w-px h-6 bg-white/10" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-emerald-400 text-xl">
+                    group
+                  </span>
+                </div>
+                <span className="text-white/60 text-sm font-medium">
+                  Zimbabwean founding team
+                </span>
+              </div>
+              <div className="hidden sm:block w-px h-6 bg-white/10" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-emerald-400 text-xl">
+                    rocket_launch
+                  </span>
+                </div>
+                <span className="text-white/60 text-sm font-medium">
+                  Founded 2021
+                </span>
               </div>
             </div>
           </div>
@@ -205,40 +206,67 @@ export default function About() {
         </div>
       </section>
 
-      {/* -- Team -- */}
+      {/* -- The Team Behind Sellai -- */}
       <section className="mb-32">
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
             The People Behind Sellai
           </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Meet the Team
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
+            Small team. Big mission.
           </h2>
-          {/* TODO: Update with real team photos */}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {team.map((member) => (
-            <div
-              key={member.name}
-              className="text-center group"
-            >
-              <div className="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden bg-surface-container-low border-4 border-transparent group-hover:border-primary/30 transition-all">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-[#111e16]">
-                {member.name}
-              </h3>
-              <p className="text-on-surface-variant text-sm">
-                {member.role}
-              </p>
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mx-auto mb-5">
+              <span className="material-symbols-outlined text-[#059669] text-3xl">
+                code
+              </span>
             </div>
-          ))}
+            <h3 className="text-lg font-bold text-[#111e16] mb-2">
+              Engineering
+            </h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed">
+              We built the entire platform — backend, mobile app, matching
+              engine, and delivery infrastructure — from scratch in Zimbabwe.
+            </p>
+          </div>
+          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mx-auto mb-5">
+              <span className="material-symbols-outlined text-[#059669] text-3xl">
+                storefront
+              </span>
+            </div>
+            <h3 className="text-lg font-bold text-[#111e16] mb-2">
+              Commerce
+            </h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed">
+              We've sold in WhatsApp groups, listed on Facebook, haggled at
+              markets. We know the pain because we've lived it.
+            </p>
+          </div>
+          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mx-auto mb-5">
+              <span className="material-symbols-outlined text-[#059669] text-3xl">
+                public
+              </span>
+            </div>
+            <h3 className="text-lg font-bold text-[#111e16] mb-2">
+              Local roots
+            </h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed">
+              Every decision is informed by the reality on the ground — Paynow
+              over Stripe, EcoCash over Apple Pay, PIN handoffs over signatures.
+            </p>
+          </div>
         </div>
+
+        <p className="text-center text-on-surface-variant text-base mt-10 max-w-xl mx-auto leading-relaxed">
+          We're a small, focused team of Zimbabwean entrepreneurs building the
+          commerce infrastructure our communities deserve. We're not here to
+          disrupt — we're here to serve.
+        </p>
       </section>
 
       {/* -- CTA -- */}

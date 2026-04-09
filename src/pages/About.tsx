@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { DownloadSection } from "../components/DownloadSection";
 
 const values = [
   {
     icon: "verified_user",
     title: "Trust",
     description:
-      "Every transaction is backed by escrow, identity verification, and community accountability.",
+      "Every transaction is backed by PIN-verified delivery, seller identity checks, and community accountability.",
   },
   {
     icon: "visibility",
@@ -23,7 +24,7 @@ const values = [
     icon: "diversity_3",
     title: "Inclusion",
     description:
-      "Multi-language support, low-bandwidth mode, and USSD fallback ensure nobody is left behind.",
+      "Creating opportunities for everyone, regardless of background or technical ability.",
   },
 ];
 
@@ -57,7 +58,7 @@ const team = [
 export default function About() {
   return (
     <main className="pt-32 pb-24 px-6 md:px-8 max-w-7xl mx-auto">
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <section className="mb-32 text-center">
         <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
           About Our Vision
@@ -69,9 +70,8 @@ export default function About() {
           </span>
         </h1>
         <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-          Sellai is bridging the gap between informal markets and modern
-          technology — creating an inclusive, AI-powered ecosystem where anyone
-          can buy, sell, or deliver with confidence.
+          We're building infrastructure that connects local markets to modern
+          standards, starting in Harare, Zimbabwe.
         </p>
 
         <div className="relative rounded-[2rem] overflow-hidden max-w-5xl mx-auto">
@@ -80,24 +80,14 @@ export default function About() {
             alt="Sellai marketplace in action"
             className="w-full object-cover aspect-[16/7]"
           />
-          {/* Glassmorphic quote overlay */}
-          <div className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 md:bottom-10 bg-white/20 backdrop-blur-xl rounded-2xl p-6 border border-white/30">
-            <p className="text-white text-base md:text-lg font-medium leading-relaxed italic">
-              &ldquo;Commerce should not require a storefront, a smartphone, or
-              even an internet connection to get started. It just requires
-              trust.&rdquo;
-            </p>
-            <p className="text-white/70 text-sm font-semibold mt-3">
-              — Tendai Moyo, Founder
-            </p>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         </div>
       </section>
 
-      {/* ── Mission & Vision Bento ── */}
+      {/* -- Mission & Vision Bento -- */}
       <section className="mb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Mission — 7 cols */}
+          {/* Mission - 7 cols */}
           <div className="lg:col-span-7 bg-surface-container-low rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/10 flex items-center justify-center">
               <span className="material-symbols-outlined text-primary text-6xl">
@@ -111,14 +101,12 @@ export default function About() {
               Empowering informal economies through technology
             </h2>
             <p className="text-on-surface-variant text-lg leading-relaxed max-w-xl">
-              We exist to give every small trader, street vendor, and community
-              runner the same digital tools that power billion-dollar platforms
-              — smart matching, secure payments, and real-time logistics — at
-              zero upfront cost.
+              Making local commerce transparent, competitive, and trustworthy
+              — starting with Zimbabwe.
             </p>
           </div>
 
-          {/* Vision — 5 cols */}
+          {/* Vision - 5 cols */}
           <div className="lg:col-span-5 rounded-[2.5rem] overflow-hidden relative min-h-[320px]">
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbS8nRSGcU-H9X03UHsYkzYQLqHVjDPS70p787mrK4Ptyfp2QIhhE9YGn45hJdG4TpDVcAVJClLOwBorxNYh1_WvWbig4TvfLQ8jRoqKBcbXTaV0Kri0k3wEgp7IQW0_BmWMJtJqR9HrYNwQ7mDwHWIdKXipBrIgBttlwAWTI0EQ3DSIkLzSbN126hH9_yRPZnENNhcRWKoitFP0xvyMKoFWUUHNlzKOmREHHQp7oRYIn8CgkXPg29dIZ9i79IABMMdiHbfzcznXA"
@@ -131,14 +119,14 @@ export default function About() {
                 Our Vision
               </span>
               <h3 className="text-2xl font-extrabold text-white font-[Manrope]">
-                A connected marketplace across every African city by 2030
+                Expanding across Southern Africa
               </h3>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Origin Story ── */}
+      {/* -- Origin Story -- */}
       <section className="mb-32 -mx-6 md:-mx-8">
         <div className="bg-[#0E1B13] rounded-[2.5rem] mx-6 md:mx-8 px-10 md:px-16 py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -184,7 +172,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── Values ── */}
+      {/* -- Values -- */}
       <section className="mb-32">
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
@@ -217,7 +205,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── Team ── */}
+      {/* -- Team -- */}
       <section className="mb-32">
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
@@ -226,6 +214,7 @@ export default function About() {
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
             Meet the Team
           </h2>
+          {/* TODO: Update with real team photos */}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -252,8 +241,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section>
+      {/* -- CTA -- */}
+      <section className="mb-24">
         <div className="bg-primary-container rounded-[2.5rem] px-10 md:px-16 py-16 md:py-20 text-center">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope] text-on-primary-container mb-6">
             Join the movement.
@@ -263,12 +252,12 @@ export default function About() {
             in the future of African commerce.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/buyer-dashboard"
+            <a
+              href="#download"
               className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
             >
-              Get Started
-            </Link>
+              Get the App
+            </a>
             <Link
               to="/contact"
               className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-on-primary-container/30 text-on-primary-container hover:bg-on-primary-container/5 transition-all"
@@ -278,6 +267,9 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* -- Download -- */}
+      <DownloadSection variant="accent" />
     </main>
   );
 }

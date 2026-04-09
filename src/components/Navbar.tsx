@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const links = [
-  { label: 'Features', href: '/for-sellers' },
-  { label: 'Solutions', href: '/for-runners' },
-  { label: 'Pricing', href: '/for-sellers#pricing' },
+  { label: 'Product', href: '/product' },
+  { label: 'For Sellers', href: '/for-sellers' },
+  { label: 'For Runners', href: '/for-runners' },
   { label: 'About', href: '/about' },
 ]
 
@@ -35,11 +35,17 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-4">
           <Link
-            to="/buyer-dashboard"
+            to="/contact"
+            className="hidden md:inline-block text-slate-600 hover:text-emerald-500 tracking-widest text-xs font-semibold uppercase transition-colors"
+          >
+            Contact
+          </Link>
+          <a
+            href="#download"
             className="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-bold hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg shadow-primary-container/20"
           >
-            Download App
-          </Link>
+            Get the App
+          </a>
           <button onClick={() => setOpen(!open)} className="md:hidden p-2">
             <span className="material-symbols-outlined">{open ? 'close' : 'menu'}</span>
           </button>
@@ -57,6 +63,9 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
+          <Link to="/contact" onClick={() => setOpen(false)} className="block text-sm font-semibold uppercase tracking-widest text-slate-600 hover:text-emerald-500">
+            Contact
+          </Link>
         </div>
       )}
     </nav>

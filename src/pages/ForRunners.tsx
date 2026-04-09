@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { DownloadSection } from "../components/DownloadSection";
 
 const painPoints = [
   {
     icon: "money_off",
     title: "Predatory Commissions",
     description:
-      "Other platforms take up to 40% of every delivery. Sellai caps runner fees at 12%, so you keep what you earn.",
+      "Other platforms take up to 30-40% of every delivery. We cap ours at 10%, so you keep what you earn.",
   },
   {
     icon: "wrong_location",
@@ -19,30 +19,30 @@ const steps = [
   {
     icon: "app_registration",
     number: "01",
-    title: "Register",
+    title: "Sign Up",
     description:
-      "Sign up in minutes with your phone number and basic details. No lengthy paperwork required.",
+      "Download the app and register with your phone number. It only takes a few minutes to get started.",
   },
   {
     icon: "verified",
     number: "02",
-    title: "Verify Vehicle",
+    title: "Submit Documents",
     description:
-      "Upload your vehicle documents and pass a quick background check to get approved.",
+      "Upload your ID and vehicle details so we can verify your profile and get you approved.",
   },
   {
     icon: "my_location",
     number: "03",
-    title: "Set Area",
+    title: "Set Your Availability",
     description:
-      "Choose your preferred delivery zones and availability hours. Work where and when it suits you.",
+      "Choose when and where you want to deliver. You control your own schedule — no shifts assigned.",
   },
   {
     icon: "rocket_launch",
     number: "04",
-    title: "Start Earning",
+    title: "Start Delivering",
     description:
-      "Accept delivery requests, complete orders, and watch your earnings grow — with instant payouts.",
+      "Accept delivery requests, complete orders, and earn — payouts go straight to your Paynow wallet.",
     highlight: true,
   },
 ];
@@ -88,25 +88,25 @@ export default function ForRunners() {
               </span>
             </h1>
             <p className="text-on-surface-variant text-lg leading-relaxed max-w-xl mb-10">
-              Flexible income, instant payouts, and fair commissions. Join
-              thousands of runners already delivering on their own schedule.
+              Sellai takes just 10% per delivery — you keep 90%. Fair
+              commissions, flexible hours, and payouts via Paynow.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                to="/runner-hub"
+              <a
+                href="#download"
                 className="bg-gradient-to-r from-tertiary-container to-tertiary text-on-tertiary px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-tertiary-container/20"
               >
-                Become a runner
-              </Link>
-              <button
-                type="button"
+                Become a Runner
+              </a>
+              <a
+                href="#how-it-works"
                 className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-tertiary-container text-on-tertiary-container hover:bg-tertiary-container/5 transition-all"
               >
                 <span className="material-symbols-outlined align-middle mr-2 text-xl">
-                  payments
+                  arrow_downward
                 </span>
-                View Earnings
-              </button>
+                How It Works
+              </a>
             </div>
           </div>
 
@@ -118,19 +118,16 @@ export default function ForRunners() {
                 className="w-full rounded-[1.5rem] object-cover"
               />
             </div>
-            {/* Floating payout badge */}
+            {/* Floating badge */}
             <div className="absolute -bottom-4 left-6 glass-card rounded-2xl px-5 py-3 border border-white/40 shadow-lg flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-tertiary-container/15 flex items-center justify-center">
                 <span className="material-symbols-outlined text-tertiary-container text-xl">
-                  account_balance_wallet
+                  schedule
                 </span>
               </div>
               <div>
-                <p className="text-xs text-on-surface-variant font-medium">
-                  Average Daily Payout
-                </p>
-                <p className="text-lg font-extrabold text-on-surface font-[Manrope]">
-                  $240.00
+                <p className="text-sm font-bold text-on-surface font-[Manrope]">
+                  Earn on your own schedule
                 </p>
               </div>
             </div>
@@ -176,15 +173,15 @@ export default function ForRunners() {
         <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           <div className="glass-card rounded-2xl p-6 border border-white/40 text-center">
             <p className="text-4xl font-extrabold font-[Manrope] text-tertiary-container mb-1">
-              88%
+              10%
             </p>
             <p className="text-on-surface-variant text-sm font-medium">
-              Runner Retention Rate
+              Commission Cap
             </p>
           </div>
           <div className="glass-card rounded-2xl p-6 border border-white/40 text-center">
             <p className="text-4xl font-extrabold font-[Manrope] text-tertiary-container mb-1">
-              Instant
+              Paynow
             </p>
             <p className="text-on-surface-variant text-sm font-medium">
               Payouts to Your Wallet
@@ -194,7 +191,7 @@ export default function ForRunners() {
       </section>
 
       {/* ── Steps ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
+      <section id="how-it-works" className="max-w-7xl mx-auto px-6 mb-32">
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-tertiary-container mb-4 block">
             Getting Started
@@ -284,17 +281,6 @@ export default function ForRunners() {
               />
             </div>
 
-            {/* Pulsing demand marker */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-              <div className="relative">
-                <span className="absolute inset-0 rounded-full bg-tertiary-container/30 animate-ping" />
-                <span className="relative block w-5 h-5 rounded-full bg-tertiary-container border-2 border-white shadow" />
-              </div>
-              <span className="mt-2 text-xs font-bold text-on-tertiary bg-tertiary-container px-3 py-1 rounded-full shadow whitespace-nowrap">
-                High Demand Zone
-              </span>
-            </div>
-
             {/* PIN Verification card */}
             <div className="absolute -bottom-4 right-6 glass-card rounded-2xl px-5 py-3 border border-white/40 shadow-lg flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-primary-container/15 flex items-center justify-center">
@@ -315,6 +301,9 @@ export default function ForRunners() {
         </div>
       </section>
 
+      {/* ── Download ── */}
+      <DownloadSection />
+
       {/* ── Final CTA ── */}
       <section className="bg-[#111e16] py-24">
         <div className="max-w-3xl mx-auto px-6 text-center">
@@ -322,15 +311,15 @@ export default function ForRunners() {
             Ready to run?
           </h2>
           <p className="text-white/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Sign up today and start earning with the fastest-growing delivery
-            network. Your first delivery is just minutes away.
+            Sign up today and start earning with fair commissions and flexible
+            hours. Your first delivery is just minutes away.
           </p>
-          <Link
-            to="/runner-hub"
+          <a
+            href="#download"
             className="inline-block bg-gradient-to-r from-tertiary-container to-tertiary text-on-tertiary px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-tertiary-container/20"
           >
-            Become a runner
-          </Link>
+            Become a Runner
+          </a>
         </div>
       </section>
     </main>

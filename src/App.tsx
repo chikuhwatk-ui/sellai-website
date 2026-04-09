@@ -1,15 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
 import { ScrollToTop } from './components/ScrollToTop'
 import { MarketingLayout } from './components/MarketingLayout'
-import { AppPreviewLayout } from './components/AppPreviewLayout'
 import Home from './pages/Home'
 import About from './pages/About'
 import ForSellers from './pages/ForSellers'
 import ForRunners from './pages/ForRunners'
-import BuyerDashboard from './pages/BuyerDashboard'
-import SellerFeed from './pages/SellerFeed'
-import RunnerHub from './pages/RunnerHub'
-import TrustCenter from './pages/TrustCenter'
+import Product from './pages/Product'
+import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 
 export default function App() {
   return (
@@ -21,12 +20,10 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/for-sellers" element={<ForSellers />} />
           <Route path="/for-runners" element={<ForRunners />} />
-        </Route>
-        <Route element={<AppPreviewLayout />}>
-          <Route path="/buyer-dashboard" element={<BuyerDashboard />} />
-          <Route path="/seller-feed" element={<SellerFeed />} />
-          <Route path="/runner-hub" element={<RunnerHub />} />
-          <Route path="/trust-center" element={<TrustCenter />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
         </Route>
       </Routes>
     </>

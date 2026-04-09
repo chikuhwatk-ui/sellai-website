@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { DownloadSection } from "../components/DownloadSection";
 
 const painPoints = [
-  "Spending thousands on ads with no guaranteed ROI",
-  "Maintaining an expensive website that nobody visits",
-  "Waiting for customers to find you organically",
+  "Relying on word-of-mouth and hoping customers find you",
+  "Paying for social media ads that reach the wrong audience",
+  "Losing sales because buyers don't know you exist nearby",
 ];
 
 const steps = [
@@ -20,7 +20,7 @@ const steps = [
     icon: "category",
     title: "Set Categories",
     description:
-      "Tell us what you sell. Our AI will match you with buyers looking for exactly your products.",
+      "Tell us what you sell. Smart matching connects you with buyers looking for exactly your products.",
     highlighted: true,
   },
   {
@@ -35,32 +35,28 @@ const steps = [
     icon: "send",
     title: "Send Offers",
     description:
-      "Respond with your best price and delivery terms. Win the deal and grow your revenue.",
+      "Use a credit to respond with your best price and delivery terms. Win the deal and grow your revenue.",
   },
 ];
 
 const categories = [
   {
     name: "Consumer Tech",
-    demands: "1.2k",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
   },
   {
     name: "Apparel",
-    demands: "4.8k",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
   },
   {
     name: "Beauty & Care",
-    demands: "2.1k",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
   },
   {
     name: "Industrial Supply",
-    demands: "850",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
   },
@@ -71,7 +67,7 @@ const verificationBenefits = [
     icon: "star",
     title: "Priority Listing",
     description:
-      "Your offers appear first when buyers browse. Verified sellers get 3x more visibility.",
+      "Your offers appear first when buyers browse. Verified sellers get more visibility.",
   },
   {
     icon: "verified",
@@ -87,70 +83,42 @@ const verificationBenefits = [
   },
 ];
 
-const pricingTiers = [
+const creditBundles = [
   {
     name: "Starter",
-    price: "$49",
-    period: "/mo",
-    description: "Perfect for individual sellers just getting started.",
-    features: [
-      "Up to 50 offers/month",
-      "Basic analytics dashboard",
-      "Standard support",
-      "1 category listing",
-    ],
-    cta: "Get Started",
+    price: "$7",
+    credits: 5,
+    perCredit: "$1.40",
+    description: "Perfect for trying out the platform.",
     popular: false,
   },
   {
-    name: "Growth Scale",
-    price: "$149",
-    period: "/mo",
-    description: "For growing businesses ready to scale their reach.",
-    features: [
-      "Unlimited offers",
-      "Advanced analytics & insights",
-      "Priority support",
-      "Up to 10 category listings",
-      "Verified seller badge",
-      "Featured placement",
-    ],
-    cta: "Start Growing",
+    name: "Growth",
+    price: "$12",
+    credits: 15,
+    perCredit: "$0.80",
+    description: "Great value for growing sellers.",
+    popular: false,
+  },
+  {
+    name: "Pro Dealer",
+    price: "$20",
+    credits: 50,
+    perCredit: "$0.40",
+    description: "Best value for active sellers.",
     popular: true,
   },
   {
-    name: "Custom Fleet",
-    price: "Custom",
-    period: "",
-    description: "Enterprise solutions for large-scale operations.",
-    features: [
-      "Everything in Growth Scale",
-      "Dedicated account manager",
-      "API access",
-      "Unlimited categories",
-      "Custom integrations",
-      "SLA guarantee",
-    ],
-    cta: "Contact Sales",
+    name: "Enterprise",
+    price: "$35",
+    credits: 100,
+    perCredit: "$0.35",
+    description: "Maximum reach for high-volume dealers.",
     popular: false,
   },
 ];
 
-const categoryOptions = [
-  "Consumer Tech",
-  "Apparel",
-  "Beauty & Care",
-  "Industrial Supply",
-  "Food & Beverage",
-  "Home & Garden",
-];
-
 export default function ForSellers() {
-  const [sliderValue, setSliderValue] = useState(25);
-  const [selectedCategory, setSelectedCategory] = useState("Consumer Tech");
-
-  const estimatedRevenue = sliderValue * 500;
-
   return (
     <main className="pt-24 overflow-hidden">
       {/* ── Hero ── */}
@@ -165,25 +133,26 @@ export default function ForSellers() {
               <span className="text-primary">active buyers.</span>
             </h1>
             <p className="text-on-surface-variant text-lg leading-relaxed max-w-xl mb-10">
-              Skip the expensive websites and ad campaigns. On Sellai, buyers
-              come to you with real demand — all you have to do is respond.
+              Stop waiting for customers to find you. On Sellai, Zimbabwean
+              buyers post what they need — and you respond directly with your
+              best offer.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                to="/seller-feed"
+              <a
+                href="#download"
                 className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
               >
                 Join as Seller
-              </Link>
-              <button
-                type="button"
+              </a>
+              <Link
+                to="/contact"
                 className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-primary text-primary hover:bg-primary/5 transition-all"
               >
                 <span className="material-symbols-outlined align-middle mr-2 text-xl">
                   play_circle
                 </span>
                 See How It Works
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -206,8 +175,8 @@ export default function ForSellers() {
             Struggling to find customers?
           </h2>
           <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto">
-            Traditional methods are expensive, slow, and unreliable. You deserve
-            better.
+            For Zimbabwean sellers, reaching the right buyers is harder than it
+            should be. Traditional methods waste your time and money.
           </p>
         </div>
 
@@ -230,30 +199,32 @@ export default function ForSellers() {
         <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
             <span className="material-symbols-outlined text-error text-4xl mb-4 block">
-              trending_up
+              group_off
             </span>
             <p className="text-3xl font-extrabold text-on-surface mb-2">
-              $4,200+
+              Limited Reach
             </p>
             <p className="text-on-surface-variant font-medium">
-              High Ad Costs
+              Missed Opportunities
             </p>
             <p className="text-on-surface-variant text-sm mt-1">
-              Average monthly spend for online ads with diminishing returns
+              Most local sellers only reach customers within walking distance of
+              their shop
             </p>
           </div>
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
             <span className="material-symbols-outlined text-error text-4xl mb-4 block">
-              visibility_off
+              hourglass_top
             </span>
             <p className="text-3xl font-extrabold text-on-surface mb-2">
-              2.3%
+              Wasted Time
             </p>
             <p className="text-on-surface-variant font-medium">
-              Low Visibility
+              No Guaranteed Leads
             </p>
             <p className="text-on-surface-variant text-sm mt-1">
-              Average conversion rate from traditional online storefronts
+              Hours spent on WhatsApp groups and social media with no way to know
+              who's actually buying
             </p>
           </div>
         </div>
@@ -266,7 +237,7 @@ export default function ForSellers() {
             How It Works
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Four steps to explosive growth
+            Four steps to your next sale
           </h2>
         </div>
 
@@ -319,14 +290,14 @@ export default function ForSellers() {
         </div>
       </section>
 
-      {/* ── Earnings Calculator ── */}
+      {/* ── How Credits Work ── */}
       <section className="max-w-7xl mx-auto px-6 mb-32">
         <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            Revenue Potential
+            Credit System
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Estimate your earnings
+            How credits work
           </h2>
         </div>
 
@@ -334,63 +305,95 @@ export default function ForSellers() {
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-10 border border-white/40 shadow-2xl shadow-emerald-900/5">
             <div className="flex items-center gap-3 mb-8">
               <span className="material-symbols-outlined text-primary text-3xl">
-                insights
+                toll
               </span>
               <h3 className="text-xl font-bold text-on-surface">
                 Intelligence Card
               </h3>
             </div>
 
-            <div className="mb-8">
-              <label className="block text-on-surface-variant font-medium mb-3">
-                Category
-              </label>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full rounded-xl border border-outline-variant bg-surface-container-low px-4 py-3 text-on-surface font-medium focus:outline-none focus:ring-2 focus:ring-primary/30"
-              >
-                {categoryOptions.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-on-surface-variant font-medium">
-                  Orders per month
-                </label>
-                <span className="text-on-surface font-bold text-lg">
-                  {sliderValue}
-                </span>
+            <div className="flex flex-col gap-6 mb-8">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <span className="material-symbols-outlined text-primary text-xl">
+                    confirmation_number
+                  </span>
+                </div>
+                <div>
+                  <p className="text-on-surface font-bold mb-1">
+                    1 credit = 1 offer sent to a buyer
+                  </p>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
+                    When you see a buyer request that matches what you sell, spend
+                    one credit to send them your offer with pricing and delivery
+                    terms.
+                  </p>
+                </div>
               </div>
-              <input
-                type="range"
-                min={1}
-                max={100}
-                value={sliderValue}
-                onChange={(e) => setSliderValue(Number(e.target.value))}
-                className="w-full h-2 rounded-full appearance-none cursor-pointer accent-primary bg-outline-variant"
-              />
-              <div className="flex justify-between text-sm text-on-surface-variant mt-2">
-                <span>1</span>
-                <span>100</span>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <span className="material-symbols-outlined text-primary text-xl">
+                    all_inclusive
+                  </span>
+                </div>
+                <div>
+                  <p className="text-on-surface font-bold mb-1">
+                    Credits never expire
+                  </p>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
+                    Buy credits when you need them. No monthly subscriptions, no
+                    pressure. Use them at your own pace.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <span className="material-symbols-outlined text-primary text-xl">
+                    target
+                  </span>
+                </div>
+                <div>
+                  <p className="text-on-surface font-bold mb-1">
+                    Only pay when you see opportunity
+                  </p>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
+                    Browse buyer demands for free. You only spend a credit when
+                    you choose to respond — no wasted spend.
+                  </p>
+                </div>
               </div>
             </div>
 
             <div className="bg-primary/5 rounded-2xl p-6 text-center border border-primary/10">
               <p className="text-on-surface-variant text-sm font-medium mb-2 uppercase tracking-wider">
-                Estimated Monthly Revenue
+                Credit Bundles
               </p>
-              <p className="text-5xl font-extrabold text-primary font-[Manrope]">
-                ${estimatedRevenue.toLocaleString()}
-              </p>
-              <p className="text-on-surface-variant text-sm mt-2">
-                Based on average order value in {selectedCategory}
-              </p>
+              <div className="grid grid-cols-2 gap-3 mt-4">
+                <div className="bg-white/70 rounded-xl p-3 border border-white/50">
+                  <p className="text-on-surface font-bold">Starter</p>
+                  <p className="text-primary font-extrabold text-lg">$7</p>
+                  <p className="text-on-surface-variant text-xs">5 credits</p>
+                </div>
+                <div className="bg-white/70 rounded-xl p-3 border border-white/50">
+                  <p className="text-on-surface font-bold">Growth</p>
+                  <p className="text-primary font-extrabold text-lg">$12</p>
+                  <p className="text-on-surface-variant text-xs">15 credits</p>
+                </div>
+                <div className="bg-white/70 rounded-xl p-3 border border-white/50">
+                  <p className="text-on-surface font-bold">Pro Dealer</p>
+                  <p className="text-primary font-extrabold text-lg">$20</p>
+                  <p className="text-on-surface-variant text-xs">50 credits</p>
+                </div>
+                <div className="bg-white/70 rounded-xl p-3 border border-white/50">
+                  <p className="text-on-surface font-bold">Enterprise</p>
+                  <p className="text-primary font-extrabold text-lg">$35</p>
+                  <p className="text-on-surface-variant text-xs">
+                    100 credits
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -425,7 +428,7 @@ export default function ForSellers() {
                     {cat.name}
                   </h3>
                   <p className="text-emerald-400 text-sm font-medium">
-                    {cat.demands} active demands
+                    Active Demand
                   </p>
                 </div>
               </div>
@@ -502,87 +505,71 @@ export default function ForSellers() {
             Pricing
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Plans that scale with you
+            Credit packs for every seller
           </h2>
+          <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mt-4">
+            No subscriptions. No monthly fees. Buy credits and use them whenever
+            you're ready — they never expire.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 items-center">
-          {pricingTiers.map((tier) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          {creditBundles.map((bundle) => (
             <div
-              key={tier.name}
+              key={bundle.name}
               className={`rounded-[2rem] p-8 border transition-all flex flex-col ${
-                tier.popular
-                  ? "bg-primary text-white border-primary shadow-2xl shadow-emerald-900/20 scale-105 py-12"
+                bundle.popular
+                  ? "bg-primary text-white border-primary shadow-2xl shadow-emerald-900/20 scale-105"
                   : "bg-white/55 backdrop-blur-xl border-white/40"
               }`}
             >
-              {tier.popular && (
+              {bundle.popular && (
                 <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 self-start">
-                  Most Popular
+                  Best Value
                 </span>
               )}
               <h3
-                className={`text-xl font-bold mb-2 ${
-                  tier.popular ? "text-white" : "text-on-surface"
+                className={`text-xl font-bold mb-1 ${
+                  bundle.popular ? "text-white" : "text-on-surface"
                 }`}
               >
-                {tier.name}
+                {bundle.name}
               </h3>
               <p
                 className={`text-sm mb-6 ${
-                  tier.popular ? "text-white/70" : "text-on-surface-variant"
+                  bundle.popular ? "text-white/70" : "text-on-surface-variant"
                 }`}
               >
-                {tier.description}
+                {bundle.description}
               </p>
-              <div className="mb-8">
+              <div className="mb-2">
                 <span
                   className={`text-5xl font-extrabold font-[Manrope] ${
-                    tier.popular ? "text-white" : "text-on-surface"
+                    bundle.popular ? "text-white" : "text-on-surface"
                   }`}
                 >
-                  {tier.price}
+                  {bundle.price}
                 </span>
-                {tier.period && (
-                  <span
-                    className={`text-lg ${
-                      tier.popular ? "text-white/70" : "text-on-surface-variant"
-                    }`}
-                  >
-                    {tier.period}
-                  </span>
-                )}
               </div>
-              <ul className="flex flex-col gap-3 mb-8 flex-1">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <span
-                      className={`material-symbols-outlined text-xl ${
-                        tier.popular ? "text-white/80" : "text-primary"
-                      }`}
-                    >
-                      check_circle
-                    </span>
-                    <span
-                      className={`text-sm ${
-                        tier.popular ? "text-white/90" : "text-on-surface-variant"
-                      }`}
-                    >
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to="/seller-feed"
-                className={`text-center px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 ${
-                  tier.popular
-                    ? "bg-white text-primary shadow-lg"
-                    : "bg-gradient-to-r from-[#10B981] to-[#059669] text-white shadow-lg shadow-emerald-500/20"
+              <p
+                className={`text-sm mb-6 ${
+                  bundle.popular ? "text-white/70" : "text-on-surface-variant"
                 }`}
               >
-                {tier.cta}
-              </Link>
+                {bundle.credits} credits &middot; {bundle.perCredit} each
+              </p>
+              <div className="mt-auto">
+                <a
+                  href="#download"
+                  className={`block text-center px-6 py-3 rounded-xl font-bold text-base transition-all hover:scale-105 ${
+                    bundle.popular
+                      ? "bg-white text-primary shadow-lg"
+                      : "bg-gradient-to-r from-[#10B981] to-[#059669] text-white shadow-lg shadow-emerald-500/20"
+                  }`}
+                >
+                  Get Credits
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -596,26 +583,29 @@ export default function ForSellers() {
               Ready to meet your next customer?
             </h2>
             <p className="text-white/80 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-              Join thousands of sellers already growing their business on
-              Sellai. No upfront costs, no long-term contracts.
+              Join sellers across Zimbabwe already growing their business on
+              Sellai. Buy credits only when you need them.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/seller-feed"
+              <a
+                href="#download"
                 className="inline-block bg-white text-[#059669] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg"
               >
                 Start Selling Today
-              </Link>
+              </a>
               <Link
-                to="/"
+                to="/contact"
                 className="inline-block text-white/90 px-8 py-4 rounded-xl font-bold text-lg border-2 border-white/30 hover:bg-white/10 transition-all"
               >
-                Learn More
+                Contact Us
               </Link>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ── Download ── */}
+      <DownloadSection variant="dark" />
     </main>
   );
 }

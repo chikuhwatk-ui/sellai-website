@@ -1,42 +1,42 @@
 import { Link } from "react-router-dom";
-
-const partners = ["TechVentures", "GlobalTrade", "AfriConnect", "SwiftPay", "LocalFirst"];
+import { DownloadSection } from "../components/DownloadSection";
 
 const steps = [
   {
     icon: "edit_note",
     number: "01",
-    title: "Post Demand",
+    title: "Post a Demand",
     description:
-      "Describe what you need in plain language. Our AI understands context, urgency, and location to match you instantly.",
+      "Tell us what you need. Describe the product or service and your location.",
   },
   {
     icon: "storefront",
     number: "02",
-    title: "Receive Offers",
+    title: "Sellers Compete",
     description:
-      "Verified sellers and runners compete to fulfill your request with the best price, speed, and quality.",
+      "Verified sellers near you see your demand and send their best offers.",
   },
   {
     icon: "local_shipping",
     number: "03",
-    title: "Choose & Deliver",
+    title: "Choose & Get it Delivered",
     description:
-      "Pick the offer that suits you. Track your order in real time until it arrives at your doorstep.",
+      "Pick the offer that works for you. A runner brings it to your door, confirmed with a secure PIN.",
   },
 ];
 
 const miniFeatures = [
   { icon: "psychology", label: "Smart Matching" },
-  { icon: "translate", label: "Multi-Language" },
   { icon: "location_on", label: "Geo-Aware" },
-  { icon: "trending_up", label: "Price Prediction" },
+  { icon: "verified", label: "Trust Scores" },
+  { icon: "credit_card", label: "Credit-Based Offers" },
 ];
 
 const trustBadges = [
-  { icon: "verified_user", label: "Verified Sellers", description: "Every seller is identity-checked and reviewed." },
-  { icon: "pin_drop", label: "PIN Handovers", description: "Secure delivery confirmation with unique PINs." },
-  { icon: "account_balance_wallet", label: "Escrow Payments", description: "Funds held safely until you confirm receipt." },
+  { icon: "pin_drop", label: "PIN-Secured Deliveries", description: "Every handoff confirmed with a unique PIN code." },
+  { icon: "verified_user", label: "Seller Identity Verification", description: "Every seller passes identity checks before making offers." },
+  { icon: "my_location", label: "Real-Time Delivery Tracking", description: "Track your runner from pickup to your doorstep." },
+  { icon: "toll", label: "Credit-Based Offers", description: "Sellers use credits to send offers — no spam, only serious replies." },
 ];
 
 const roles = [
@@ -49,8 +49,8 @@ const roles = [
     accentBorder: "border-blue-500/20",
     description:
       "Post what you need and get competitive offers from verified sellers and runners near you.",
-    link: "/buyer-dashboard",
-    cta: "Start Buying",
+    link: "/product",
+    cta: "Learn More",
   },
   {
     icon: "store",
@@ -60,9 +60,9 @@ const roles = [
     accentBg: "bg-emerald-500/10",
     accentBorder: "border-emerald-500/20",
     description:
-      "List your products or respond to buyer demand. Grow your business with AI-powered visibility.",
-    link: "/seller-feed",
-    cta: "Start Selling",
+      "Respond to buyer demand in your area. Grow your business with smart visibility and trust scores.",
+    link: "/for-sellers",
+    cta: "Learn More",
   },
   {
     icon: "directions_run",
@@ -73,45 +73,40 @@ const roles = [
     accentBorder: "border-amber-500/20",
     description:
       "Pick up and deliver orders in your area. Earn on your own schedule with flexible gigs.",
-    link: "/runner-hub",
-    cta: "Start Running",
+    link: "/for-runners",
+    cta: "Learn More",
   },
 ];
 
-const testimonials = [
+const valueProps = [
   {
-    quote:
-      "Sellai completely changed how I source products. I just describe what I need and offers come flooding in within minutes.",
-    name: "Amina K.",
-    role: "Small Business Owner",
+    icon: "money_off",
+    title: "Zero Upfront Cost",
+    description: "List your products for free. Only pay per offer with affordable credit bundles.",
   },
   {
-    quote:
-      "As a runner, I love the flexibility. The AI routing means I spend less time driving and more time earning.",
-    name: "David M.",
-    role: "Delivery Runner",
+    icon: "verified_user",
+    title: "Verified Sellers",
+    description: "Every seller passes identity checks before they can make offers.",
   },
   {
-    quote:
-      "The escrow system gave me the confidence to sell to strangers online. My revenue has tripled since joining.",
-    name: "Thandiwe N.",
-    role: "Independent Seller",
+    icon: "pin_drop",
+    title: "PIN-Secured Delivery",
+    description: "Every handoff confirmed with a unique PIN. You pay only when you receive.",
   },
-];
-
-const stats = [
-  { value: "15,000+", label: "Runners" },
-  { value: "2,500+", label: "Sellers" },
-  { value: "98%", label: "Satisfaction" },
-  { value: "24/7", label: "Support" },
+  {
+    icon: "flag",
+    title: "Built for Zimbabwe",
+    description: "Local payments via Paynow. Designed for how commerce actually works here.",
+  },
 ];
 
 const comparisons = [
-  { feature: "AI-powered demand matching", traditional: false, sellai: true },
-  { feature: "Escrow payment protection", traditional: false, sellai: true },
+  { feature: "Smart demand matching", traditional: false, sellai: true },
+  { feature: "PIN-verified delivery", traditional: false, sellai: true },
   { feature: "Real-time delivery tracking", traditional: false, sellai: true },
   { feature: "Verified seller network", traditional: false, sellai: true },
-  { feature: "Multi-language support", traditional: false, sellai: true },
+  { feature: "Credit-based system", traditional: false, sellai: true },
   { feature: "Static product listings", traditional: true, sellai: false },
   { feature: "Manual search required", traditional: true, sellai: false },
   { feature: "No delivery integration", traditional: true, sellai: false },
@@ -129,25 +124,25 @@ export default function Home() {
           </span>
         </h1>
         <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          Sellai is the AI-powered marketplace where buyers post what they need
-          and sellers compete to deliver. Faster, smarter, and built on trust.
+          The marketplace connecting buyers with verified local sellers and
+          reliable delivery runners across Zimbabwe.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Link
-            to="/buyer-dashboard"
+          <a
+            href="#download"
             className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
           >
-            Get Started
-          </Link>
-          <button
-            type="button"
+            Get the App
+          </a>
+          <Link
+            to="/product"
             className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-[#006c49] text-[#006c49] hover:bg-[#006c49]/5 transition-all"
           >
             <span className="material-symbols-outlined align-middle mr-2 text-xl">
-              play_circle
+              info
             </span>
-            Watch Demo
-          </button>
+            See How It Works
+          </Link>
         </div>
 
         <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-4 border border-white/40 max-w-4xl mx-auto shadow-2xl shadow-emerald-900/5">
@@ -156,23 +151,6 @@ export default function Home() {
             alt="Sellai marketplace preview"
             className="w-full rounded-[1.5rem] object-cover"
           />
-        </div>
-      </section>
-
-      {/* ── Partner / Logo Bar ── */}
-      <section className="mb-32">
-        <p className="text-center text-sm text-on-surface-variant/60 font-medium uppercase tracking-widest mb-8">
-          Trusted by leading partners
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 px-6">
-          {partners.map((name) => (
-            <span
-              key={name}
-              className="text-xl font-bold text-[#111e16]/20 tracking-wide select-none"
-            >
-              {name}
-            </span>
-          ))}
         </div>
       </section>
 
@@ -224,7 +202,7 @@ export default function Home() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* AI-Powered Matching */}
+          {/* Smart Matching */}
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40">
             <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-[#059669] text-3xl">
@@ -232,12 +210,11 @@ export default function Home() {
               </span>
             </div>
             <h3 className="text-2xl font-bold mb-3 text-[#111e16]">
-              AI-Powered Matching
+              Smart Matching
             </h3>
             <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
-              Our intelligent engine analyzes demand context, location,
-              preferences, and seller capabilities to deliver the best matches
-              in seconds — not hours.
+              Our algorithm matches your demand with the best nearby sellers
+              based on distance, category, trust score, and availability.
             </p>
             <div className="grid grid-cols-2 gap-4">
               {miniFeatures.map((f) => (
@@ -256,7 +233,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Trust Built In */}
+          {/* Verified & Trusted */}
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40">
             <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-[#059669] text-3xl">
@@ -264,12 +241,12 @@ export default function Home() {
               </span>
             </div>
             <h3 className="text-2xl font-bold mb-3 text-[#111e16]">
-              Trust Built In
+              Verified & Trusted
             </h3>
             <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
-              Every transaction is protected end-to-end. From identity
-              verification to escrow payments, we make sure both sides are
-              covered.
+              Every transaction is protected with real safeguards. PIN-secured
+              deliveries, identity-verified sellers, and a credit system that
+              keeps offers serious.
             </p>
             <div className="flex flex-col gap-4">
               {trustBadges.map((badge) => (
@@ -341,51 +318,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            Testimonials
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Loved by thousands
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 flex flex-col"
-            >
-              <span className="material-symbols-outlined text-[#10B981]/30 text-5xl mb-4">
-                format_quote
-              </span>
-              <p className="text-[#111e16] text-lg leading-relaxed flex-1 mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div>
-                <p className="font-bold text-[#111e16]">{t.name}</p>
-                <p className="text-on-surface-variant text-sm">{t.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Stats Bar ── */}
+      {/* ── Why Local Traders Choose Sellai ── */}
       <section className="bg-[#111e16] py-24 mb-32">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <p className="text-4xl md:text-5xl font-extrabold text-white mb-2">
-                {s.value}
-              </p>
-              <p className="text-emerald-400 font-medium uppercase tracking-wider text-sm">
-                {s.label}
-              </p>
-            </div>
-          ))}
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white text-center mb-16">
+            Why local traders choose Sellai
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {valueProps.map((vp) => (
+              <div key={vp.title} className="text-center">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 flex items-center justify-center mx-auto mb-5">
+                  <span className="material-symbols-outlined text-emerald-400 text-3xl">
+                    {vp.icon}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">
+                  {vp.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  {vp.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -444,23 +399,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Download Section ── */}
+      <DownloadSection />
+
       {/* ── CTA Section ── */}
       <section className="mb-0">
         <div className="bg-gradient-to-r from-[#10B981] to-[#059669] py-24">
           <div className="max-w-3xl mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope] text-white mb-6">
-              Ready to transform your commerce?
+              Ready to try Sellai?
             </h2>
             <p className="text-white/80 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-              Join thousands of buyers, sellers, and runners already using
+              Join buyers, sellers, and runners across Zimbabwe already using
               Sellai to trade smarter.
             </p>
-            <Link
-              to="/buyer-dashboard"
+            <a
+              href="#download"
               className="inline-block bg-white text-[#059669] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg"
             >
-              Get Started Free
-            </Link>
+              Get the App
+            </a>
           </div>
         </div>
       </section>

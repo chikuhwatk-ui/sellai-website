@@ -201,11 +201,17 @@ export default function Home() {
         </div>
 
         <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-4 border border-white/40 max-w-4xl mx-auto shadow-2xl shadow-emerald-900/5">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPNx2fKQLAxpJspDnpX6YJtivupl2QVX54d8jDMmcyoWkqKxUvRAOAt72YOw-NH69ujfMz20-8e5HSVYtv4hgjp3TX1SSYk5GAXHYDIBxLUuvOy1-anAvYx16cIT_cXu2jUnhJ-2AyQ1yq9ht4RKygsoCfYrFPzc9iwgvrqnWkAmF196ilJ-UR4En8CaVOmzQTO5-dEz7zWKIfllfS_yERgURUrpjSa-vVYu8APdD5cW-4R6C12YJESOEv1URksVk6L4rqOUhLy7Y"
-            alt="Sellai marketplace preview"
-            className="w-full rounded-[1.5rem] object-cover"
-          />
+          <div className="relative rounded-[1.5rem] overflow-hidden aspect-video">
+            <img
+              src="/hero-image2.png"
+              alt="Sellai marketplace preview"
+              className="w-full h-full object-cover object-top brightness-110 contrast-105"
+            />
+            {/* Emerald brand tint */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#10B981]/10 via-transparent to-transparent pointer-events-none" />
+            {/* Bottom fade into card */}
+            <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none" />
+          </div>
         </div>
       </section>
 

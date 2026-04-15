@@ -40,81 +40,83 @@ const steps = [
 ];
 
 const categories = [
-  {
-    name: "Consumer Tech",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
-  },
-  {
-    name: "Apparel",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
-  },
-  {
-    name: "Beauty & Care",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
-  },
-  {
-    name: "Industrial Supply",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY",
-  },
+  { name: "Electronics", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrQ6gCR9xAaoZY1kfkTZj0allEtLJOtNow_NO1NCh-_eGVbj36dx_d0BEJTtQxpFQqBozEtQf37l35uaQelnWrX8POiMm29zEJsytSe0f-o7dzZayoBj4fayRKKImoirMA8R3RmEtWlqOGe9pGM6qKfTSgkDKji13waKxVlhGIkRUyM6GmAC7u3lPdlihihJnEwIbm0reN9BQVqRe5cZGO_nH6QC649F3_3iy9kwN3YQJQTA2d7_KML1_TBkq8FZk-nj-Bk-wWGY" },
+  { name: "Fashion", image: "/fashion-category.png" },
+  { name: "Beauty & Grooming", image: "/beauty-category.png" },
+  { name: "Repair & Maintenance", image: "/repair-category.png" },
 ];
 
 const verificationBenefits = [
   {
-    icon: "star",
-    title: "Priority Listing",
+    icon: "lock_open",
+    title: "Unlock Offer Sending",
     description:
-      "Your offers appear first when buyers browse. Verified sellers get more visibility.",
+      "Verification is required before you can respond to any buyer demand. It's what takes you from browsing to actively winning deals.",
   },
   {
     icon: "verified",
-    title: "Trust Badge",
+    title: "Your Badge, Everywhere",
     description:
-      "A visible badge on your profile that signals credibility and reliability to every buyer.",
+      "Your verified badge appears on your profile, in every chat, and in buyer search results — a constant trust signal before a buyer even accepts your offer.",
   },
   {
-    icon: "shield",
-    title: "Protection",
+    icon: "trending_up",
+    title: "Priority in Search",
     description:
-      "Access to Sellai's dispute resolution and payment protection for every transaction.",
+      "Verified sellers appear higher when buyers compare offers. More visibility, more deals.",
   },
 ];
 
 const creditBundles = [
   {
-    name: "Starter",
-    price: "$7",
+    name: "Free Trial",
+    price: "Free",
     credits: 5,
-    perCredit: "$1.40",
-    description: "Perfect for trying out the platform.",
+    slots: 3,
+    perCredit: null,
+    description: "See real buyer demands before you spend anything.",
     popular: false,
+    isFree: true,
   },
   {
-    name: "Growth",
-    price: "$12",
+    name: "Starter",
+    price: "$7",
     credits: 15,
-    perCredit: "$0.80",
-    description: "Great value for growing sellers.",
+    slots: 5,
+    perCredit: "$0.47",
+    description: "Perfect for trying out the platform.",
     popular: false,
+    isFree: false,
   },
   {
     name: "Pro Dealer",
     price: "$20",
     credits: 50,
+    slots: 15,
     perCredit: "$0.40",
-    description: "Best value for active sellers.",
+    description: "Best value for growing sellers.",
     popular: true,
+    isFree: false,
   },
   {
-    name: "Enterprise",
-    price: "$35",
-    credits: 100,
-    perCredit: "$0.35",
-    description: "Maximum reach for high-volume dealers.",
+    name: "Market Mover",
+    price: "$45",
+    credits: 150,
+    slots: 40,
+    perCredit: "$0.30",
+    description: "For high-volume sellers scaling fast.",
     popular: false,
+    isFree: false,
+  },
+  {
+    name: "Big Boss",
+    price: "$120",
+    credits: 500,
+    slots: null,
+    perCredit: "$0.24",
+    description: "Unlimited categories, maximum reach.",
+    popular: false,
+    isFree: false,
   },
 ];
 
@@ -129,21 +131,24 @@ export default function ForSellers() {
               Seller Network
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
-              Grow your business with{" "}
-              <span className="text-primary">active buyers.</span>
+              Grow where demand is{" "}
+              <span className="text-primary">already looking for you.</span>
             </h1>
             <p className="text-on-surface-variant text-lg leading-relaxed max-w-xl mb-10">
-              Stop waiting for customers to find you. On Sellai, Zimbabwean
-              buyers post what they need — and you respond directly with your
-              best offer.
+              Social media ads sell impressions. Group chats bury your message
+              in seconds. On Sellai, you're notified the moment a buyer posts
+              exactly what you sell — all you have to do is respond.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <a
-                href="#download"
-                className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
-              >
-                Join as Seller
-              </a>
+              <div className="flex flex-col items-start gap-1.5">
+                <a
+                  href="#download"
+                  className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
+                >
+                  Start Free
+                </a>
+                <p className="text-xs text-on-surface-variant pl-1">3 free category slots · 5 free credits · no payment needed</p>
+              </div>
               <Link
                 to="/contact"
                 className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-primary text-primary hover:bg-primary/5 transition-all"
@@ -158,11 +163,13 @@ export default function ForSellers() {
 
           <div className="relative">
             <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-4 border border-white/40 shadow-2xl shadow-emerald-900/5 rotate-2 hover:rotate-0 transition-transform duration-500">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUd5ejg53ks4EWQ0ju1cplprWT37HbLwpigKU65H7WWAH2-c7XB30Ks_sbP8H38JIwvSw8n3mwFSGIE23xyh7IZOKRA5FVr9eCmPaMXlvM893rMcchNto1Agyo3xVwLx_0ktLmJh4-L7bKTnYfmvDXPjU2GFPOpZMSeYEF4zjZcA-X4CxLeJT2ZsztSPXN2h_a2eQ9KRrEkcjp2m_s-hiskcmlb_09xaUKz2VmMV7-NltFKB9sKMCFu-DlU-LPo-pfLOgsmPq60EU"
-                alt="Seller dashboard preview"
-                className="w-full rounded-[1.5rem] object-cover"
-              />
+              <div className="w-full h-[420px] rounded-[1.5rem] overflow-hidden">
+                <img
+                  src="/seller-growth.png"
+                  alt="Seller growth"
+                  className="w-full h-[115%] object-cover object-top"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -223,7 +230,7 @@ export default function ForSellers() {
               No Guaranteed Leads
             </p>
             <p className="text-on-surface-variant text-sm mt-1">
-              Hours spent on WhatsApp groups and social media with no way to know
+              Hours spent on group chats and social media with no way to know
               who's actually buying
             </p>
           </div>
@@ -398,8 +405,7 @@ export default function ForSellers() {
                     Credits never expire
                   </p>
                   <p className="text-on-surface-variant text-sm leading-relaxed">
-                    Buy credits when you need them. No monthly subscriptions, no
-                    pressure. Use them at your own pace.
+                    Credits never expire. Category slots give you 30 days of access per bundle — renew only when you choose to. No auto-renewals, ever.
                   </p>
                 </div>
               </div>
@@ -420,6 +426,22 @@ export default function ForSellers() {
                   </p>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <span className="material-symbols-outlined text-primary text-xl">
+                    category
+                  </span>
+                </div>
+                <div>
+                  <p className="text-on-surface font-bold mb-1">
+                    Category slots control your reach
+                  </p>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">
+                    A category slot is a product type you're allowed to sell in — phones, clothing, furniture, and so on. The more slots your bundle includes, the more buyer demands you're matched to. A Starter seller with 5 slots can sell across 5 categories simultaneously.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="bg-primary/5 rounded-2xl p-6 text-center border border-primary/10">
@@ -430,24 +452,22 @@ export default function ForSellers() {
                 <div className="bg-white/70 rounded-xl p-3 border border-white/50">
                   <p className="text-on-surface font-bold">Starter</p>
                   <p className="text-primary font-extrabold text-lg">$7</p>
-                  <p className="text-on-surface-variant text-xs">5 credits</p>
-                </div>
-                <div className="bg-white/70 rounded-xl p-3 border border-white/50">
-                  <p className="text-on-surface font-bold">Growth</p>
-                  <p className="text-primary font-extrabold text-lg">$12</p>
-                  <p className="text-on-surface-variant text-xs">15 credits</p>
+                  <p className="text-on-surface-variant text-xs">15 credits · 5 slots</p>
                 </div>
                 <div className="bg-white/70 rounded-xl p-3 border border-white/50">
                   <p className="text-on-surface font-bold">Pro Dealer</p>
                   <p className="text-primary font-extrabold text-lg">$20</p>
-                  <p className="text-on-surface-variant text-xs">50 credits</p>
+                  <p className="text-on-surface-variant text-xs">50 credits · 15 slots</p>
                 </div>
                 <div className="bg-white/70 rounded-xl p-3 border border-white/50">
-                  <p className="text-on-surface font-bold">Enterprise</p>
-                  <p className="text-primary font-extrabold text-lg">$35</p>
-                  <p className="text-on-surface-variant text-xs">
-                    100 credits
-                  </p>
+                  <p className="text-on-surface font-bold">Market Mover</p>
+                  <p className="text-primary font-extrabold text-lg">$45</p>
+                  <p className="text-on-surface-variant text-xs">150 credits · 40 slots</p>
+                </div>
+                <div className="bg-white/70 rounded-xl p-3 border border-white/50">
+                  <p className="text-on-surface font-bold">Big Boss</p>
+                  <p className="text-primary font-extrabold text-lg">$120</p>
+                  <p className="text-on-surface-variant text-xs">500 credits · unlimited</p>
                 </div>
               </div>
             </div>
@@ -476,7 +496,7 @@ export default function ForSellers() {
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-[115%] object-cover object-top group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -550,7 +570,37 @@ export default function ForSellers() {
                 </div>
               ))}
             </div>
+
+            <div className="flex items-center gap-3 mt-8 pt-8 border-t border-outline-variant/20">
+              <span className="material-symbols-outlined text-primary text-xl">schedule</span>
+              <p className="text-on-surface-variant text-sm">
+                Takes about <span className="font-semibold text-on-surface">2 minutes</span> · Reviewed within <span className="font-semibold text-on-surface">24 hours</span>
+              </p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Free Trial Banner ── */}
+      <section className="max-w-4xl mx-auto px-6 mb-16">
+        <div className="bg-[#111e16] rounded-[2rem] p-10 flex flex-col md:flex-row items-center gap-8">
+          <div className="w-16 h-16 rounded-2xl bg-emerald-500/15 flex items-center justify-center shrink-0">
+            <span className="material-symbols-outlined text-emerald-400 text-4xl">card_giftcard</span>
+          </div>
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="text-2xl font-extrabold text-white font-[Manrope] mb-2">
+              See real buyers before you spend anything.
+            </h3>
+            <p className="text-white/60 text-base leading-relaxed">
+              Every new seller starts with 3 free category slots and 5 free credits. Browse real buyer demands in your area, respond to live requests, and only upgrade once Sellai has proved its value to you.
+            </p>
+          </div>
+          <a
+            href="#download"
+            className="shrink-0 bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-105 transition-all shadow-lg shadow-emerald-500/20 whitespace-nowrap"
+          >
+            Start Free
+          </a>
         </div>
       </section>
 
@@ -561,21 +611,22 @@ export default function ForSellers() {
             Pricing
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Credit packs for every seller
+            Bundles for every seller
           </h2>
           <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mt-4">
-            No subscriptions. No monthly fees. Buy credits and use them whenever
-            you're ready — they never expire.
+            Each bundle includes offer credits and 30 days of category slot access. No auto-renewals, no surprise charges — credits never expire and you renew only when you're ready.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
           {creditBundles.map((bundle) => (
             <div
               key={bundle.name}
               className={`rounded-[2rem] p-8 border transition-all flex flex-col ${
                 bundle.popular
                   ? "bg-primary text-white border-primary shadow-2xl shadow-emerald-900/20 scale-105"
+                  : bundle.isFree
+                  ? "bg-[#111e16] border-emerald-500/20"
                   : "bg-white/55 backdrop-blur-xl border-white/40"
               }`}
             >
@@ -584,16 +635,21 @@ export default function ForSellers() {
                   Best Value
                 </span>
               )}
+              {bundle.isFree && (
+                <span className="inline-block bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 self-start">
+                  No Payment
+                </span>
+              )}
               <h3
                 className={`text-xl font-bold mb-1 ${
-                  bundle.popular ? "text-white" : "text-on-surface"
+                  bundle.popular ? "text-white" : bundle.isFree ? "text-white" : "text-on-surface"
                 }`}
               >
                 {bundle.name}
               </h3>
               <p
                 className={`text-sm mb-6 ${
-                  bundle.popular ? "text-white/70" : "text-on-surface-variant"
+                  bundle.popular ? "text-white/70" : bundle.isFree ? "text-white/60" : "text-on-surface-variant"
                 }`}
               >
                 {bundle.description}
@@ -601,18 +657,25 @@ export default function ForSellers() {
               <div className="mb-2">
                 <span
                   className={`text-5xl font-extrabold font-[Manrope] ${
-                    bundle.popular ? "text-white" : "text-on-surface"
+                    bundle.popular ? "text-white" : bundle.isFree ? "text-emerald-400" : "text-on-surface"
                   }`}
                 >
                   {bundle.price}
                 </span>
               </div>
               <p
-                className={`text-sm mb-6 ${
-                  bundle.popular ? "text-white/70" : "text-on-surface-variant"
+                className={`text-sm mb-1 ${
+                  bundle.popular ? "text-white/70" : bundle.isFree ? "text-white/60" : "text-on-surface-variant"
                 }`}
               >
-                {bundle.credits} credits &middot; {bundle.perCredit} each
+                {bundle.isFree ? `${bundle.credits} credits included` : `${bundle.credits} credits · ${bundle.perCredit} each`}
+              </p>
+              <p
+                className={`text-sm mb-6 ${
+                  bundle.popular ? "text-white/60" : bundle.isFree ? "text-white/40" : "text-on-surface-variant/70"
+                }`}
+              >
+                {bundle.slots ? `${bundle.slots} category slots` : "Unlimited category slots"}
               </p>
               <div className="mt-auto">
                 <a
@@ -620,10 +683,12 @@ export default function ForSellers() {
                   className={`block text-center px-6 py-3 rounded-xl font-bold text-base transition-all hover:scale-105 ${
                     bundle.popular
                       ? "bg-white text-primary shadow-lg"
+                      : bundle.isFree
+                      ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30"
                       : "bg-gradient-to-r from-[#10B981] to-[#059669] text-white shadow-lg shadow-emerald-500/20"
                   }`}
                 >
-                  Get Credits
+                  {bundle.isFree ? "Start Free" : "Get Credits"}
                 </a>
               </div>
             </div>

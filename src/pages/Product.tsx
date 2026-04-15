@@ -377,17 +377,7 @@ export default function Product() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-16 h-16 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6 mx-auto">
-                <span className="material-symbols-outlined text-[#059669] text-4xl">pin_drop</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">PIN-Verified Handoffs</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">
-                Every delivery is confirmed with a unique PIN code shared only between buyer and runner — no mix-ups, no disputes.
-              </p>
-            </div>
-
+          <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
               <div className="w-16 h-16 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6 mx-auto">
                 <span className="material-symbols-outlined text-[#059669] text-4xl">verified_user</span>
@@ -395,6 +385,45 @@ export default function Product() {
               <h3 className="text-xl font-bold mb-3 text-[#111e16]">Seller Identity Checks</h3>
               <p className="text-on-surface-variant text-sm leading-relaxed">
                 Every seller passes identity verification before they can respond to demands, so you always know who you're dealing with.
+              </p>
+            </div>
+
+            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
+              <div className="w-16 h-16 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6 mx-auto">
+                <span className="material-symbols-outlined text-[#059669] text-4xl">how_to_reg</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-[#111e16]">Verified Buyers Too</h3>
+              <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
+                Every buyer confirms their identity before posting a demand. No ghost listings, no time-wasters — only real people with real needs.
+              </p>
+              {/* Mockup */}
+              <div className="bg-surface-container-lowest rounded-2xl p-5 shadow-lg text-left">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-[#10B981]/15 flex items-center justify-center shrink-0">
+                    <span className="font-bold text-sm text-[#059669]">TM</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <p className="font-bold text-sm text-[#111e16]">Tendai M.</p>
+                      <span className="material-symbols-outlined text-[#059669] text-base">verified</span>
+                    </div>
+                    <p className="text-xs text-on-surface-variant">Identity confirmed</p>
+                  </div>
+                </div>
+                <div className="bg-[#10B981]/8 rounded-xl px-4 py-2.5 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#059669] text-base">edit_note</span>
+                  <p className="text-xs font-semibold text-[#059669]">Demand posted by a verified buyer</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
+              <div className="w-16 h-16 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6 mx-auto">
+                <span className="material-symbols-outlined text-[#059669] text-4xl">pin_drop</span>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-[#111e16]">PIN-Verified Handoffs</h3>
+              <p className="text-on-surface-variant text-sm leading-relaxed">
+                Every delivery is confirmed with a unique PIN code shared only between buyer and runner — no mix-ups, no disputes.
               </p>
             </div>
 
@@ -437,7 +466,7 @@ export default function Product() {
                 "Scroll through hundreds of listings",
                 "DM sellers, wait for replies",
                 "Negotiate price back and forth",
-                "Arrange your own transport",
+                "Arrange your own transport — no updates, no tracking",
                 "Hope it's what you ordered",
               ].map((step, i) => (
                 <div key={i} className="flex items-center gap-4">
@@ -464,7 +493,7 @@ export default function Product() {
                 "Verified sellers send offers",
                 "Compare prices & trust scores",
                 "Accept the best offer",
-                "Runner delivers to your door",
+                "Collect in person, or track your runner live",
                 "Confirm with PIN — done",
               ].map((step, i) => (
                 <div key={i} className="flex items-center gap-4">

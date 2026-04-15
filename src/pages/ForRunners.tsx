@@ -2,16 +2,16 @@ import { DownloadSection } from "../components/DownloadSection";
 
 const painPoints = [
   {
-    icon: "money_off",
-    title: "Predatory Commissions",
+    icon: "hourglass_empty",
+    title: "Sitting and waiting with no guarantee",
     description:
-      "Other platforms take up to 30-40% of every delivery. We cap ours at 10%, so you keep what you earn.",
+      "You know that feeling — parked outside a mall at 10am with no idea if you'll make $5 or $50 today. Your whole day depends on whether a seller decides to walk out.",
   },
   {
-    icon: "wrong_location",
-    title: "No Structure, No Safety Net",
+    icon: "visibility_off",
+    title: "You only get work if they remember your number",
     description:
-      "Arranging deliveries through groups or DMs means no route guidance, no payment guarantee, and no backup if something goes wrong. Sellai gives you structure.",
+      "Right now your income depends on a seller physically remembering you exist and having your contact. There's no way to find the work — you just wait and hope it finds you.",
   },
 ];
 
@@ -40,9 +40,9 @@ const steps = [
   {
     icon: "rocket_launch",
     number: "04",
-    title: "Start Delivering",
+    title: "See Work. Accept. Go.",
     description:
-      "Accept delivery requests, complete orders, and earn — payouts go straight to your Paynow wallet.",
+      "Open the app and see live delivery requests forming near you. Accept the runs that work for you and get paid directly by the client on delivery.",
     highlight: true,
   },
 ];
@@ -67,7 +67,7 @@ const vehicleTypes = [
     title: "Cargo Vans",
     tier: "$$$$",
     description:
-      "Handle bulk and oversized deliveries for premium payouts per trip.",
+      "Handle bulk and oversized deliveries and earn more per run.",
   },
 ];
 
@@ -79,17 +79,16 @@ export default function ForRunners() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-on-tertiary-container bg-tertiary-container/15 px-4 py-2 rounded-full mb-6">
-              Earn on Your Terms
+              For Runners
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6 text-on-surface">
-              Earn per delivery with the{" "}
+              Stop waiting outside.{" "}
               <span className="bg-gradient-to-r from-tertiary-container to-tertiary bg-clip-text text-transparent">
-                Sellai runner network.
+                Deliveries come to you.
               </span>
             </h1>
             <p className="text-on-surface-variant text-lg leading-relaxed max-w-xl mb-10">
-              Sellai takes just 10% per delivery — you keep 90%. Fair
-              commissions, flexible hours, and payouts via Paynow.
+              See real delivery requests forming in your area before you even leave home. No more standing outside malls hoping someone needs a run — Sellai shows you exactly where the work is.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <a
@@ -127,7 +126,7 @@ export default function ForRunners() {
               </div>
               <div>
                 <p className="text-sm font-bold text-on-surface font-[Manrope]">
-                  Earn on your own schedule
+                  See live delivery requests near you
                 </p>
               </div>
             </div>
@@ -142,9 +141,9 @@ export default function ForRunners() {
             The Problem
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-on-surface">
-            Stop giving away your{" "}
+            Tired of waiting and{" "}
             <span className="bg-gradient-to-r from-error to-error/70 bg-clip-text text-transparent">
-              hard-earned profits.
+              not knowing?
             </span>
           </h2>
         </div>
@@ -173,18 +172,18 @@ export default function ForRunners() {
         <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           <div className="glass-card rounded-2xl p-6 border border-white/40 text-center">
             <p className="text-4xl font-extrabold font-[Manrope] text-tertiary-container mb-1">
-              10%
+              Live
             </p>
             <p className="text-on-surface-variant text-sm font-medium">
-              Commission Cap
+              Delivery requests near you, in real time
             </p>
           </div>
           <div className="glass-card rounded-2xl p-6 border border-white/40 text-center">
             <p className="text-4xl font-extrabold font-[Manrope] text-tertiary-container mb-1">
-              Paynow
+              10%
             </p>
             <p className="text-on-surface-variant text-sm font-medium">
-              Payouts to Your Wallet
+              Commission cap — the rest is yours
             </p>
           </div>
         </div>
@@ -308,11 +307,10 @@ export default function ForRunners() {
       <section className="bg-[#111e16] py-24">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-white mb-6">
-            Ready to run?
+            Stop waiting. Start running.
           </h2>
           <p className="text-white/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Sign up today and start earning with fair commissions and flexible
-            hours. Your first delivery is just minutes away.
+            Download the app, get verified, and see live delivery requests in your area. The work is already there — you just need to be on the platform.
           </p>
           <a
             href="#download"

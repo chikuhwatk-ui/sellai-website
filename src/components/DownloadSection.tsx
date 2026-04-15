@@ -43,7 +43,7 @@ export function DownloadSection({ variant = 'default' }: { variant?: 'default' |
           </a>
         </div>
         <p className={`text-xs mt-6 ${isDark ? 'text-slate-500' : isAccent ? 'text-on-primary-container/50' : 'text-on-surface-variant/60'}`}>
-          Free to download. No credit card required.
+          Free to download.
         </p>
       </div>
     </section>

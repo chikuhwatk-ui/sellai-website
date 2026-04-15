@@ -386,7 +386,7 @@ export default function Home() {
             What groups and marketplaces can't give you
           </h2>
           <p className="text-white/50 text-lg text-center mb-16 max-w-2xl mx-auto">
-            WhatsApp and Facebook got local commerce started. Sellai is where it grows up.
+            Group chats and social marketplaces got local commerce started. Sellai is where it grows up.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -461,10 +461,10 @@ export default function Home() {
             {/* Header */}
             <div />
             <span className="text-sm font-bold text-on-surface-variant text-center whitespace-nowrap">
-              WhatsApp Groups
+              Group Chats
             </span>
             <span className="text-sm font-bold text-on-surface-variant text-center whitespace-nowrap">
-              FB Marketplace
+              Social Marketplaces
             </span>
             <span className="text-sm font-bold text-[#059669] text-center">
               Sellai

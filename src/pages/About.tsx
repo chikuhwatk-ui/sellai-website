@@ -93,7 +93,7 @@ export default function About() {
                 Our Vision
               </span>
               <h3 className="text-2xl font-extrabold text-white font-[Manrope]">
-                Expanding across Southern Africa
+                Expanding across Africa
               </h3>
             </div>
           </div>
@@ -123,8 +123,8 @@ export default function About() {
                 information.
               </p>
               <p>
-                We'd tried everything ourselves — posting in WhatsApp groups,
-                scrolling Facebook Marketplace, asking around. The tools existed,
+                We'd tried everything ourselves — posting in group chats,
+                scrolling online marketplaces, asking around. The tools existed,
                 but none of them were{" "}
                 <em className="text-white/90">built for this</em>. None of them
                 understood what it means to buy and sell locally in Zimbabwe —

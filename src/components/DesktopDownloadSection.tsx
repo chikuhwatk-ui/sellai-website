@@ -20,8 +20,6 @@ const DOWNLOADS = {
   },
 }
 
-const WEB_APP_URL = 'https://business.sellai.app'
-
 function detectOS(): OS {
   if (typeof navigator === 'undefined') return 'other'
   const ua = navigator.userAgent
@@ -33,12 +31,12 @@ function detectOS(): OS {
 }
 
 const FEATURES = [
-  { icon: 'bolt', title: 'Built for high-volume sellers', body: 'Manage hundreds of leads, offers, and chats per day across multiple windows.' },
-  { icon: 'keyboard_command_key', title: 'Keyboard-first workflow', body: 'Cmd-K command palette, hotkeys for every action — reply to leads twice as fast.' },
-  { icon: 'notifications_active', title: 'Native desktop notifications', body: 'Real-time alerts via macOS/Windows notification center, even when minimized.' },
-  { icon: 'cloud_off', title: 'Works offline', body: 'Draft offers without internet. They auto-send when you reconnect.' },
-  { icon: 'verified', title: 'Same account, same backend', body: 'Sign in with your existing Sellai phone number. Everything syncs in real time with the mobile app.' },
-  { icon: 'shield_lock', title: 'Code-signed & notarized', body: 'Apple-notarized .dmg and Microsoft-signed .msi. No scary warnings on install.' },
+  { icon: 'desktop_windows', title: 'A bigger view of your day', body: 'See your leads, chats, and offers side by side instead of swiping between screens.' },
+  { icon: 'keyboard_command_key', title: 'Keyboard-first', body: 'Cmd-K command palette and shortcuts for every action — type your offers with a real keyboard.' },
+  { icon: 'notifications_active', title: 'OS-level notifications', body: 'macOS and Windows notification center alerts, even when the app is in the background.' },
+  { icon: 'cloud_off', title: 'Drafts that survive offline', body: "Compose offers without a connection — they send themselves when you're back online." },
+  { icon: 'sync', title: 'Same Sellai account', body: 'Sign in with your existing phone number. Mobile and desktop stay in sync in real time.' },
+  { icon: 'shield_lock', title: 'Code-signed & notarized', body: 'Apple-notarized .dmg and Microsoft-signed .msi. Install with no scary OS warnings.' },
 ]
 
 const SYSTEM_REQS = {
@@ -63,7 +61,7 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
   const winIsRecommended = os === 'win'
 
   return (
-    <section id="download-business" className="relative py-32 px-6 overflow-hidden">
+    <section id="download-desktop" className="relative py-32 px-6 overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-200/30 blur-[120px]" />
@@ -74,19 +72,20 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary mb-4 bg-primary-container/10 px-4 py-1.5 rounded-full">
-            <span className="material-symbols-outlined text-base">monitor</span>
-            New · Sellai Business for Desktop
+            <span className="material-symbols-outlined text-base">desktop_windows</span>
+            Sellai for Mac &amp; Windows
           </span>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-on-background mb-6 leading-[1.05]">
-            Your sales command{' '}
+            Use Sellai with a{' '}
             <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
-              center
+              keyboard
             </span>
-            , now on your computer.
+            .
           </h2>
           <p className="text-on-surface-variant text-lg leading-relaxed">
-            All the power of Sellai seller mode, redesigned for the keyboard, the big screen, and the way real businesses work.
-            Free to download. Same account as the mobile app.
+            The same Sellai you use on your phone, native on your computer.
+            Same account, same data, same backend — just a bigger screen and OS-level notifications
+            for when you're working at a desk.
           </p>
         </div>
 
@@ -100,7 +99,7 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
                 <span className="w-3 h-3 rounded-full bg-red-400/80" />
                 <span className="w-3 h-3 rounded-full bg-amber-400/80" />
                 <span className="w-3 h-3 rounded-full bg-emerald-400/80" />
-                <div className="ml-4 text-[10px] font-semibold text-slate-500 tracking-widest uppercase">Sellai Business</div>
+                <div className="ml-4 text-[10px] font-semibold text-slate-500 tracking-widest uppercase">Sellai</div>
               </div>
               {/* Mock content */}
               <div className="absolute inset-0 pt-9 flex">
@@ -115,10 +114,10 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
                 </div>
                 {/* Lead pane */}
                 <div className="flex-1 p-5 space-y-3 overflow-hidden">
-                  <div className="text-xs font-black tracking-widest text-slate-400 uppercase">Active Leads · 12</div>
+                  <div className="text-xs font-black tracking-widest text-slate-400 uppercase">Leads near you · 12</div>
                   {[
                     { tag: 'HOT', name: 'iPhone 15 Pro Max — 256GB', loc: 'Borrowdale · 5km', budget: '$1,200', accent: 'red' },
-                    { tag: 'NEW', name: 'Bulk office chairs — 20 units', loc: 'Avondale · 12km', budget: '$3,500', accent: 'emerald' },
+                    { tag: 'NEW', name: 'Office chairs — 20 units', loc: 'Avondale · 12km', budget: '$3,500', accent: 'emerald' },
                     { tag: 'SENT', name: 'Wedding cake — 3 tier', loc: 'Mt Pleasant · 8km', budget: '$240', accent: 'slate' },
                     { tag: 'NEW', name: 'Solar inverter 5kVA + battery', loc: 'Greendale · 15km', budget: '$2,100', accent: 'emerald' },
                   ].map((lead, i) => (
@@ -238,13 +237,10 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
               </div>
             </a>
 
-            {/* Web fallback */}
-            <a
-              href={WEB_APP_URL}
-              className="block text-center text-sm font-semibold text-on-surface-variant hover:text-emerald-700 transition-colors py-3"
-            >
-              Or use it in your browser →
-            </a>
+            {/* Mobile-app reminder (no web fallback — desktop is native only) */}
+            <div className="text-center text-xs text-on-surface-variant pt-2">
+              On the go? <a href="#download" className="font-semibold text-emerald-700 hover:underline">Get the mobile app</a> instead.
+            </div>
           </div>
         </div>
 
@@ -300,8 +296,6 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
         <p className="text-center text-xs text-on-surface-variant/70 mt-10">
           Released {RELEASE_DATE} · v{APP_VERSION} ·{' '}
           <a href="/changelog" className="underline hover:text-emerald-700">Release notes</a>
-          {' · '}
-          <a href={WEB_APP_URL} className="underline hover:text-emerald-700">Use the web app</a>
         </p>
       </div>
     </section>
@@ -323,15 +317,15 @@ function CompactDesktopBanner({ os }: { os: OS }) {
         <div className="relative grid md:grid-cols-2 gap-8 items-center">
           <div>
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-300 mb-4">
-              <span className="material-symbols-outlined text-base">monitor</span>
-              Sellai Business · Desktop
+              <span className="material-symbols-outlined text-base">desktop_windows</span>
+              Sellai for Mac &amp; Windows
             </span>
             <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white mb-3 leading-tight">
-              Selling at scale? Get the desktop app.
+              Prefer working from a laptop?
             </h3>
             <p className="text-slate-400 leading-relaxed">
-              Built for sellers managing dozens of leads a day. Native macOS &amp; Windows.
-              Free, signed, syncs with your mobile account.
+              Get Sellai as a native macOS or Windows app. Same account, same data — just a bigger screen,
+              keyboard shortcuts, and OS-level notifications.
             </p>
           </div>
           <div className="flex flex-col gap-3">

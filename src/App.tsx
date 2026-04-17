@@ -22,6 +22,7 @@ export default function App() {
           <Route path="/for-sellers" element={<ForSellers />} />
           <Route path="/for-runners" element={<ForRunners />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/desktop" element={<Business />} />
           <Route path="/business" element={<Business />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />

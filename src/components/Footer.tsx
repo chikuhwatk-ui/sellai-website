@@ -29,13 +29,27 @@ export function Footer() {
           <a className="text-slate-400 hover:text-emerald-400 transition-colors text-sm" href="mailto:hello@sellai.africa">hello@sellai.africa</a>
           <div className="pt-2" id="download">
             <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">Get the App</p>
-            <div className="flex gap-3">
-              <a href="#download" className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">android</span> Google Play
+            <div className="flex flex-wrap gap-2">
+              <a href="#download" title="Android — Google Play" aria-label="Download for Android" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
+                <span className="material-symbols-outlined text-sm">android</span>
+                <span>Android</span>
               </a>
-              <a href="#download" className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">phone_iphone</span> App Store
+              <a href="#download" title="iOS — App Store" aria-label="Download for iOS" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
+                <span className="material-symbols-outlined text-sm">phone_iphone</span>
+                <span>iOS</span>
               </a>
+              <Link to="/desktop" title="macOS download" aria-label="Download for Mac" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M16.365 1.43c0 1.14-.46 2.226-1.21 3.013-.81.838-2.13 1.483-3.213 1.398-.13-1.116.42-2.27 1.166-3.046C13.94 1.926 15.27 1.34 16.365 1.43zm3.96 17.058c-.62 1.39-.92 2.01-1.71 3.24-1.1 1.7-2.66 3.81-4.59 3.83-1.71.02-2.15-1.12-4.47-1.1-2.32.01-2.81 1.13-4.52 1.11-1.93-.02-3.4-1.95-4.5-3.65-3.07-4.74-3.39-10.31-1.5-13.27 1.34-2.11 3.46-3.34 5.45-3.34 2.04 0 3.32 1.12 5.01 1.12 1.64 0 2.64-1.12 5-1.12 1.78 0 3.66.97 5 2.65-4.39 2.4-3.68 8.67.83 10.53z" />
+                </svg>
+                <span>Mac</span>
+              </Link>
+              <Link to="/desktop" title="Windows download" aria-label="Download for Windows" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M0 3.449L9.75 2.1v9.451H0V3.449zm0 17.052V12h9.75v9.602L0 20.501zm10.949-19.06L24 0v11.4H10.949V1.441zM10.949 24V12.6H24V24l-13.051-1.06z" />
+                </svg>
+                <span>Windows</span>
+              </Link>
             </div>
           </div>
         </div>

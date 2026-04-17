@@ -6,6 +6,7 @@ import About from './pages/About'
 import ForSellers from './pages/ForSellers'
 import ForRunners from './pages/ForRunners'
 import Product from './pages/Product'
+import Business from './pages/Business'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/for-sellers" element={<ForSellers />} />
           <Route path="/for-runners" element={<ForRunners />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/business" element={<Business />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

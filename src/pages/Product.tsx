@@ -1,4 +1,5 @@
 import { DownloadSection } from '../components/DownloadSection'
+import { DesktopDownloadSection } from '../components/DesktopDownloadSection'
 
 export default function Product() {
   return (
@@ -508,7 +509,10 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ── Download ── */}
+      {/* ── Sellai Business Desktop ── */}
+      <DesktopDownloadSection />
+
+      {/* ── Mobile Download ── */}
       <DownloadSection variant="accent" />
     </main>
   )

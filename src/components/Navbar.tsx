@@ -5,6 +5,7 @@ const links = [
   { label: 'Product', href: '/product' },
   { label: 'For Sellers', href: '/for-sellers' },
   { label: 'For Runners', href: '/for-runners' },
+  { label: 'Desktop App', href: '/business' },
   { label: 'About', href: '/about' },
 ]
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { DownloadSection } from "../components/DownloadSection";
+import { DesktopDownloadSection } from "../components/DesktopDownloadSection";
 
 const painPoints = [
   "Relying on word-of-mouth and hoping customers find you",
@@ -725,7 +726,10 @@ export default function ForSellers() {
         </div>
       </section>
 
-      {/* ── Download ── */}
+      {/* ── Sellai Business Desktop ── */}
+      <DesktopDownloadSection />
+
+      {/* ── Mobile Download ── */}
       <DownloadSection variant="dark" />
     </main>
   );

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { DownloadSection } from "../components/DownloadSection";
+import { DesktopDownloadSection } from "../components/DesktopDownloadSection";
 
 const steps = [
   {
@@ -520,6 +521,9 @@ export default function Home() {
 
       {/* ── Download Section ── */}
       <DownloadSection />
+
+      {/* ── Desktop App teaser ── */}
+      <DesktopDownloadSection variant="compact" />
 
       {/* ── CTA Section ── */}
       <section className="mb-0">

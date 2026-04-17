@@ -1,5 +1,4 @@
 import { DownloadSection } from "../components/DownloadSection";
-import { RunnerHeroIllustration } from "../components/RunnerHeroIllustration";
 
 const painPoints = [
   {
@@ -273,7 +272,13 @@ export default function ForRunners() {
 
           {/* Map with overlays */}
           <div className="relative">
-            <RunnerHeroIllustration />
+            <div className="glass-card rounded-[2rem] p-4 border border-white/40 shadow-2xl shadow-tertiary-container/10">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAan7MOLhE1Wvq3KZCtUvsYLHTq9xMwnv1mC9PYZcWy20Y_W7Xqx4BCvW9S51THIkMG8ZvBQ8I084x3yRu2l9t-Eh0bVhah8APS-c9z8dVE63BJLWgxg6tz4tzAd0ZxC-1KTSjnFE4OlM7USTXN3wRW-rqr1YjkGFapEdInMhFRgPCqyzezG0TBqzgZgJFy2nR3QXYVbOVy0o2RYd8LfoOVRh8PzMID9aSQNfkGcYmFf_LFJNd6-y5PyXa6GaNiwMn5g_TcmfyeGIc"
+                alt="Delivery coverage map"
+                className="w-full rounded-[1.5rem] object-cover"
+              />
+            </div>
 
             {/* PIN Verification card */}
             <div className="absolute -bottom-4 right-6 glass-card rounded-2xl px-5 py-3 border border-white/40 shadow-lg flex items-center gap-3">

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { DownloadSection } from "../components/DownloadSection";
-import { AboutHeroIllustration } from "../components/AboutHeroIllustration";
 
 const values = [
   {
@@ -49,8 +48,13 @@ export default function About() {
           standards, starting in Harare, Zimbabwe.
         </p>
 
-        <div className="max-w-5xl mx-auto">
-          <AboutHeroIllustration />
+        <div className="relative rounded-[2rem] overflow-hidden max-w-5xl mx-auto">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPNx2fKQLAxpJspDnpX6YJtivupl2QVX54d8jDMmcyoWkqKxUvRAOAt72YOw-NH69ujfMz20-8e5HSVYtv4hgjp3TX1SSYk5GAXHYDIBxLUuvOy1-anAvYx16cIT_cXu2jUnhJ-2AyQ1yq9ht4RKygsoCfYrFPzc9iwgvrqnWkAmF196ilJ-UR4En8CaVOmzQTO5-dEz7zWKIfllfS_yERgURUrpjSa-vVYu8APdD5cW-4R6C12YJESOEv1URksVk6L4rqOUhLy7Y"
+            alt="Sellai marketplace in action"
+            className="w-full object-cover aspect-[16/7]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         </div>
       </section>
 
@@ -77,40 +81,14 @@ export default function About() {
           </div>
 
           {/* Vision - 5 cols */}
-          <div className="lg:col-span-5 rounded-[2.5rem] overflow-hidden relative min-h-[320px] bg-gradient-to-br from-[#0E1B13] via-[#06231a] to-[#04130b]">
-            {/* Decorative concentric rings — outward expansion across Africa */}
-            <svg viewBox="0 0 400 320" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <defs>
-                <radialGradient id="visionGlow" cx="20%" cy="80%" r="80%">
-                  <stop offset="0%" stopColor="#10B981" stopOpacity="0.45" />
-                  <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
-                </radialGradient>
-              </defs>
-              <rect width="400" height="320" fill="url(#visionGlow)" />
-              {/* Concentric expansion rings */}
-              {[60, 110, 160, 220, 290].map((r, i) => (
-                <circle key={i} cx="80" cy="260" r={r} fill="none" stroke="rgba(111,251,190,0.18)" strokeWidth="1" strokeDasharray="2 6" />
-              ))}
-              {/* Country dots — Zim core, expansion targets */}
-              <circle cx="80" cy="260" r="7" fill="#6FFBBE" />
-              <circle cx="80" cy="260" r="14" fill="rgba(111,251,190,0.35)">
-                <animate attributeName="r" values="7;20;7" dur="2.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.6;0;0.6" dur="2.4s" repeatCount="indefinite" />
-              </circle>
-              {[
-                { x: 130, y: 200, label: 'ZA' },
-                { x: 200, y: 145, label: 'KE' },
-                { x: 145, y: 90, label: 'NG' },
-                { x: 280, y: 80, label: 'EG' },
-                { x: 250, y: 220, label: 'TZ' },
-              ].map((p, i) => (
-                <g key={i}>
-                  <circle cx={p.x} cy={p.y} r="4" fill="rgba(111,251,190,0.7)" />
-                  <text x={p.x + 8} y={p.y + 4} fill="rgba(255,255,255,0.55)" fontSize="9" fontWeight="700" fontFamily="Manrope, sans-serif">{p.label}</text>
-                </g>
-              ))}
-            </svg>
-            <div className="absolute bottom-8 left-8 right-8 z-10">
+          <div className="lg:col-span-5 rounded-[2.5rem] overflow-hidden relative min-h-[320px]">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbS8nRSGcU-H9X03UHsYkzYQLqHVjDPS70p787mrK4Ptyfp2QIhhE9YGn45hJdG4TpDVcAVJClLOwBorxNYh1_WvWbig4TvfLQ8jRoqKBcbXTaV0Kri0k3wEgp7IQW0_BmWMJtJqR9HrYNwQ7mDwHWIdKXipBrIgBttlwAWTI0EQ3DSIkLzSbN126hH9_yRPZnENNhcRWKoitFP0xvyMKoFWUUHNlzKOmREHHQp7oRYIn8CgkXPg29dIZ9i79IABMMdiHbfzcznXA"
+              alt="Sellai coverage across Africa"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-8 left-8 right-8">
               <span className="text-xs font-bold uppercase tracking-widest text-emerald-300 mb-2 block">
                 Our Vision
               </span>

@@ -6,18 +6,24 @@ export default function Business() {
     <main className="pt-32 overflow-hidden">
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-6 mb-4 text-center">
-        <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary mb-4 bg-primary-container/10 px-4 py-1.5 rounded-full">
-          Sellai on Desktop
-        </span>
+        <div className="flex items-center justify-center gap-2 mb-4 flex-wrap">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary bg-primary-container/10 px-4 py-1.5 rounded-full">
+            Sellai on Desktop
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1.5 rounded-full">
+            <span className="material-symbols-outlined text-sm">storefront</span>
+            For Sellers
+          </span>
+        </div>
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight font-[Manrope] mb-6 leading-[1.05]">
           The same Sellai. On your{' '}
           <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">Mac and Windows</span>
           .
         </h1>
         <p className="text-on-surface-variant text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
-          A native desktop app for sellers who use Sellai from a keyboard.
-          Same account. Same data. Same backend. Just designed around a bigger screen, mouse,
-          and OS-level notifications when you're working at a desk.
+          A laptop-friendly companion for sellers. Mobile is the main way most sellers use Sellai —
+          desktop is for the days you're at a keyboard, triaging leads on a bigger screen,
+          with OS-level notifications. Same account, same data either way.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-on-surface-variant">
           <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />Free to download</span>
@@ -40,9 +46,9 @@ export default function Business() {
             New to Sellai?
           </h3>
           <p className="text-on-surface-variant text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            Start by registering on the Sellai mobile app — that's where onboarding,
-            ID verification, and your first credits live. Then sign in to the desktop app
-            with the same phone number, on the same Wi-Fi as your phone, and you're set.
+            You can sign up from either app — desktop or mobile — using your phone number.
+            Most sellers find ID verification quicker on mobile (snapping a selfie + ID is easier
+            with a phone camera), but everything else works equally well on both.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
             <Link

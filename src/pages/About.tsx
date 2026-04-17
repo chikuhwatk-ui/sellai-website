@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { DownloadSection } from "../components/DownloadSection";
+import { AboutHeroIllustration } from "../components/AboutHeroIllustration";
 
 const values = [
   {

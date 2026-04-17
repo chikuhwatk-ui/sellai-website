@@ -71,21 +71,28 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary mb-4 bg-primary-container/10 px-4 py-1.5 rounded-full">
-            <span className="material-symbols-outlined text-base">desktop_windows</span>
-            Sellai for Mac &amp; Windows
-          </span>
+          <div className="flex items-center justify-center gap-2 mb-4 flex-wrap">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary bg-primary-container/10 px-4 py-1.5 rounded-full">
+              <span className="material-symbols-outlined text-base">desktop_windows</span>
+              Sellai for Mac &amp; Windows
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1.5 rounded-full">
+              <span className="material-symbols-outlined text-sm">storefront</span>
+              For Sellers
+            </span>
+          </div>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-on-background mb-6 leading-[1.05]">
-            Use Sellai with a{' '}
+            For sellers who work from a{' '}
             <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
-              keyboard
+              desk
             </span>
             .
           </h2>
           <p className="text-on-surface-variant text-lg leading-relaxed">
-            The same Sellai you use on your phone, native on your computer.
-            Same account, same data, same backend — just a bigger screen and OS-level notifications
-            for when you're working at a desk.
+            A laptop-friendly companion to your Sellai seller account.
+            Mobile is the main way most sellers use Sellai — desktop is for the days
+            you're at a keyboard, triaging leads on a bigger screen, with OS-level notifications.
+            Same account, same data either way.
           </p>
         </div>
 
@@ -316,16 +323,22 @@ function CompactDesktopBanner({ os }: { os: OS }) {
         </div>
         <div className="relative grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-300 mb-4">
-              <span className="material-symbols-outlined text-base">desktop_windows</span>
-              Sellai for Mac &amp; Windows
-            </span>
+            <div className="flex items-center gap-2 mb-4 flex-wrap">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-300">
+                <span className="material-symbols-outlined text-base">desktop_windows</span>
+                Sellai for Mac &amp; Windows
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-300 bg-amber-300/10 px-2.5 py-1 rounded-full">
+                <span className="material-symbols-outlined text-sm">storefront</span>
+                For Sellers
+              </span>
+            </div>
             <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white mb-3 leading-tight">
-              Prefer working from a laptop?
+              Are you a seller working from a desk?
             </h3>
             <p className="text-slate-400 leading-relaxed">
-              Get Sellai as a native macOS or Windows app. Same account, same data — just a bigger screen,
-              keyboard shortcuts, and OS-level notifications.
+              Get Sellai as a native Mac or Windows app — a laptop-friendly companion to your
+              seller account. Same login as the mobile app, just designed around a bigger screen.
             </p>
           </div>
           <div className="flex flex-col gap-3">

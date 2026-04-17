@@ -1,4 +1,5 @@
 import { DownloadSection } from "../components/DownloadSection";
+import { RunnerHeroIllustration } from "../components/RunnerHeroIllustration";
 
 const painPoints = [
   {

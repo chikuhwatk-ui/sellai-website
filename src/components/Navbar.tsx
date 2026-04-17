@@ -69,7 +69,7 @@ export function Navbar() {
             </button>
             {getOpen && (
               <div role="menu" className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
-                <div className="px-4 pt-3 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">On your phone</div>
+                <div className="px-4 pt-3 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">On your phone <span className="text-slate-300 font-medium normal-case tracking-normal">— for everyone</span></div>
                 <a href="#download" onClick={() => setGetOpen(false)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-emerald-50 transition-colors">
                   <span className="material-symbols-outlined text-slate-700">android</span>
                   <div>
@@ -85,7 +85,7 @@ export function Navbar() {
                   </div>
                 </a>
                 <div className="border-t border-slate-100 my-1" />
-                <div className="px-4 pt-2 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">On your computer</div>
+                <div className="px-4 pt-2 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">On your computer <span className="text-slate-300 font-medium normal-case tracking-normal">— for sellers</span></div>
                 <Link to="/desktop" onClick={() => setGetOpen(false)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-emerald-50 transition-colors">
                   <svg className="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M16.365 1.43c0 1.14-.46 2.226-1.21 3.013-.81.838-2.13 1.483-3.213 1.398-.13-1.116.42-2.27 1.166-3.046C13.94 1.926 15.27 1.34 16.365 1.43zm3.96 17.058c-.62 1.39-.92 2.01-1.71 3.24-1.1 1.7-2.66 3.81-4.59 3.83-1.71.02-2.15-1.12-4.47-1.1-2.32.01-2.81 1.13-4.52 1.11-1.93-.02-3.4-1.95-4.5-3.65-3.07-4.74-3.39-10.31-1.5-13.27 1.34-2.11 3.46-3.34 5.45-3.34 2.04 0 3.32 1.12 5.01 1.12 1.64 0 2.64-1.12 5-1.12 1.78 0 3.66.97 5 2.65-4.39 2.4-3.68 8.67.83 10.53z" />

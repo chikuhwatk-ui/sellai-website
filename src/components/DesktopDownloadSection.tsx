@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
+import { WINDOWS_MSI_URL } from '../constants/downloads'
 
 type OS = 'mac' | 'win' | 'linux' | 'other'
 
 const APP_VERSION = '1.0.0'
 const RELEASE_DATE = 'April 2026'
 
-// Replace these with your real CDN / GitHub Releases URLs once builds are signed.
+// Windows uses the real MSI from GitHub Releases (see src/constants/downloads.ts).
+// Mac builds aren't shipped yet — these /downloads/*.dmg paths are placeholders
+// and currently 404. Replace with real DMG URLs once the Mac build is signed.
 const DOWNLOADS = {
   mac: {
     universal: '/downloads/Sellai-Business-1.0.0-universal.dmg',
@@ -14,8 +17,7 @@ const DOWNLOADS = {
     sizeLabel: '~58 MB',
   },
   win: {
-    msi: '/downloads/Sellai-Business-1.0.0-x64.msi',
-    exe: '/downloads/Sellai-Business-1.0.0-x64-setup.exe',
+    msi: WINDOWS_MSI_URL,
     sizeLabel: '~52 MB',
   },
 }
@@ -232,14 +234,6 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
                   className={`underline-offset-2 hover:underline ${winIsRecommended ? 'text-emerald-300' : 'text-emerald-700'}`}
                 >
                   .msi installer
-                </a>
-                <span className={winIsRecommended ? 'text-slate-600' : 'text-slate-300'}>·</span>
-                <a
-                  href={DOWNLOADS.win.exe}
-                  onClick={(e) => e.stopPropagation()}
-                  className={`underline-offset-2 hover:underline ${winIsRecommended ? 'text-emerald-300' : 'text-emerald-700'}`}
-                >
-                  .exe portable
                 </a>
               </div>
             </a>

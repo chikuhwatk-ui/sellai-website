@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ANDROID_APK_URL, WINDOWS_MSI_URL } from '../constants/downloads'
 
 export function Footer() {
   return (
@@ -31,7 +32,7 @@ export function Footer() {
             <div>
               <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-2">Mobile · for everyone</p>
               <div className="flex flex-wrap gap-2">
-                <a href="#download" title="Android — Google Play" aria-label="Download for Android" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
+                <a href={ANDROID_APK_URL} title="Android — direct .apk download" aria-label="Download for Android" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">android</span>
                   <span>Android</span>
                 </a>
@@ -50,12 +51,12 @@ export function Footer() {
                   </svg>
                   <span>Mac</span>
                 </Link>
-                <Link to="/desktop" title="Windows download" aria-label="Download for Windows" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
+                <a href={WINDOWS_MSI_URL} title="Windows — direct .msi download" aria-label="Download for Windows" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M0 3.449L9.75 2.1v9.451H0V3.449zm0 17.052V12h9.75v9.602L0 20.501zm10.949-19.06L24 0v11.4H10.949V1.441zM10.949 24V12.6H24V24l-13.051-1.06z" />
                   </svg>
                   <span>Windows</span>
-                </Link>
+                </a>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { ANDROID_APK_URL, WINDOWS_MSI_URL } from '../constants/downloads'
 
 const links = [
   { label: 'Product', href: '/product' },
@@ -70,11 +71,15 @@ export function Navbar() {
             {getOpen && (
               <div role="menu" className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
                 <div className="px-4 pt-3 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">On your phone <span className="text-slate-300 font-medium normal-case tracking-normal">— for everyone</span></div>
-                <a href="#download" onClick={() => setGetOpen(false)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-emerald-50 transition-colors">
+                <a
+                  href={ANDROID_APK_URL}
+                  onClick={() => setGetOpen(false)}
+                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-emerald-50 transition-colors"
+                >
                   <span className="material-symbols-outlined text-slate-700">android</span>
                   <div>
                     <div className="text-sm font-bold text-slate-900">Android</div>
-                    <div className="text-[10px] text-slate-500">Google Play</div>
+                    <div className="text-[10px] text-slate-500">Direct .apk download</div>
                   </div>
                 </a>
                 <a href="#download" onClick={() => setGetOpen(false)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-emerald-50 transition-colors">
@@ -95,15 +100,19 @@ export function Navbar() {
                     <div className="text-[10px] text-slate-500">macOS native app</div>
                   </div>
                 </Link>
-                <Link to="/desktop" onClick={() => setGetOpen(false)} className="flex items-center gap-3 px-4 py-2.5 hover:bg-emerald-50 transition-colors">
+                <a
+                  href={WINDOWS_MSI_URL}
+                  onClick={() => setGetOpen(false)}
+                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-emerald-50 transition-colors"
+                >
                   <svg className="w-5 h-5 text-slate-700" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M0 3.449L9.75 2.1v9.451H0V3.449zm0 17.052V12h9.75v9.602L0 20.501zm10.949-19.06L24 0v11.4H10.949V1.441zM10.949 24V12.6H24V24l-13.051-1.06z" />
                   </svg>
                   <div>
                     <div className="text-sm font-bold text-slate-900">Windows</div>
-                    <div className="text-[10px] text-slate-500">Windows 10/11 native app</div>
+                    <div className="text-[10px] text-slate-500">Direct .msi download</div>
                   </div>
-                </Link>
+                </a>
               </div>
             )}
           </div>

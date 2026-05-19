@@ -1,3 +1,5 @@
+import { ANDROID_APK_URL } from '../constants/downloads'
+
 export function DownloadSection({ variant = 'default' }: { variant?: 'default' | 'dark' | 'accent' }) {
   const isDark = variant === 'dark'
   const isAccent = variant === 'accent'
@@ -16,7 +18,7 @@ export function DownloadSection({ variant = 'default' }: { variant?: 'default' |
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="#download"
+            href={ANDROID_APK_URL}
             className={`px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all shadow-lg ${
               isDark
                 ? 'bg-white text-[#0E1B13] shadow-white/10'
@@ -26,7 +28,7 @@ export function DownloadSection({ variant = 'default' }: { variant?: 'default' |
             }`}
           >
             <span className="material-symbols-outlined">android</span>
-            Google Play
+            Download for Android
           </a>
           <a
             href="#download"

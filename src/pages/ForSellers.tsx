@@ -144,7 +144,7 @@ export default function ForSellers() {
               <div className="flex flex-col items-start gap-1.5">
                 <a
                   href="#download"
-                  className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
+                  className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
                 >
                   Start Free
                 </a>
@@ -598,7 +598,7 @@ export default function ForSellers() {
           </div>
           <a
             href="#download"
-            className="shrink-0 bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-105 transition-all shadow-lg shadow-emerald-500/20 whitespace-nowrap"
+            className="shrink-0 bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-105 transition-all shadow-lg shadow-emerald-500/20 whitespace-nowrap"
           >
             Start Free
           </a>
@@ -686,7 +686,7 @@ export default function ForSellers() {
                       ? "bg-white text-primary shadow-lg"
                       : bundle.isFree
                       ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30"
-                      : "bg-gradient-to-r from-[#10B981] to-[#059669] text-white shadow-lg shadow-emerald-500/20"
+                      : "bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white shadow-lg shadow-emerald-500/20"
                   }`}
                 >
                   {bundle.isFree ? "Start Free" : "Get Credits"}
@@ -699,7 +699,7 @@ export default function ForSellers() {
 
       {/* ── Final CTA ── */}
       <section className="mb-0">
-        <div className="bg-gradient-to-r from-[#10B981] to-[#059669] py-24">
+        <div className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] py-24">
           <div className="max-w-3xl mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope] text-white mb-6">
               Ready to meet your next customer?
@@ -711,7 +711,7 @@ export default function ForSellers() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#download"
-                className="inline-block bg-white text-[#059669] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg"
+                className="inline-block bg-white text-[#0F6B4A] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg"
               >
                 Start Selling Today
               </a>

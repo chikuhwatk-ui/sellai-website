@@ -85,7 +85,7 @@ export function DesktopDownloadSection({ variant = 'default' }: { variant?: 'def
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-on-background mb-6 leading-[1.05]">
             For sellers who work from a{' '}
-            <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">
               desk
             </span>
             .

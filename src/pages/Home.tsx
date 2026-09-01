@@ -178,7 +178,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 mb-32 text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
           Post what you need.{" "}
-          <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">
             Get offers in minutes.
           </span>
         </h1>
@@ -188,13 +188,13 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
             href="#download"
-            className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
+            className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
           >
             Get the App
           </a>
           <Link
             to="/product"
-            className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-[#006c49] text-[#006c49] hover:bg-[#006c49]/5 transition-all"
+            className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-[#0B3F2E] text-[#0B3F2E] hover:bg-[#0B3F2E]/5 transition-all"
           >
             <span className="material-symbols-outlined align-middle mr-2 text-xl">
               info
@@ -211,7 +211,7 @@ export default function Home() {
               className="w-full h-full object-cover object-top brightness-110 contrast-105"
             />
             {/* Emerald brand tint */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#10B981]/10 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1EC27A]/10 via-transparent to-transparent pointer-events-none" />
             {/* Bottom fade into card */}
             <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none" />
           </div>
@@ -235,11 +235,11 @@ export default function Home() {
               key={step.number}
               className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 relative group hover:shadow-xl hover:shadow-emerald-900/5 transition-all"
             >
-              <span className="text-6xl font-black text-[#10B981]/10 absolute top-6 right-8 select-none">
+              <span className="text-6xl font-black text-[#0F6B4A]/10 absolute top-6 right-8 select-none">
                 {step.number}
               </span>
-              <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[#059669] text-3xl">
+              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
+                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                   {step.icon}
                 </span>
               </div>
@@ -268,8 +268,8 @@ export default function Home() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Smart Matching */}
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40">
-            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#059669] text-3xl">
+            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                 auto_awesome
               </span>
             </div>
@@ -286,7 +286,7 @@ export default function Home() {
                   key={f.label}
                   className="flex items-center gap-3 rounded-xl bg-[#eefdf0] p-4"
                 >
-                  <span className="material-symbols-outlined text-[#059669]">
+                  <span className="material-symbols-outlined text-[#0F6B4A]">
                     {f.icon}
                   </span>
                   <span className="font-semibold text-sm text-[#111e16]">
@@ -299,8 +299,8 @@ export default function Home() {
 
           {/* Verified & Trusted */}
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40">
-            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#059669] text-3xl">
+            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                 shield
               </span>
             </div>
@@ -316,7 +316,7 @@ export default function Home() {
                   key={badge.label}
                   className="flex items-start gap-4 rounded-xl bg-[#eefdf0] p-4"
                 >
-                  <span className="material-symbols-outlined text-[#059669] mt-0.5">
+                  <span className="material-symbols-outlined text-[#0F6B4A] mt-0.5">
                     {badge.icon}
                   </span>
                   <div>
@@ -467,7 +467,7 @@ export default function Home() {
             <span className="text-sm font-bold text-on-surface-variant text-center whitespace-nowrap">
               Social Marketplaces
             </span>
-            <span className="text-sm font-bold text-[#059669] text-center">
+            <span className="text-sm font-bold text-[#0F6B4A] text-center">
               Sellai
             </span>
 
@@ -478,7 +478,7 @@ export default function Home() {
                 </span>
                 <span className="flex justify-center">
                   {row.whatsapp ? (
-                    <span className="material-symbols-outlined text-[#059669]">
+                    <span className="material-symbols-outlined text-[#0F6B4A]">
                       check_circle
                     </span>
                   ) : (
@@ -489,7 +489,7 @@ export default function Home() {
                 </span>
                 <span className="flex justify-center">
                   {row.facebook === true ? (
-                    <span className="material-symbols-outlined text-[#059669]">
+                    <span className="material-symbols-outlined text-[#0F6B4A]">
                       check_circle
                     </span>
                   ) : row.facebook === "partial" ? (
@@ -504,7 +504,7 @@ export default function Home() {
                 </span>
                 <span className="flex justify-center">
                   {row.sellai ? (
-                    <span className="material-symbols-outlined text-[#059669]">
+                    <span className="material-symbols-outlined text-[#0F6B4A]">
                       check_circle
                     </span>
                   ) : (
@@ -527,7 +527,7 @@ export default function Home() {
 
       {/* ── CTA Section ── */}
       <section className="mb-0">
-        <div className="bg-gradient-to-r from-[#10B981] to-[#059669] py-24">
+        <div className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] py-24">
           <div className="max-w-3xl mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope] text-white mb-6">
               Ready to try Sellai?
@@ -538,7 +538,7 @@ export default function Home() {
             </p>
             <a
               href="#download"
-              className="inline-block bg-white text-[#059669] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg"
+              className="inline-block bg-white text-[#0F6B4A] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg"
             >
               Get the App
             </a>

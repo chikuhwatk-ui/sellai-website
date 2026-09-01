@@ -24,7 +24,7 @@ export function DownloadSection({ variant = 'default' }: { variant?: 'default' |
                 ? 'bg-white text-[#0E1B13] shadow-white/10'
                 : isAccent
                   ? 'bg-on-primary-container text-white shadow-on-primary-container/20'
-                  : 'bg-gradient-to-r from-[#10B981] to-[#059669] text-white shadow-emerald-500/20'
+                  : 'bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white shadow-emerald-500/20'
             }`}
           >
             <span className="material-symbols-outlined">android</span>

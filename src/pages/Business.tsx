@@ -17,7 +17,7 @@ export default function Business() {
         </div>
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight font-[Manrope] mb-6 leading-[1.05]">
           The same Sellai. On your{' '}
-          <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">Mac and Windows</span>
+          <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">Mac and Windows</span>
           .
         </h1>
         <p className="text-on-surface-variant text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
@@ -53,7 +53,7 @@ export default function Business() {
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
             <Link
               to="/for-sellers"
-              className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-3.5 rounded-xl font-bold hover:scale-[1.02] active:scale-[0.99] transition-all shadow-lg shadow-emerald-500/20"
+              className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-3.5 rounded-xl font-bold hover:scale-[1.02] active:scale-[0.99] transition-all shadow-lg shadow-emerald-500/20"
             >
               Learn how Sellai works
             </Link>

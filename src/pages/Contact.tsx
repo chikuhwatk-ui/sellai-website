@@ -24,8 +24,8 @@ export default function Contact() {
           {/* Email Card */}
           <div className="glass-card rounded-2xl p-8 border border-white/40 bloom-shadow">
             <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#059669] text-3xl">
+              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                   mail
                 </span>
               </div>
@@ -46,8 +46,8 @@ export default function Contact() {
           {/* Location Card */}
           <div className="glass-card rounded-2xl p-8 border border-white/40 bloom-shadow">
             <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#059669] text-3xl">
+              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                   location_on
                 </span>
               </div>
@@ -63,8 +63,8 @@ export default function Contact() {
           {/* Partnership Note */}
           <div className="glass-card rounded-2xl p-8 border border-white/40 bloom-shadow">
             <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#059669] text-3xl">
+              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                   handshake
                 </span>
               </div>
@@ -162,7 +162,7 @@ export default function Contact() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-emerald-500/20"
+              className="w-full bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-emerald-500/20"
             >
               Send Message
             </button>

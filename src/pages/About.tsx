@@ -39,7 +39,7 @@ export default function About() {
         </span>
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
           Modernizing commerce for the{" "}
-          <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">
             Next Billion.
           </span>
         </h1>
@@ -190,8 +190,8 @@ export default function About() {
               key={v.title}
               className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 transition-all hover:bg-primary-container hover:shadow-xl group"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mb-6 group-hover:bg-on-primary-container/10 transition-colors">
-                <span className="material-symbols-outlined text-[#059669] text-3xl group-hover:text-on-primary-container transition-colors">
+              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6 group-hover:bg-on-primary-container/10 transition-colors">
+                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl group-hover:text-on-primary-container transition-colors">
                   {v.icon}
                 </span>
               </div>
@@ -219,8 +219,8 @@ export default function About() {
 
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mx-auto mb-5">
-              <span className="material-symbols-outlined text-[#059669] text-3xl">
+            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mx-auto mb-5">
+              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                 code
               </span>
             </div>
@@ -233,8 +233,8 @@ export default function About() {
             </p>
           </div>
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mx-auto mb-5">
-              <span className="material-symbols-outlined text-[#059669] text-3xl">
+            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mx-auto mb-5">
+              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                 storefront
               </span>
             </div>
@@ -247,8 +247,8 @@ export default function About() {
             </p>
           </div>
           <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 flex items-center justify-center mx-auto mb-5">
-              <span className="material-symbols-outlined text-[#059669] text-3xl">
+            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mx-auto mb-5">
+              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
                 public
               </span>
             </div>
@@ -282,7 +282,7 @@ export default function About() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#download"
-              className="bg-gradient-to-r from-[#10B981] to-[#059669] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
+              className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
             >
               Get the App
             </a>

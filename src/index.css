@@ -1,23 +1,38 @@
 @import "tailwindcss";
 
 @theme {
+  /* Sellai brand ramp — "Forest & Mint" (2026-09-01). Overrides Tailwind's stock
+     emerald so every emerald-* class on the site renders the real brand:
+     bright #1EC27A is the accent (dark text on it), forest #0B3F2E the anchor
+     (white text on it). Mirrors mobile-native/src/constants/theme.ts. */
+  --color-emerald-50: #EDFAF2;
+  --color-emerald-100: #D6F5E3;
+  --color-emerald-200: #A7E8C6;
+  --color-emerald-300: #8FE3BB;
+  --color-emerald-400: #3BD991;
+  --color-emerald-500: #1EC27A;
+  --color-emerald-600: #128A58;
+  --color-emerald-700: #0F6B4A;
+  --color-emerald-800: #0F5A40;
+  --color-emerald-900: #0B3F2E;
+  --color-emerald-950: #08301F;
   --color-surface-bright: #eefdf0;
   --color-inverse-surface: #26332a;
   --color-surface-container: #e2f2e4;
   --color-on-secondary-fixed-variant: #004395;
-  --color-on-primary-fixed: #002113;
+  --color-on-primary-fixed: #08301F;
   --color-error: #ba1a1a;
   --color-on-surface-variant: #3c4a42;
   --color-on-error: #ffffff;
   --color-tertiary-container: #e29100;
   --color-on-surface: #111e16;
   --color-inverse-on-surface: #e5f5e7;
-  --color-surface-tint: #006c49;
+  --color-surface-tint: #0B3F2E;
   --color-surface-dim: #ceded1;
   --color-outline-variant: #bbcabf;
   --color-on-primary: #ffffff;
   --color-background: #eefdf0;
-  --color-primary: #006c49;
+  --color-primary: #0B3F2E;
   --color-surface-container-lowest: #ffffff;
   --color-surface-variant: #d7e7d9;
   --color-secondary: #0058be;
@@ -25,7 +40,7 @@
   --color-on-secondary: #ffffff;
   --color-tertiary-fixed: #ffddb8;
   --color-on-tertiary-fixed-variant: #653e00;
-  --color-primary-container: #10b981;
+  --color-primary-container: #1EC27A;
   --color-tertiary-fixed-dim: #ffb95f;
   --color-secondary-fixed: #d8e2ff;
   --color-tertiary: #855300;
@@ -34,13 +49,13 @@
   --color-surface-container-high: #dcecdf;
   --color-outline: #6c7a71;
   --color-on-tertiary: #ffffff;
-  --color-inverse-primary: #4edea3;
-  --color-primary-fixed-dim: #4edea3;
+  --color-inverse-primary: #3BD991;
+  --color-primary-fixed-dim: #3BD991;
   --color-on-background: #111e16;
-  --color-primary-fixed: #6ffbbe;
+  --color-primary-fixed: #8FE3BB;
   --color-on-secondary-container: #fefcff;
-  --color-on-primary-fixed-variant: #005236;
-  --color-on-primary-container: #00422b;
+  --color-on-primary-fixed-variant: #0F5A40;
+  --color-on-primary-container: #0A1F14;
   --color-error-container: #ffdad6;
   --color-surface: #eefdf0;
   --color-on-secondary-fixed: #001a42;

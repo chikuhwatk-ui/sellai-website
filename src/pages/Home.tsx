@@ -11,7 +11,7 @@ import { DesktopDownloadSection } from '../components/DesktopDownloadSection'
 const steps = [
   { n: '01', title: 'Post a demand', body: 'Say what you need, your budget and where you are. Add a photo if it helps. Takes under a minute.' },
   { n: '02', title: 'Sellers send offers', body: 'Verified sellers near you who stock what you asked for get notified and reply with a price.' },
-  { n: '03', title: 'Choose and close', body: 'Pick the offer you like. Meet the seller to collect, or book a runner and confirm the handoff with your PIN.' },
+  { n: '03', title: 'Choose and close', body: 'Pick the offer you like. Meet the seller to collect, or ask them to send it with a Sellai runner. You track the runner live and confirm the handoff with your PIN.' },
 ]
 
 /* Buyer-side benefits. Each one maps to something an offer really carries:
@@ -20,14 +20,14 @@ const choosing = [
   { icon: Tags, title: 'Real prices, up front', body: 'Every offer comes with a price. No “DM for price”, no guessing, no chasing.' },
   { icon: Navigation, title: 'Sellers near you, not across the country', body: 'Offers come from sellers close enough to collect from today. You see the distance on each one.' },
   { icon: TrendingUp, title: 'Compare before you commit', body: 'Price, distance and trust score side by side. Chat with any seller before you say yes.' },
-  { icon: Handshake, title: 'Your call on how it ends', body: 'Meet the seller and collect, or book a runner and confirm the handoff with your PIN.' },
+  { icon: Handshake, title: 'Your call on how it ends', body: 'Meet the seller and collect, or have a Sellai runner bring it. You never arrange transport yourself, and you confirm the handoff with your PIN.' },
 ]
 
 const trust = [
   { icon: ShieldCheck, title: 'Seller ID checks', body: 'Every seller passes an identity check before they can send a single offer.' },
   { icon: Phone, title: 'Every account is a real phone number', body: 'Buyers, sellers and runners all sign in with a verified number. No anonymous accounts.' },
   { icon: KeyRound, title: 'PIN-secured handoff', body: 'Only you hold the 4-digit PIN. The runner cannot close the delivery without it.' },
-  { icon: LocateFixed, title: 'Live runner tracking', body: 'Watch the runner move on a map from pickup to your door.' },
+  { icon: LocateFixed, title: 'Live runner tracking', body: 'Every runner is on Sellai, ID-checked and rated. Watch yours move on a map from pickup to your door.' },
 ]
 
 const roles = [
@@ -39,7 +39,7 @@ const roles = [
 const valueProps = [
   { icon: Megaphone, title: 'Post once, get offers', body: 'No more posting in 20 groups and being ignored. Sellers come to you with real prices. No “DM for price”.' },
   { icon: Radio, title: 'Real demand only', body: 'Every buyer on Sellai is actively looking. Sellers reply to people who already want what they sell.' },
-  { icon: LocateFixed, title: 'Tracked delivery', body: 'Book a verified runner and watch the delivery live. No more hoping it arrives.' },
+  { icon: LocateFixed, title: 'Delivery inside the app', body: 'Ask the seller to send it with a Sellai runner. Verified runners bid for the job, you watch the delivery live, and nothing leaves the app.' },
   { icon: BadgeCheck, title: 'Accountable on both sides', body: 'Sellers are ID-checked. Every account is a real phone number. Ratings follow people around.' },
 ]
 
@@ -68,7 +68,7 @@ function MarkCell({ v }: { v: Mark }) {
 }
 
 export default function Home() {
-  useMeta('Sellai · Post what you need. Get offers in minutes.', 'Sellai introduces buyers to verified local sellers in Zimbabwe. Post what you need once, compare real offers, then collect in person or book a runner with a PIN-secured handoff.', '/')
+  useMeta('Sellai · Post what you need. Get offers in minutes.', 'Sellai introduces buyers to verified local sellers in Zimbabwe. Post what you need once, compare real offers, then collect in person or have a Sellai runner bring it with a PIN-secured handoff.', '/')
   const reduce = useReducedMotion()
 
   return (
@@ -88,7 +88,7 @@ export default function Home() {
               </StaggerItem>
               <StaggerItem>
                 <p className="mt-6 text-lg md:text-xl text-muted leading-relaxed max-w-[34rem]">
-                  Tell Sellai what you are looking for. Verified sellers near you reply with real prices. Collect in person, or book a runner and confirm the handoff with your PIN.
+                  Tell Sellai what you are looking for. Verified sellers near you reply with real prices. Collect in person, or have a Sellai runner bring it to your door.
                 </p>
               </StaggerItem>
               <StaggerItem>

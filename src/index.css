@@ -128,3 +128,22 @@ p { text-wrap: pretty; }
 }
 
 ::selection { background: var(--color-mint-100); color: var(--color-ink); }
+
+/* Coming-soon page: expanding rings behind the headline */
+@keyframes ring-out {
+  0%   { transform: translate(-50%, -50%) scale(0.12); opacity: 0.55; }
+  100% { transform: translate(-50%, -50%) scale(1.05); opacity: 0; }
+}
+.ring {
+  position: absolute; left: 50%; top: 50%;
+  width: 100%; aspect-ratio: 1; border-radius: 9999px;
+  border: 1.5px solid rgba(30, 194, 122, 0.55);
+  box-shadow: 0 0 60px rgba(30, 194, 122, 0.08) inset;
+  transform: translate(-50%, -50%) scale(0.12); opacity: 0;
+  animation: ring-out 5.6s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ring { animation: none; opacity: 0.25; transform: translate(-50%, -50%) scale(0.6); }
+  .ring:nth-child(2) { transform: translate(-50%, -50%) scale(0.85); opacity: 0.15; }
+  .ring:nth-child(3), .ring:nth-child(4) { display: none; }
+}

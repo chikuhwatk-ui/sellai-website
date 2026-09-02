@@ -1,550 +1,264 @@
-import { Link } from "react-router-dom";
-import { DownloadSection } from "../components/DownloadSection";
-import { DesktopDownloadSection } from "../components/DesktopDownloadSection";
+import { ArrowRight, BadgeCheck, Bike, Check, ClipboardPen, Handshake, KeyRound, LocateFixed, MapPin, Megaphone, MessageSquareOff, Minus, Navigation, Radio, ShieldCheck, Sparkles, Store, TrendingUp, X, MapPinOff, Phone, Tags } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
+import { useMeta } from '../hooks/useMeta'
+import { Button, Card, Container, FeatureList, IconDisc, PhoneFrame, Section, SectionHeader } from '../components/ui'
+import { Reveal, Stagger, StaggerItem } from '../components/motion'
+import { EASE } from '../components/ease'
+import { BuyerScreen, SellerScreen } from '../components/AppScreens'
+import { DownloadSection } from '../components/DownloadSection'
+import { DesktopDownloadSection } from '../components/DesktopDownloadSection'
 
 const steps = [
-  {
-    icon: "edit_note",
-    number: "01",
-    title: "Post a Demand",
-    description:
-      "Tell us what you need. Describe the product or service and your location.",
-  },
-  {
-    icon: "storefront",
-    number: "02",
-    title: "Sellers Compete",
-    description:
-      "Verified sellers near you see your demand and send their best offers.",
-  },
-  {
-    icon: "local_shipping",
-    number: "03",
-    title: "Choose & Close the Deal",
-    description:
-      "Pick the best offer. Meet the seller to collect, or request a PIN-secured delivery straight to your door — whatever works for you.",
-  },
-];
+  { n: '01', title: 'Post a demand', body: 'Say what you need, your budget and where you are. Add a photo if it helps. Takes under a minute.' },
+  { n: '02', title: 'Sellers send offers', body: 'Verified sellers near you who stock what you asked for get notified and reply with a price.' },
+  { n: '03', title: 'Choose and close', body: 'Pick the offer you like. Meet the seller to collect, or book a runner and confirm the handoff with your PIN.' },
+]
 
-const miniFeatures = [
-  { icon: "psychology", label: "Smart Matching" },
-  { icon: "location_on", label: "Geo-Aware" },
-  { icon: "verified", label: "Trust Scores" },
-  { icon: "credit_card", label: "Credit-Based Offers" },
-];
+/* Weights from backend/src/matching/wave-config.ts: distance 40, trust 20, subcategory 15, rating 10, repeat buyer 10, tag overlap 5 */
+const matching = [
+  { icon: Navigation, title: 'Distance first', body: 'Closer sellers rank higher. A phone two blocks away beats one across town.' },
+  { icon: Tags, title: 'Category and tag overlap', body: 'Sellers pick the same product tags buyers do. More overlap, better match.' },
+  { icon: TrendingUp, title: 'Trust score and rating', body: 'A score out of 100 built from ratings, response time and deals completed.' },
+  { icon: Handshake, title: 'People you have dealt with', body: 'A seller who served you well before gets a nudge up the list.' },
+]
 
-const trustBadges = [
-  { icon: "pin_drop", label: "PIN-Secured Deliveries", description: "Every handoff confirmed with a unique PIN code." },
-  { icon: "verified_user", label: "Seller Verification", description: "Every seller passes identity checks before they can respond to demands." },
-  { icon: "how_to_reg", label: "Buyer Verification", description: "Buyers are verified too — sellers know exactly who they're fulfilling for." },
-  { icon: "my_location", label: "Real-Time Delivery Tracking", description: "Track your runner from pickup to your doorstep." },
-];
+const trust = [
+  { icon: ShieldCheck, title: 'Seller ID checks', body: 'Every seller passes an identity check before they can send a single offer.' },
+  { icon: Phone, title: 'Every account is a real phone number', body: 'Buyers, sellers and runners all sign in with a verified number. No anonymous accounts.' },
+  { icon: KeyRound, title: 'PIN-secured handoff', body: 'Only you hold the 4-digit PIN. The runner cannot close the delivery without it.' },
+  { icon: LocateFixed, title: 'Live runner tracking', body: 'Watch the runner move on a map from pickup to your door.' },
+]
 
 const roles = [
-  {
-    icon: "shopping_cart",
-    title: "Buyer",
-    accent: "blue",
-    accentColor: "text-blue-600",
-    accentBg: "bg-blue-500/10",
-    accentBorder: "border-blue-500/20",
-    description:
-      "Post what you need and get competitive offers from verified sellers and runners near you.",
-    link: "/product",
-    cta: "Learn More",
-  },
-  {
-    icon: "store",
-    title: "Seller",
-    accent: "green",
-    accentColor: "text-emerald-600",
-    accentBg: "bg-emerald-500/10",
-    accentBorder: "border-emerald-500/20",
-    description:
-      "Respond to buyer demand in your area. Grow your business with smart visibility and trust scores.",
-    link: "/for-sellers",
-    cta: "Learn More",
-  },
-  {
-    icon: "directions_run",
-    title: "Runner",
-    accent: "amber",
-    accentColor: "text-amber-600",
-    accentBg: "bg-amber-500/10",
-    accentBorder: "border-amber-500/20",
-    description:
-      "Pick up and deliver orders in your area. Earn on your own schedule with flexible runs.",
-    link: "/for-runners",
-    cta: "Learn More",
-  },
-];
+  { icon: ClipboardPen, tone: 'info' as const, title: 'Buyers', body: 'Post what you need once. Compare real offers from verified sellers nearby. Collect, or get it delivered.', link: '/product', cta: 'How it works' },
+  { icon: Store, tone: 'mint' as const, title: 'Sellers', body: 'Get notified the moment a buyer near you wants what you sell. Spend a credit only when you choose to reply.', link: '/for-sellers', cta: 'Start free' },
+  { icon: Bike, tone: 'warning' as const, title: 'Runners', body: 'See delivery requests forming around you before you leave home. Get paid in cash at handoff.', link: '/for-runners', cta: 'Become a runner' },
+]
 
 const valueProps = [
-  {
-    icon: "campaign",
-    title: "Post Once, Get Offers",
-    description: "No more posting in 20 groups and being ignored. Post your demand once — verified sellers come to you with real prices. No DM for price.",
-  },
-  {
-    icon: "storefront",
-    title: "Real Demand",
-    description: "Every buyer on Sellai is actively looking. No passive scrollers — respond to buyers who already want what you sell.",
-  },
-  {
-    icon: "my_location",
-    title: "Tracked Delivery",
-    description: "Request a verified runner and track your order live. No more hoping it arrives.",
-  },
-  {
-    icon: "handshake",
-    title: "Mutual Trust",
-    description: "Sellers are verified. Buyers are verified. Every party accountable — no strangers, no guesswork.",
-  },
-];
+  { icon: Megaphone, title: 'Post once, get offers', body: 'No more posting in 20 groups and being ignored. Sellers come to you with real prices. No “DM for price”.' },
+  { icon: Radio, title: 'Real demand only', body: 'Every buyer on Sellai is actively looking. Sellers reply to people who already want what they sell.' },
+  { icon: LocateFixed, title: 'Tracked delivery', body: 'Book a verified runner and watch the delivery live. No more hoping it arrives.' },
+  { icon: BadgeCheck, title: 'Accountable on both sides', body: 'Sellers are ID-checked. Every account is a real phone number. Ratings follow people around.' },
+]
 
-const painPointFrustrations = [
-  {
-    icon: "mark_chat_read",
-    headline: "Seen. Ignored. Out of Stock.",
-    text: "You find a listing, DM the seller, wait — and finally get 'sold out' two days later. Your time wasted, still empty-handed.",
-  },
-  {
-    icon: "trending_up",
-    headline: "Paid for Reach. Got Nothing.",
-    text: "You boosted the post, watched the impressions climb, and waited. Not a single serious buyer. Just numbers on a screen.",
-  },
-  {
-    icon: "location_off",
-    headline: "Order Placed. Runner Vanished.",
-    text: "The seller says it's on the way. The buyer is waiting outside. Nobody knows where the runner is or when they'll arrive.",
-  },
-];
+const pains = [
+  { icon: MessageSquareOff, headline: 'Seen. Ignored. Out of stock.', body: 'You find a listing, DM the seller, wait, and finally hear “sold out” two days later. Time wasted, still empty-handed.' },
+  { icon: TrendingUp, headline: 'Paid for reach. Got nothing.', body: 'You boosted the post, watched the impressions climb, and waited. Not a single serious buyer. Just numbers on a screen.' },
+  { icon: MapPinOff, headline: 'Order placed. Runner vanished.', body: 'The seller says it is on the way. You are waiting outside. Nobody knows where the runner is or when they will arrive.' },
+]
 
-const comparisons = [
-  {
-    feature: "Real-time demand notifications",
-    whatsapp: false,
-    facebook: false,
-    sellai: true,
-  },
-  {
-    feature: "Verified sellers",
-    whatsapp: false,
-    facebook: false,
-    sellai: true,
-  },
-  {
-    feature: "Mutual user verification",
-    whatsapp: false,
-    facebook: false,
-    sellai: true,
-  },
-  {
-    feature: "Built-in delivery",
-    whatsapp: false,
-    facebook: false,
-    sellai: true,
-  },
-  {
-    feature: "Real-time tracking",
-    whatsapp: false,
-    facebook: false,
-    sellai: true,
-  },
-  {
-    feature: "Spam filtering",
-    whatsapp: false,
-    facebook: "partial" as const,
-    sellai: true,
-  },
-  {
-    feature: "Trust scores & reputation",
-    whatsapp: false,
-    facebook: "partial" as const,
-    sellai: true,
-  },
-  {
-    feature: "No 'DM for price'",
-    whatsapp: false,
-    facebook: false,
-    sellai: true,
-  },
-];
+type Mark = true | false | 'partial'
+const comparisons: { feature: string; groups: Mark; social: Mark; sellai: Mark }[] = [
+  { feature: 'Sellers notified the moment you post', groups: false, social: false, sellai: true },
+  { feature: 'ID-checked sellers', groups: false, social: false, sellai: true },
+  { feature: 'Every account a verified phone number', groups: false, social: 'partial', sellai: true },
+  { feature: 'Runner delivery with live tracking', groups: false, social: false, sellai: true },
+  { feature: 'PIN-confirmed handoff', groups: false, social: false, sellai: true },
+  { feature: 'Spam and scam filtering', groups: false, social: 'partial', sellai: true },
+  { feature: 'Trust scores and ratings', groups: false, social: 'partial', sellai: true },
+  { feature: 'Prices up front, no “DM for price”', groups: false, social: false, sellai: true },
+]
+
+function MarkCell({ v }: { v: Mark }) {
+  if (v === true) return <span className="inline-flex w-7 h-7 rounded-full bg-mint-100 text-primary-text items-center justify-center"><Check size={15} strokeWidth={3} aria-label="Yes" /></span>
+  if (v === 'partial') return <span className="inline-flex w-7 h-7 rounded-full bg-warning-bg text-warning-text items-center justify-center"><Minus size={15} strokeWidth={3} aria-label="Partly" /></span>
+  return <span className="inline-flex w-7 h-7 rounded-full bg-page text-faint items-center justify-center"><X size={15} strokeWidth={2.5} aria-label="No" /></span>
+}
 
 export default function Home() {
+  useMeta('Sellai · Post what you need. Get offers in minutes.', 'Sellai introduces buyers to verified local sellers in Zimbabwe. Post what you need once, compare real offers, then collect in person or book a runner with a PIN-secured handoff.', '/')
+  const reduce = useReducedMotion()
+
   return (
-    <main className="pt-32 overflow-hidden">
-      {/* ── Hero ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32 text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
-          Post what you need.{" "}
-          <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">
-            Get offers in minutes.
-          </span>
-        </h1>
-        <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          Verified sellers respond to your demand. Collect or get it delivered — you decide.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a
-            href="#download"
-            className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
-          >
-            Get the App
-          </a>
-          <Link
-            to="/product"
-            className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-[#0B3F2E] text-[#0B3F2E] hover:bg-[#0B3F2E]/5 transition-all"
-          >
-            <span className="material-symbols-outlined align-middle mr-2 text-xl">
-              info
-            </span>
-            See How It Works
-          </Link>
-        </div>
-
-        <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-4 border border-white/40 max-w-4xl mx-auto shadow-2xl shadow-emerald-900/5">
-          <div className="relative rounded-[1.5rem] overflow-hidden aspect-video">
-            <img
-              src="/hero-image2.png"
-              alt="Sellai marketplace preview"
-              className="w-full h-full object-cover object-top brightness-110 contrast-105"
-            />
-            {/* Emerald brand tint */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1EC27A]/10 via-transparent to-transparent pointer-events-none" />
-            {/* Bottom fade into card */}
-            <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none" />
-          </div>
-        </div>
-      </section>
-
-      {/* ── How It Works ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            How It Works
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Three simple steps
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step) => (
-            <div
-              key={step.number}
-              className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 relative group hover:shadow-xl hover:shadow-emerald-900/5 transition-all"
-            >
-              <span className="text-6xl font-black text-[#0F6B4A]/10 absolute top-6 right-8 select-none">
-                {step.number}
-              </span>
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                  {step.icon}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">
-                {step.title}
-              </h3>
-              <p className="text-on-surface-variant text-lg leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Features Section ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            Competitive Edge
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Why Sellai wins
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Smart Matching */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                auto_awesome
-              </span>
-            </div>
-            <h3 className="text-2xl font-bold mb-3 text-[#111e16]">
-              Smart Matching
-            </h3>
-            <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
-              Our algorithm matches your demand with the best nearby sellers
-              based on distance, category, trust score, and availability.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              {miniFeatures.map((f) => (
-                <div
-                  key={f.label}
-                  className="flex items-center gap-3 rounded-xl bg-[#eefdf0] p-4"
-                >
-                  <span className="material-symbols-outlined text-[#0F6B4A]">
-                    {f.icon}
-                  </span>
-                  <span className="font-semibold text-sm text-[#111e16]">
-                    {f.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Verified & Trusted */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                shield
-              </span>
-            </div>
-            <h3 className="text-2xl font-bold mb-3 text-[#111e16]">
-              Trust Goes Both Ways
-            </h3>
-            <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
-              Sellers are verified before they can make offers. Buyers are verified before sellers fulfil. Every transaction protected — no guesswork on either side.
-            </p>
-            <div className="flex flex-col gap-4">
-              {trustBadges.map((badge) => (
-                <div
-                  key={badge.label}
-                  className="flex items-start gap-4 rounded-xl bg-[#eefdf0] p-4"
-                >
-                  <span className="material-symbols-outlined text-[#0F6B4A] mt-0.5">
-                    {badge.icon}
-                  </span>
-                  <div>
-                    <span className="font-semibold text-sm text-[#111e16] block">
-                      {badge.label}
-                    </span>
-                    <span className="text-on-surface-variant text-sm">
-                      {badge.description}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Role Cards ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            For Every Role
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Built for Everyone
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {roles.map((role) => (
-            <div
-              key={role.title}
-              className={`bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border ${role.accentBorder} hover:shadow-xl transition-all flex flex-col`}
-            >
-              <div
-                className={`w-14 h-14 rounded-2xl ${role.accentBg} flex items-center justify-center mb-6`}
-              >
-                <span
-                  className={`material-symbols-outlined ${role.accentColor} text-3xl`}
-                >
-                  {role.icon}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">
-                {role.title}
-              </h3>
-              <p className="text-on-surface-variant text-lg leading-relaxed mb-8 flex-1">
-                {role.description}
-              </p>
-              <Link
-                to={role.link}
-                className={`inline-flex items-center gap-2 font-bold ${role.accentColor} hover:underline`}
-              >
-                {role.cta}
-                <span className="material-symbols-outlined text-xl">
-                  arrow_forward
-                </span>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Why Local Traders Choose Sellai ── */}
-      <section className="bg-[#111e16] py-24 mb-32">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white text-center mb-4">
-            What groups and marketplaces can't give you
-          </h2>
-          <p className="text-white/50 text-lg text-center mb-16 max-w-2xl mx-auto">
-            Group chats and social marketplaces got local commerce started. Sellai is where it grows up.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {valueProps.map((vp) => (
-              <div key={vp.title} className="text-center">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 flex items-center justify-center mx-auto mb-5">
-                  <span className="material-symbols-outlined text-emerald-400 text-3xl">
-                    {vp.icon}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">
-                  {vp.title}
-                </h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  {vp.description}
+    <main className="pt-16">
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(60%_60%_at_70%_20%,rgba(30,194,122,0.16),transparent_70%)] pointer-events-none" aria-hidden="true" />
+        <Container className="relative grid lg:grid-cols-12 gap-10 items-center pt-16 pb-12 md:pt-24 md:pb-20">
+          <div className="lg:col-span-6">
+            <Stagger onLoad>
+              <StaggerItem><div className="eyebrow mb-4 flex items-center gap-2"><MapPin size={13} aria-hidden="true" /> Built in Harare, Zimbabwe</div></StaggerItem>
+              <StaggerItem>
+                <h1 className="text-[2.75rem] leading-[1.02] md:text-[4rem] font-extrabold text-ink">
+                  Post what you need.<br />
+                  <span className="text-primary-text">Get offers in minutes.</span>
+                </h1>
+              </StaggerItem>
+              <StaggerItem>
+                <p className="mt-6 text-lg md:text-xl text-muted leading-relaxed max-w-[34rem]">
+                  Tell Sellai what you are looking for. Verified sellers near you reply with real prices. Collect in person, or book a runner and confirm the handoff with your PIN.
                 </p>
-              </div>
-            ))}
+              </StaggerItem>
+              <StaggerItem>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Button href="#download" variant="mint" size="lg">Get the app</Button>
+                  <Button to="/product" variant="ghost" size="lg" icon={ArrowRight}>See how it works</Button>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted list-none p-0 m-0">
+                  {['Free for buyers', 'ID-checked sellers', 'PIN-secured delivery'].map((t) => (
+                    <li key={t} className="flex items-center gap-1.5"><Check size={15} className="text-primary-text" strokeWidth={3} aria-hidden="true" />{t}</li>
+                  ))}
+                </ul>
+              </StaggerItem>
+            </Stagger>
           </div>
-        </div>
-      </section>
 
-      {/* ── Sound Familiar? ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-16">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            Sound Familiar?
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-            We've all been there
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {painPointFrustrations.map((item) => (
-            <div
-              key={item.icon}
-              className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 flex flex-col items-center text-center"
+          <div className="lg:col-span-6 relative flex justify-center lg:justify-end min-h-[640px]">
+            <motion.div
+              initial={reduce ? false : { opacity: 0, x: 40, rotate: 4 }}
+              animate={{ opacity: 1, x: 0, rotate: 0 }}
+              transition={{ duration: 0.9, delay: 0.25, ease: EASE }}
+              className="hidden lg:block absolute right-[262px] top-6 scale-[0.86] origin-top-right opacity-90"
             >
-              <div className="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-red-500 text-3xl">
-                  {item.icon}
-                </span>
-              </div>
-              <h3 className="text-lg font-extrabold text-on-surface mb-3 font-[Manrope]">
-                {item.headline}
-              </h3>
-              <p className="text-on-surface-variant text-base leading-relaxed">
-                {item.text}
-              </p>
-            </div>
-          ))}
-        </div>
-        <p className="text-center text-on-surface-variant text-lg mt-10 font-medium">
-          Sellai was designed to fix exactly this.
-        </p>
-      </section>
-
-      {/* ── Comparison Table ── */}
-      <section className="max-w-5xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            The Difference
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-            You already use these. See what Sellai adds.
-          </h2>
-        </div>
-
-        <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-6 md:p-8 border border-white/40 overflow-x-auto">
-          <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-6 md:gap-x-10 gap-y-4 items-center min-w-[500px]">
-            {/* Header */}
-            <div />
-            <span className="text-sm font-bold text-on-surface-variant text-center whitespace-nowrap">
-              Group Chats
-            </span>
-            <span className="text-sm font-bold text-on-surface-variant text-center whitespace-nowrap">
-              Social Marketplaces
-            </span>
-            <span className="text-sm font-bold text-[#0F6B4A] text-center">
-              Sellai
-            </span>
-
-            {comparisons.map((row) => (
-              <div key={row.feature} className="contents">
-                <span className="text-[#111e16] font-medium">
-                  {row.feature}
-                </span>
-                <span className="flex justify-center">
-                  {row.whatsapp ? (
-                    <span className="material-symbols-outlined text-[#0F6B4A]">
-                      check_circle
-                    </span>
-                  ) : (
-                    <span className="material-symbols-outlined text-red-400/70">
-                      cancel
-                    </span>
-                  )}
-                </span>
-                <span className="flex justify-center">
-                  {row.facebook === true ? (
-                    <span className="material-symbols-outlined text-[#0F6B4A]">
-                      check_circle
-                    </span>
-                  ) : row.facebook === "partial" ? (
-                    <span className="material-symbols-outlined text-amber-500">
-                      remove_circle
-                    </span>
-                  ) : (
-                    <span className="material-symbols-outlined text-red-400/70">
-                      cancel
-                    </span>
-                  )}
-                </span>
-                <span className="flex justify-center">
-                  {row.sellai ? (
-                    <span className="material-symbols-outlined text-[#0F6B4A]">
-                      check_circle
-                    </span>
-                  ) : (
-                    <span className="material-symbols-outlined text-red-400/70">
-                      cancel
-                    </span>
-                  )}
-                </span>
-              </div>
-            ))}
+              <PhoneFrame label="Seller app showing a matched request"><SellerScreen /></PhoneFrame>
+            </motion.div>
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
+              className="relative"
+            >
+              <PhoneFrame label="Buyer app showing offers arriving on a demand"><BuyerScreen /></PhoneFrame>
+            </motion.div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* ── Download Section ── */}
-      <DownloadSection />
+      {/* Three steps */}
+      <Section>
+        <Container>
+          <Reveal><SectionHeader eyebrow="How it works" title="Three steps. No haggling in the dark." /></Reveal>
+          <Stagger className="grid md:grid-cols-3 gap-x-10 gap-y-8">
+            {steps.map((s) => (
+              <StaggerItem key={s.n}>
+                <div className="border-t-2 border-forest pt-5">
+                  <div className="font-display text-sm font-extrabold text-primary-text tnum mb-3">{s.n}</div>
+                  <h3 className="text-xl font-bold text-ink mb-2">{s.title}</h3>
+                  <p className="text-muted leading-relaxed">{s.body}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
 
-      {/* ── Desktop App teaser ── */}
+      {/* Matching + trust */}
+      <Section tone="tint" className="!pt-0 md:!pt-0">
+        <Container className="pt-20 md:pt-28">
+          <Reveal><SectionHeader eyebrow="Why Sellai" title="Matched on what matters. Protected at every step." /></Reveal>
+          <div className="grid lg:grid-cols-2 gap-6">
+            <Reveal>
+              <Card className="p-8 h-full">
+                <IconDisc icon={Sparkles} size="lg" className="mb-5" />
+                <h3 className="text-2xl font-bold text-ink mb-2">How offers get ranked</h3>
+                <p className="text-muted leading-relaxed mb-4">Sellai does not show buyers everyone. It scores each seller against the demand and sends it to the best matches first.</p>
+                <FeatureList items={matching} />
+              </Card>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Card className="p-8 h-full">
+                <IconDisc icon={ShieldCheck} size="lg" className="mb-5" />
+                <h3 className="text-2xl font-bold text-ink mb-2">Trust you can check</h3>
+                <p className="text-muted leading-relaxed mb-4">Nothing on Sellai relies on a stranger's word. Identity, location and the handoff are all verified.</p>
+                <FeatureList items={trust} />
+              </Card>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Roles */}
+      <Section>
+        <Container>
+          <Reveal><SectionHeader eyebrow="For every side of a deal" title="Buyers, sellers and runners. One app." /></Reveal>
+          <Stagger className="grid md:grid-cols-3 gap-6">
+            {roles.map((r) => (
+              <StaggerItem key={r.title}>
+                <motion.div whileHover={reduce ? undefined : { y: -4 }} transition={{ duration: 0.25, ease: EASE }} className="h-full">
+                  <Card className="p-7 h-full flex flex-col">
+                    <IconDisc icon={r.icon} tone={r.tone} size="lg" className="mb-5" />
+                    <h3 className="text-xl font-bold text-ink mb-2">{r.title}</h3>
+                    <p className="text-muted leading-relaxed flex-1">{r.body}</p>
+                    <div className="mt-6"><Button to={r.link} variant="link">{r.cta} <ArrowRight size={16} aria-hidden="true" /></Button></div>
+                  </Card>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
+
+      {/* Dark band */}
+      <Section tone="dark">
+        <Container>
+          <Reveal><SectionHeader onDark eyebrow="The difference" title="What group chats and social marketplaces can't give you" lede="They got local buying and selling started. Sellai is where it grows up." /></Reveal>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+            {valueProps.map((v) => (
+              <StaggerItem key={v.title}>
+                <div className="border-t border-white/15 pt-5">
+                  <IconDisc icon={v.icon} tone="dark" className="mb-4" />
+                  <h3 className="text-lg font-bold text-white mb-2">{v.title}</h3>
+                  <p className="text-white/65 text-[0.95rem] leading-relaxed">{v.body}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
+
+      {/* Pain points */}
+      <Section>
+        <Container>
+          <Reveal><SectionHeader eyebrow="Sound familiar?" title="We've all been there." /></Reveal>
+          <Stagger className="grid md:grid-cols-3 gap-x-10 gap-y-8">
+            {pains.map((p) => (
+              <StaggerItem key={p.headline}>
+                <IconDisc icon={p.icon} tone="error" className="mb-4" />
+                <h3 className="text-lg font-extrabold text-ink mb-2">{p.headline}</h3>
+                <p className="text-muted leading-relaxed">{p.body}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
+          <Reveal><p className="text-center text-ink font-semibold text-lg mt-12">Sellai was built to fix exactly this.</p></Reveal>
+        </Container>
+      </Section>
+
+      {/* Comparison */}
+      <Section tone="tint" className="!pt-0 md:!pt-0">
+        <Container narrow className="pt-20 md:pt-28">
+          <Reveal><SectionHeader eyebrow="Side by side" title="You already use these. Here's what Sellai adds." /></Reveal>
+          <Reveal>
+            <Card className="p-2 md:p-4 overflow-x-auto">
+              <table className="w-full min-w-[540px] border-collapse text-[0.95rem]">
+                <thead>
+                  <tr>
+                    <th className="text-left font-normal p-3" />
+                    <th className="p-3 text-xs font-bold uppercase tracking-[0.08em] text-muted text-center">Group chats</th>
+                    <th className="p-3 text-xs font-bold uppercase tracking-[0.08em] text-muted text-center">Social marketplaces</th>
+                    <th className="p-3 text-xs font-bold uppercase tracking-[0.08em] text-primary-text text-center">Sellai</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisons.map((row) => (
+                    <tr key={row.feature} className="border-t border-hairline">
+                      <td className="p-3 font-medium text-ink">{row.feature}</td>
+                      <td className="p-3 text-center"><MarkCell v={row.groups} /></td>
+                      <td className="p-3 text-center"><MarkCell v={row.social} /></td>
+                      <td className="p-3 text-center"><MarkCell v={row.sellai} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Card>
+          </Reveal>
+        </Container>
+      </Section>
+
+      <DownloadSection tone="forest" heading="Ready to try Sellai?" lede="Free to download. Post your first demand in under a minute and see who replies." />
       <DesktopDownloadSection variant="compact" />
-
-      {/* ── CTA Section ── */}
-      <section className="mb-0">
-        <div className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] py-24">
-          <div className="max-w-3xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope] text-white mb-6">
-              Ready to try Sellai?
-            </h2>
-            <p className="text-white/80 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-              Join buyers, sellers, and runners across Zimbabwe already using
-              Sellai to trade smarter.
-            </p>
-            <a
-              href="#download"
-              className="inline-block bg-white text-[#0F6B4A] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg"
-            >
-              Get the App
-            </a>
-          </div>
-        </div>
-      </section>
     </main>
-  );
+  )
 }

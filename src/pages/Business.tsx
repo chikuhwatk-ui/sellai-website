@@ -1,70 +1,55 @@
-import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
+import { useMeta } from '../hooks/useMeta'
+import { Button, Container, Pill } from '../components/ui'
+import { Reveal, Stagger, StaggerItem } from '../components/motion'
 import { DesktopDownloadSection } from '../components/DesktopDownloadSection'
 
 export default function Business() {
+  useMeta('Sellai Business for desktop', 'The Sellai seller app for Windows, with Mac in progress. Same account as your phone, designed around a bigger screen and a real keyboard.', '/desktop')
+
   return (
-    <main className="pt-32 overflow-hidden">
-      {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 mb-4 text-center">
-        <div className="flex items-center justify-center gap-2 mb-4 flex-wrap">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary bg-primary-container/10 px-4 py-1.5 rounded-full">
-            Sellai on Desktop
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-700 bg-amber-100 px-3 py-1.5 rounded-full">
-            <span className="material-symbols-outlined text-sm">storefront</span>
-            For Sellers
-          </span>
-        </div>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight font-[Manrope] mb-6 leading-[1.05]">
-          The same Sellai. On your{' '}
-          <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">Mac and Windows</span>
-          .
-        </h1>
-        <p className="text-on-surface-variant text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
-          A laptop-friendly companion for sellers. Mobile is the main way most sellers use Sellai —
-          desktop is for the days you're at a keyboard, triaging leads on a bigger screen,
-          with OS-level notifications. Same account, same data either way.
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-on-surface-variant">
-          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />Free to download</span>
-          <span className="text-slate-300">·</span>
-          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />Same account as mobile</span>
-          <span className="text-slate-300">·</span>
-          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />Code-signed &amp; notarized</span>
-          <span className="text-slate-300">·</span>
-          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />Works offline</span>
-        </div>
+    <main className="pt-16">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(30,194,122,0.14),transparent_70%)] pointer-events-none" aria-hidden="true" />
+        <Container narrow className="relative text-center pt-16 pb-6 md:pt-24 md:pb-10">
+          <Stagger onLoad>
+            <StaggerItem>
+              <div className="flex items-center justify-center gap-2 mb-5">
+                <span className="eyebrow">Sellai Business</span>
+                <Pill tone="warning">For sellers</Pill>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <h1 className="text-[2.75rem] leading-[1.02] md:text-[4rem] font-extrabold text-ink">
+                The same Sellai. <span className="text-primary-text">On your computer.</span>
+              </h1>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="mt-6 text-lg md:text-xl text-muted leading-relaxed max-w-2xl mx-auto">
+                Available for Windows today. Mac is in progress. Sign in with the phone number you already use, and everything stays in sync.
+              </p>
+            </StaggerItem>
+          </Stagger>
+        </Container>
       </section>
 
-      {/* Download section */}
-      <DesktopDownloadSection />
+      <DesktopDownloadSection showHeader={false} />
 
-      {/* Companion CTA */}
-      <section className="px-6 pb-32">
-        <div className="max-w-4xl mx-auto rounded-3xl bg-white border border-slate-200 p-10 md:p-14 text-center bloom-shadow">
-          <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] mb-4 text-on-background">
-            New to Sellai?
-          </h3>
-          <p className="text-on-surface-variant text-base mb-8 max-w-2xl mx-auto leading-relaxed">
-            You can sign up from either app — desktop or mobile — using your phone number.
-            Most sellers find ID verification quicker on mobile (snapping a selfie + ID is easier
-            with a phone camera), but everything else works equally well on both.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <Link
-              to="/for-sellers"
-              className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-3.5 rounded-xl font-bold hover:scale-[1.02] active:scale-[0.99] transition-all shadow-lg shadow-emerald-500/20"
-            >
-              Learn how Sellai works
-            </Link>
-            <Link
-              to="/contact"
-              className="text-on-surface-variant hover:text-emerald-700 font-semibold text-sm transition-colors"
-            >
-              Talk to us →
-            </Link>
-          </div>
-        </div>
+      <section className="py-20">
+        <Container narrow>
+          <Reveal>
+            <div className="rounded-[20px] bg-surface border border-hairline p-8 md:p-12 text-center shadow-[var(--shadow-card)]">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-ink mb-3">New to Sellai?</h2>
+              <p className="text-muted leading-relaxed max-w-xl mx-auto mb-6">
+                You can sign up from either app with your phone number. Most sellers find the ID check quicker on a phone, because snapping a selfie and an ID is easier with a phone camera. Everything else works the same on both.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button to="/for-sellers" variant="forest">How selling works</Button>
+                <Button to="/contact" variant="link">Talk to us <ArrowRight size={16} aria-hidden="true" /></Button>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
       </section>
     </main>
   )

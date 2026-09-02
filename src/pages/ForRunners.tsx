@@ -1,325 +1,167 @@
-import { DownloadSection } from "../components/DownloadSection";
+import { ArrowDown, Banknote, Bike, Car, Clock, EyeOff, Hourglass, IdCard, KeyRound, Map, Rocket, Truck, UserPlus } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
+import { useMeta } from '../hooks/useMeta'
+import { Button, Container, IconDisc, PhoneFrame, Section, SectionHeader } from '../components/ui'
+import { Reveal, Stagger, StaggerItem } from '../components/motion'
+import { EASE } from '../components/ease'
+import { RunnerScreen } from '../components/AppScreens'
+import { DownloadSection } from '../components/DownloadSection'
 
-const painPoints = [
-  {
-    icon: "hourglass_empty",
-    title: "Sitting and waiting with no guarantee",
-    description:
-      "You know that feeling — parked outside a mall at 10am with no idea if you'll make $5 or $50 today. Your whole day depends on whether a seller decides to walk out.",
-  },
-  {
-    icon: "visibility_off",
-    title: "You only get work if they remember your number",
-    description:
-      "Right now your income depends on a seller physically remembering you exist and having your contact. There's no way to find the work — you just wait and hope it finds you.",
-  },
-];
+const pains = [
+  { icon: Hourglass, title: 'Sitting and waiting with no guarantee', body: 'Parked outside a mall at 10am with no idea if you will make $5 or $50 today. Your whole day depends on whether a seller walks out.' },
+  { icon: EyeOff, title: 'You only get work if they remember your number', body: 'Your income depends on a seller remembering you exist and still having your contact. There is no way to find the work. You wait and hope it finds you.' },
+]
+
+const facts = [
+  { icon: Map, title: 'A live map of demand', body: 'See where delivery requests are forming before you leave home, and go there.' },
+  { icon: Banknote, title: 'Cash in hand at handoff', body: 'The buyer pays you directly when they enter their PIN. No waiting on a payout.' },
+  { icon: Clock, title: '10% of the delivery fee', body: 'Sellai takes ten percent of the delivery fee from your wallet. The rest is yours. Nothing else.' },
+]
 
 const steps = [
-  {
-    icon: "app_registration",
-    number: "01",
-    title: "Sign Up",
-    description:
-      "Download the app and register with your phone number. It only takes a few minutes to get started.",
-  },
-  {
-    icon: "verified",
-    number: "02",
-    title: "Submit Documents",
-    description:
-      "Upload your ID and vehicle details so we can verify your profile and get you approved.",
-  },
-  {
-    icon: "my_location",
-    number: "03",
-    title: "Set Your Availability",
-    description:
-      "Choose when and where you want to deliver. You control your own schedule — no shifts assigned.",
-  },
-  {
-    icon: "rocket_launch",
-    number: "04",
-    title: "See Work. Accept. Go.",
-    description:
-      "Open the app and see live delivery requests forming near you. Accept the runs that work for you and get paid directly by the client on delivery.",
-    highlight: true,
-  },
-];
+  { n: '01', icon: UserPlus, title: 'Sign up', body: 'Download the app and register with your phone number. A few minutes.' },
+  { n: '02', icon: IdCard, title: 'Submit your ID and vehicle', body: 'Upload your ID and vehicle details. A person reviews it, usually within 24 hours.' },
+  { n: '03', icon: Map, title: 'Go online where it is busy', body: 'The heatmap shows where requests are forming. No shifts, no roster. You choose.' },
+  { n: '04', icon: Rocket, title: 'Bid. Pick up. Deliver.', body: 'Place a bid on a request. When the seller accepts, collect, deliver, and get paid when the buyer enters their PIN.' },
+]
 
-const vehicleTypes = [
-  {
-    icon: "electric_bike",
-    title: "E-Bikes",
-    tier: "$$",
-    description:
-      "Perfect for short-distance urban deliveries. Low cost, high demand in city centres.",
-  },
-  {
-    icon: "directions_car",
-    title: "Standard Vehicles",
-    tier: "$$$",
-    description:
-      "Cars and motorcycles for medium-range orders. The most popular runner category.",
-  },
-  {
-    icon: "local_shipping",
-    title: "Cargo Vans",
-    tier: "$$$$",
-    description:
-      "Handle bulk and oversized deliveries and earn more per run.",
-  },
-];
+const vehicles = [
+  { icon: Bike, title: 'Bicycles', body: 'Short urban runs. No fuel, and busy in the city centre.' },
+  { icon: Car, title: 'Motorcycles and cars', body: 'Medium-range runs. The most common way runners work.' },
+  { icon: Truck, title: 'Vans', body: 'Bulk and oversized deliveries. Fewer runs, more per run.' },
+]
 
 export default function ForRunners() {
+  useMeta('Sellai for runners', 'Stop waiting outside. See delivery requests forming near you on a live map, bid on the ones you want, and get paid in cash at handoff.', '/for-runners')
+  const reduce = useReducedMotion()
+
   return (
-    <main className="pt-24 overflow-hidden">
-      {/* ── Hero ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-on-tertiary-container bg-tertiary-container/15 px-4 py-2 rounded-full mb-6">
-              For Runners
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6 text-on-surface">
-              Stop waiting outside.{" "}
-              <span className="bg-gradient-to-r from-tertiary-container to-tertiary bg-clip-text text-transparent">
-                Deliveries come to you.
-              </span>
-            </h1>
-            <p className="text-on-surface-variant text-lg leading-relaxed max-w-xl mb-10">
-              See real delivery requests forming in your area before you even leave home. No more standing outside malls hoping someone needs a run — Sellai shows you exactly where the work is.
-            </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <a
-                href="#download"
-                className="bg-gradient-to-r from-tertiary-container to-tertiary text-on-tertiary px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-tertiary-container/20"
-              >
-                Become a Runner
-              </a>
-              <a
-                href="#how-it-works"
-                className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-tertiary-container text-on-tertiary-container hover:bg-tertiary-container/5 transition-all"
-              >
-                <span className="material-symbols-outlined align-middle mr-2 text-xl">
-                  arrow_downward
-                </span>
-                How It Works
-              </a>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="glass-card rounded-[2rem] p-4 border border-white/40 shadow-2xl shadow-tertiary-container/10">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdaruTdJbe1b0Gc238X2O8y-kF_T8GKkTVF4q0iTxjnY-8KV4yLYnMYgNVWJO44b8qfrbUh11KlSVdmQbHscfwUQtNwJSTgReLjdnr1GF7pv7yAyetphqC3XKt-C9rpYS-ZTS1oYTyAr3VTwvwlQpsa2yT3FNEwBb3MqN4VqiITArweIYIM-tBIVzY1VoI8mZScFU92s-izLEe2Z-956qo7yCUletCURRoY0CK4CSiOgntn8PtKEkm0G4WrH5qW8abL3_n5TZXmAQ"
-                alt="Sellai runner delivering an order"
-                className="w-full rounded-[1.5rem] object-cover"
-              />
-            </div>
-            {/* Floating badge */}
-            <div className="absolute -bottom-4 left-6 glass-card rounded-2xl px-5 py-3 border border-white/40 shadow-lg flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-tertiary-container/15 flex items-center justify-center">
-                <span className="material-symbols-outlined text-tertiary-container text-xl">
-                  schedule
-                </span>
-              </div>
-              <div>
-                <p className="text-sm font-bold text-on-surface font-[Manrope]">
-                  See live delivery requests near you
+    <main className="pt-16">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(60%_60%_at_75%_20%,rgba(199,122,0,0.12),transparent_70%)] pointer-events-none" aria-hidden="true" />
+        <Container className="relative grid lg:grid-cols-12 gap-10 items-center pt-16 pb-12 md:pt-24 md:pb-20">
+          <div className="lg:col-span-7">
+            <Stagger onLoad>
+              <StaggerItem><div className="eyebrow eyebrow-runner mb-4">For runners</div></StaggerItem>
+              <StaggerItem>
+                <h1 className="text-[2.75rem] leading-[1.02] md:text-[4rem] font-extrabold text-ink">
+                  Stop waiting outside. <span className="text-warning-text">Deliveries come to you.</span>
+                </h1>
+              </StaggerItem>
+              <StaggerItem>
+                <p className="mt-6 text-lg md:text-xl text-muted leading-relaxed max-w-[34rem]">
+                  See real delivery requests forming in your area before you leave home. No more standing outside malls hoping someone needs a run. Sellai shows you where the work is.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Problem ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-tertiary-container mb-4 block">
-            The Problem
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-on-surface">
-            Tired of waiting and{" "}
-            <span className="bg-gradient-to-r from-error to-error/70 bg-clip-text text-transparent">
-              not knowing?
-            </span>
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {painPoints.map((point) => (
-            <div
-              key={point.title}
-              className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-error/5 transition-all"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-error-container flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-on-error-container text-3xl">
-                  {point.icon}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-on-surface">
-                {point.title}
-              </h3>
-              <p className="text-on-surface-variant text-lg leading-relaxed">
-                {point.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div className="glass-card rounded-2xl p-6 border border-white/40 text-center">
-            <p className="text-4xl font-extrabold font-[Manrope] text-tertiary-container mb-1">
-              Live
-            </p>
-            <p className="text-on-surface-variant text-sm font-medium">
-              Delivery requests near you, in real time
-            </p>
-          </div>
-          <div className="glass-card rounded-2xl p-6 border border-white/40 text-center">
-            <p className="text-4xl font-extrabold font-[Manrope] text-tertiary-container mb-1">
-              10%
-            </p>
-            <p className="text-on-surface-variant text-sm font-medium">
-              Commission cap — the rest is yours
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Steps ── */}
-      <section id="how-it-works" className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-tertiary-container mb-4 block">
-            Getting Started
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-on-surface">
-            Four steps to the driver's seat
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step) => (
-            <div
-              key={step.number}
-              className={`rounded-[2rem] p-8 border relative group hover:shadow-xl transition-all ${
-                step.highlight
-                  ? "bg-primary-container/15 border-primary-container/30 hover:shadow-primary/10"
-                  : "bg-white/55 backdrop-blur-xl border-white/40 hover:shadow-emerald-900/5"
-              }`}
-            >
-              <span className="text-6xl font-black text-tertiary-container/10 absolute top-6 right-8 select-none">
-                {step.number}
-              </span>
-              <div className="w-14 h-14 rounded-2xl bg-tertiary-container/15 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-tertiary-container text-3xl">
-                  {step.icon}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-on-surface">
-                {step.title}
-              </h3>
-              <p className="text-on-surface-variant text-lg leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Vehicle Types ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-tertiary-container mb-4 block">
-            Vehicles
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-on-surface">
-            What can you drive?
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Vehicle cards */}
-          <div className="flex flex-col gap-6">
-            {vehicleTypes.map((vehicle) => (
-              <div
-                key={vehicle.title}
-                className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-tertiary-container/5 transition-all flex items-start gap-6"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-tertiary-container/15 flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-tertiary-container text-3xl">
-                    {vehicle.icon}
-                  </span>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                  <Button href="#download" variant="forest" size="lg">Become a runner</Button>
+                  <Button href="#how-it-works" variant="ghost" size="lg" icon={ArrowDown}>How it works</Button>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-bold text-on-surface">
-                      {vehicle.title}
-                    </h3>
-                    <span className="text-sm font-bold text-tertiary-container bg-tertiary-container/10 px-3 py-1 rounded-full">
-                      {vehicle.tier}
-                    </span>
-                  </div>
-                  <p className="text-on-surface-variant text-lg leading-relaxed">
-                    {vehicle.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              </StaggerItem>
+            </Stagger>
           </div>
-
-          {/* Map with overlays */}
-          <div className="relative">
-            <div className="glass-card rounded-[2rem] p-4 border border-white/40 shadow-2xl shadow-tertiary-container/10">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAan7MOLhE1Wvq3KZCtUvsYLHTq9xMwnv1mC9PYZcWy20Y_W7Xqx4BCvW9S51THIkMG8ZvBQ8I084x3yRu2l9t-Eh0bVhah8APS-c9z8dVE63BJLWgxg6tz4tzAd0ZxC-1KTSjnFE4OlM7USTXN3wRW-rqr1YjkGFapEdInMhFRgPCqyzezG0TBqzgZgJFy2nR3QXYVbOVy0o2RYd8LfoOVRh8PzMID9aSQNfkGcYmFf_LFJNd6-y5PyXa6GaNiwMn5g_TcmfyeGIc"
-                alt="Delivery coverage map"
-                className="w-full rounded-[1.5rem] object-cover"
-              />
-            </div>
-
-            {/* PIN Verification card */}
-            <div className="absolute -bottom-4 right-6 glass-card rounded-2xl px-5 py-3 border border-white/40 shadow-lg flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary-container/15 flex items-center justify-center">
-                <span className="material-symbols-outlined text-primary text-xl">
-                  pin
-                </span>
-              </div>
-              <div>
-                <p className="text-xs text-on-surface-variant font-medium">
-                  PIN Verification
-                </p>
-                <p className="text-sm font-bold text-on-surface">
-                  Secure handoff every time
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Download ── */}
-      <DownloadSection />
-
-      {/* ── Final CTA ── */}
-      <section className="bg-[#111e16] py-24">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] text-white mb-6">
-            Stop waiting. Start running.
-          </h2>
-          <p className="text-white/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Download the app, get verified, and see live delivery requests in your area. The work is already there — you just need to be on the platform.
-          </p>
-          <a
-            href="#download"
-            className="inline-block bg-gradient-to-r from-tertiary-container to-tertiary text-on-tertiary px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-tertiary-container/20"
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
+            className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            Become a Runner
-          </a>
-        </div>
+            <PhoneFrame label="Runner app showing the demand heatmap and a delivery request"><RunnerScreen /></PhoneFrame>
+          </motion.div>
+        </Container>
       </section>
+
+      <Section>
+        <Container>
+          <Reveal><SectionHeader eyebrow="The problem" eyebrowClass="eyebrow-runner" title="Tired of waiting and not knowing?" /></Reveal>
+          <Stagger className="grid md:grid-cols-2 gap-x-12 gap-y-2">
+            {pains.map((p) => (
+              <StaggerItem key={p.title}>
+                <div className="flex gap-4 py-5 border-t border-hairline">
+                  <IconDisc icon={p.icon} tone="error" />
+                  <div>
+                    <h3 className="text-lg font-bold text-ink mb-1">{p.title}</h3>
+                    <p className="text-muted leading-relaxed">{p.body}</p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
+
+      <Section tone="tint">
+        <Container>
+          <Stagger className="grid md:grid-cols-3 gap-6">
+            {facts.map((f) => (
+              <StaggerItem key={f.title}>
+                <div className="rounded-[20px] bg-surface border border-hairline p-7 h-full">
+                  <IconDisc icon={f.icon} tone="warning" size="lg" className="mb-5" />
+                  <h3 className="text-xl font-bold text-ink mb-2">{f.title}</h3>
+                  <p className="text-muted leading-relaxed">{f.body}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
+
+      <Section id="how-it-works">
+        <Container>
+          <Reveal><SectionHeader eyebrow="Getting started" eyebrowClass="eyebrow-runner" title="Four steps to your first run" /></Reveal>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+            {steps.map((s) => (
+              <StaggerItem key={s.n}>
+                <div className="border-t-2 border-warning pt-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <IconDisc icon={s.icon} tone="warning" size="sm" />
+                    <span className="font-display text-sm font-extrabold text-warning-text tnum">{s.n}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-ink mb-2">{s.title}</h3>
+                  <p className="text-muted leading-relaxed text-[0.95rem]">{s.body}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
+
+      <Section tone="tint">
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-6">
+              <Reveal>
+                <div className="eyebrow eyebrow-runner mb-3">Vehicles</div>
+                <h2 className="text-3xl md:text-[2.6rem] md:leading-[1.1] font-extrabold text-ink mb-3">What can you drive?</h2>
+                <p className="text-lg text-muted leading-relaxed">Register the vehicle you have. Bigger vehicles see the bigger jobs.</p>
+              </Reveal>
+              <Stagger className="mt-6">
+                {vehicles.map((v) => (
+                  <StaggerItem key={v.title}>
+                    <div className="flex gap-4 py-4 border-t border-hairline">
+                      <IconDisc icon={v.icon} tone="warning" />
+                      <div>
+                        <h3 className="text-[1.05rem] font-bold text-ink mb-0.5">{v.title}</h3>
+                        <p className="text-muted text-[0.95rem]">{v.body}</p>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </Stagger>
+            </div>
+            <Reveal delay={0.1} className="lg:col-span-6">
+              <div className="rounded-[20px] bg-forest text-white p-8 md:p-10">
+                <IconDisc icon={KeyRound} tone="dark" size="lg" className="mb-5" />
+                <h3 className="text-2xl font-extrabold mb-3">The PIN protects you too.</h3>
+                <p className="text-white/70 leading-relaxed">The buyer holds a 4-digit PIN and enters it when you hand over the goods. That is the moment the delivery is complete and you are paid. No “I never received it” arguments afterwards.</p>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      <DownloadSection tone="dark" heading="Stop waiting. Start running." lede="Download the app, get verified, and see live delivery requests in your area. The work is already there. You just need to be on the platform." />
     </main>
-  );
+  )
 }

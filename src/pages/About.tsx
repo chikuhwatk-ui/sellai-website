@@ -1,303 +1,137 @@
-import { Link } from "react-router-dom";
-import { DownloadSection } from "../components/DownloadSection";
+import { Code, Eye, Globe, MapPin, Rocket, ShieldCheck, Store, Users } from 'lucide-react'
+import { useMeta } from '../hooks/useMeta'
+import { Button, Container, IconDisc, Section, SectionHeader } from '../components/ui'
+import { Reveal, Stagger, StaggerItem } from '../components/motion'
+import { DownloadSection } from '../components/DownloadSection'
 
 const values = [
-  {
-    icon: "verified_user",
-    title: "Trust",
-    description:
-      "Every transaction is backed by PIN-verified delivery, seller identity checks, and community accountability.",
-  },
-  {
-    icon: "visibility",
-    title: "Transparency",
-    description:
-      "Open pricing, real-time tracking, and honest reviews so every party knows exactly where they stand.",
-  },
-  {
-    icon: "location_on",
-    title: "Local-first",
-    description:
-      "Built for the neighborhoods we serve. Hyper-local matching keeps money circulating in your community.",
-  },
-  {
-    icon: "diversity_3",
-    title: "Inclusion",
-    description:
-      "Creating opportunities for everyone, regardless of background or technical ability.",
-  },
-];
+  { icon: ShieldCheck, title: 'Trust', body: 'Seller identity checks, PIN-confirmed handoffs, and ratings that follow people around.' },
+  { icon: Eye, title: 'Transparency', body: 'Prices up front, live tracking, and honest reviews so every side knows where they stand.' },
+  { icon: MapPin, title: 'Local first', body: 'Built for the neighbourhoods we serve. Matching by distance keeps money in the community.' },
+  { icon: Users, title: 'Inclusion', body: 'A phone number is enough to start. No shop, no website, no marketing budget required.' },
+]
 
+const team = [
+  { icon: Code, title: 'Engineering', body: 'The backend, the phone app, the matching engine and the delivery flow were built from scratch in Zimbabwe.' },
+  { icon: Store, title: 'Commerce', body: 'We have sold in WhatsApp groups, listed on Facebook and haggled at markets. We know the pain because we have lived it.' },
+  { icon: Globe, title: 'Local roots', body: 'Every decision is shaped by the ground here: Paynow over Stripe, EcoCash over Apple Pay, a PIN over a signature.' },
+]
 
 export default function About() {
+  useMeta('About Sellai', 'Sellai is built in Harare by a Zimbabwean team to make local buying and selling transparent, competitive and trustworthy.', '/about')
+
   return (
-    <main className="pt-32 pb-24 px-6 md:px-8 max-w-7xl mx-auto">
-      {/* -- Hero -- */}
-      <section className="mb-32 text-center">
-        <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-          About Our Vision
-        </span>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
-          Modernizing commerce for the{" "}
-          <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">
-            Next Billion.
-          </span>
-        </h1>
-        <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-          We're building infrastructure that connects local markets to modern
-          standards, starting in Harare, Zimbabwe.
-        </p>
-
-        <div className="relative rounded-[2rem] overflow-hidden max-w-5xl mx-auto">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPNx2fKQLAxpJspDnpX6YJtivupl2QVX54d8jDMmcyoWkqKxUvRAOAt72YOw-NH69ujfMz20-8e5HSVYtv4hgjp3TX1SSYk5GAXHYDIBxLUuvOy1-anAvYx16cIT_cXu2jUnhJ-2AyQ1yq9ht4RKygsoCfYrFPzc9iwgvrqnWkAmF196ilJ-UR4En8CaVOmzQTO5-dEz7zWKIfllfS_yERgURUrpjSa-vVYu8APdD5cW-4R6C12YJESOEv1URksVk6L4rqOUhLy7Y"
-            alt="Sellai marketplace in action"
-            className="w-full object-cover aspect-[16/7]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        </div>
+    <main className="pt-16">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(60%_60%_at_50%_0%,rgba(30,194,122,0.14),transparent_70%)] pointer-events-none" aria-hidden="true" />
+        <Container className="relative pt-16 pb-12 md:pt-24 md:pb-16">
+          <Stagger onLoad className="max-w-3xl">
+            <StaggerItem><div className="eyebrow mb-4">About Sellai</div></StaggerItem>
+            <StaggerItem>
+              <h1 className="text-[2.75rem] leading-[1.02] md:text-[4rem] font-extrabold text-ink">
+                Local commerce, <span className="text-primary-text">with the guesswork taken out.</span>
+              </h1>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="mt-6 text-lg md:text-xl text-muted leading-relaxed max-w-2xl">
+                We are building the tools that let a buyer and a seller two blocks apart actually find each other, agree a price, and hand over the goods safely. Starting in Harare.
+              </p>
+            </StaggerItem>
+          </Stagger>
+        </Container>
       </section>
 
-      {/* -- Mission & Vision Bento -- */}
-      <section className="mb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Mission - 7 cols */}
-          <div className="lg:col-span-7 bg-surface-container-low rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/10 flex items-center justify-center">
-              <span className="material-symbols-outlined text-primary text-6xl">
-                hub
-              </span>
-            </div>
-            <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-              Our Mission
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] mb-6">
-              Empowering informal economies through technology
-            </h2>
-            <p className="text-on-surface-variant text-lg leading-relaxed max-w-xl">
-              Making local commerce transparent, competitive, and trustworthy
-              — starting with Zimbabwe.
-            </p>
-          </div>
-
-          {/* Vision - 5 cols */}
-          <div className="lg:col-span-5 rounded-[2.5rem] overflow-hidden relative min-h-[320px]">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbS8nRSGcU-H9X03UHsYkzYQLqHVjDPS70p787mrK4Ptyfp2QIhhE9YGn45hJdG4TpDVcAVJClLOwBorxNYh1_WvWbig4TvfLQ8jRoqKBcbXTaV0Kri0k3wEgp7IQW0_BmWMJtJqR9HrYNwQ7mDwHWIdKXipBrIgBttlwAWTI0EQ3DSIkLzSbN126hH9_yRPZnENNhcRWKoitFP0xvyMKoFWUUHNlzKOmREHHQp7oRYIn8CgkXPg29dIZ9i79IABMMdiHbfzcznXA"
-              alt="Sellai coverage across Africa"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-300 mb-2 block">
-                Our Vision
-              </span>
-              <h3 className="text-2xl font-extrabold text-white font-[Manrope]">
-                Expanding across Africa
-              </h3>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* -- Origin Story -- */}
-      <section className="mb-32 -mx-6 md:-mx-8">
-        <div className="bg-[#0E1B13] rounded-[2.5rem] mx-6 md:mx-8 px-10 md:px-16 py-16 md:py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-6 block">
-              Our Story
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-[Manrope] text-white mb-8">
-              Built in Zimbabwe, for Zimbabwe.
-            </h2>
-
-            <div className="space-y-6 text-white/70 text-lg leading-relaxed text-left md:text-center">
-              <p>
-                We watched a street vendor in Harare lose an entire day's income
-                because a buyer couldn't find her stall after it moved.
-                Meanwhile, that same buyer searched for hours for a product that
-                was two blocks away.
-              </p>
-              <p>
-                Abundance on one side. Scarcity on the other. Separated only by
-                information.
-              </p>
-              <p>
-                We'd tried everything ourselves — posting in group chats,
-                scrolling online marketplaces, asking around. The tools existed,
-                but none of them were{" "}
-                <em className="text-white/90">built for this</em>. None of them
-                understood what it means to buy and sell locally in Zimbabwe —
-                the trust gap, the delivery problem, the payment friction.
-              </p>
-              <p className="text-white/90 font-medium">
-                So we built the platform we wished existed.
-              </p>
-            </div>
-
-            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/15 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-emerald-400 text-xl">
-                    location_on
-                  </span>
+      <Section className="!pt-0">
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-6">
+            <Reveal className="lg:col-span-7">
+              <div className="rounded-[20px] bg-surface border border-hairline p-8 md:p-12 h-full">
+                <div className="eyebrow mb-3">Our mission</div>
+                <h2 className="text-3xl md:text-[2.4rem] md:leading-[1.1] font-extrabold text-ink mb-4">Make local buying and selling transparent, competitive and trustworthy.</h2>
+                <p className="text-lg text-muted leading-relaxed">Zimbabwe’s informal economy runs on relationships and word of mouth. That is its strength and its ceiling. Sellai keeps the relationships and removes the ceiling.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1} className="lg:col-span-5">
+              <div className="rounded-[20px] bg-forest text-white p-8 md:p-12 h-full flex flex-col justify-end min-h-[300px] relative overflow-hidden">
+                <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-mint/25 blur-3xl pointer-events-none" aria-hidden="true" />
+                <div className="relative">
+                  <div className="eyebrow eyebrow-on-dark mb-3">Our vision</div>
+                  <h2 className="text-3xl font-extrabold leading-tight">Harare first. Then every city where people buy and sell the same way.</h2>
                 </div>
-                <span className="text-white/60 text-sm font-medium">
-                  Harare, Zimbabwe
-                </span>
               </div>
-              <div className="hidden sm:block w-px h-6 bg-white/10" />
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/15 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-emerald-400 text-xl">
-                    group
-                  </span>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="dark">
+        <Container narrow className="text-center">
+          <Reveal>
+            <div className="eyebrow eyebrow-on-dark mb-4">Our story</div>
+            <h2 className="text-3xl md:text-[2.6rem] md:leading-[1.1] font-extrabold text-white mb-8">Built in Zimbabwe, for Zimbabwe.</h2>
+            <div className="space-y-5 text-lg leading-relaxed text-white/70 max-w-2xl mx-auto">
+              <p>We watched a street vendor in Harare lose a day’s income because a buyer could not find her stall after it moved. That same buyer spent hours looking for something that was two blocks away.</p>
+              <p className="text-white font-semibold">Abundance on one side. Scarcity on the other. Separated only by information.</p>
+              <p>We had tried everything ourselves: posting in group chats, scrolling marketplaces, asking around. The tools existed, but none of them were built for this. None of them understood the trust gap, the delivery problem, or the payment friction of buying and selling locally here.</p>
+              <p className="text-white font-semibold">So we built the platform we wished existed.</p>
+            </div>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-white/70">
+              <span className="flex items-center gap-2"><MapPin size={16} className="text-mint-dark" aria-hidden="true" /> Harare, Zimbabwe</span>
+              <span className="hidden sm:block w-px h-5 bg-white/15" aria-hidden="true" />
+              <span className="flex items-center gap-2"><Users size={16} className="text-mint-dark" aria-hidden="true" /> Zimbabwean founding team</span>
+              <span className="hidden sm:block w-px h-5 bg-white/15" aria-hidden="true" />
+              <span className="flex items-center gap-2"><Rocket size={16} className="text-mint-dark" aria-hidden="true" /> Founded 2021</span>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <Reveal><SectionHeader eyebrow="What we stand for" title="Four things we will not compromise on" /></Reveal>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+            {values.map((v) => (
+              <StaggerItem key={v.title}>
+                <div className="border-t border-hairline pt-5">
+                  <IconDisc icon={v.icon} className="mb-4" />
+                  <h3 className="text-lg font-bold text-ink mb-2">{v.title}</h3>
+                  <p className="text-muted leading-relaxed text-[0.95rem]">{v.body}</p>
                 </div>
-                <span className="text-white/60 text-sm font-medium">
-                  Zimbabwean founding team
-                </span>
-              </div>
-              <div className="hidden sm:block w-px h-6 bg-white/10" />
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/15 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-emerald-400 text-xl">
-                    rocket_launch
-                  </span>
-                </div>
-                <span className="text-white/60 text-sm font-medium">
-                  Founded 2021
-                </span>
-              </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
+
+      <Section tone="tint">
+        <Container>
+          <Reveal><SectionHeader eyebrow="The people behind Sellai" title="Small team. Big mission." lede="A small, focused team of Zimbabwean entrepreneurs. We are not here to disrupt anyone. We are here to serve the people already trading." /></Reveal>
+          <Stagger className="grid md:grid-cols-3 gap-x-10 gap-y-8">
+            {team.map((t) => (
+              <StaggerItem key={t.title}>
+                <IconDisc icon={t.icon} className="mb-4" />
+                <h3 className="text-lg font-bold text-ink mb-2">{t.title}</h3>
+                <p className="text-muted leading-relaxed text-[0.95rem]">{t.body}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
+
+      <Section tone="mint">
+        <Container narrow className="text-center">
+          <Reveal>
+            <h2 className="text-3xl md:text-[2.6rem] md:leading-[1.1] font-extrabold text-ink mb-4">Join in.</h2>
+            <p className="text-lg text-ink/75 leading-relaxed max-w-xl mx-auto mb-8">Buyer, seller or runner, there is a place for you in the way Zimbabwe trades next.</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button href="#download" variant="forest" size="lg">Get the app</Button>
+              <Button to="/contact" variant="ghost" size="lg">Contact us</Button>
             </div>
-          </div>
-        </div>
-      </section>
+          </Reveal>
+        </Container>
+      </Section>
 
-      {/* -- Values -- */}
-      <section className="mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            What We Stand For
-          </span>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope]">
-            Our Core Values
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((v) => (
-            <div
-              key={v.title}
-              className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 transition-all hover:bg-primary-container hover:shadow-xl group"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6 group-hover:bg-on-primary-container/10 transition-colors">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl group-hover:text-on-primary-container transition-colors">
-                  {v.icon}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16] group-hover:text-on-primary-container transition-colors">
-                {v.title}
-              </h3>
-              <p className="text-on-surface-variant text-base leading-relaxed group-hover:text-on-primary-container/80 transition-colors">
-                {v.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* -- The Team Behind Sellai -- */}
-      <section className="mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            The People Behind Sellai
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-            Small team. Big mission.
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mx-auto mb-5">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                code
-              </span>
-            </div>
-            <h3 className="text-lg font-bold text-[#111e16] mb-2">
-              Engineering
-            </h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed">
-              We built the entire platform — backend, mobile app, matching
-              engine, and delivery infrastructure — from scratch in Zimbabwe.
-            </p>
-          </div>
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mx-auto mb-5">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                storefront
-              </span>
-            </div>
-            <h3 className="text-lg font-bold text-[#111e16] mb-2">
-              Commerce
-            </h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed">
-              We've sold in WhatsApp groups, listed on Facebook, haggled at
-              markets. We know the pain because we've lived it.
-            </p>
-          </div>
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mx-auto mb-5">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                public
-              </span>
-            </div>
-            <h3 className="text-lg font-bold text-[#111e16] mb-2">
-              Local roots
-            </h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed">
-              Every decision is informed by the reality on the ground — Paynow
-              over Stripe, EcoCash over Apple Pay, PIN handoffs over signatures.
-            </p>
-          </div>
-        </div>
-
-        <p className="text-center text-on-surface-variant text-base mt-10 max-w-xl mx-auto leading-relaxed">
-          We're a small, focused team of Zimbabwean entrepreneurs building the
-          commerce infrastructure our communities deserve. We're not here to
-          disrupt — we're here to serve.
-        </p>
-      </section>
-
-      {/* -- CTA -- */}
-      <section className="mb-24">
-        <div className="bg-primary-container rounded-[2.5rem] px-10 md:px-16 py-16 md:py-20 text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope] text-on-primary-container mb-6">
-            Join the movement.
-          </h2>
-          <p className="text-on-primary-container/70 text-lg leading-relaxed max-w-xl mx-auto mb-10">
-            Whether you're a buyer, seller, or runner — there's a place for you
-            in the future of African commerce.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#download"
-              className="bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg shadow-emerald-500/20"
-            >
-              Get the App
-            </a>
-            <Link
-              to="/contact"
-              className="px-8 py-4 rounded-xl font-bold text-lg border-2 border-on-primary-container/30 text-on-primary-container hover:bg-on-primary-container/5 transition-all"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* -- Download -- */}
-      <DownloadSection variant="accent" />
+      <DownloadSection />
     </main>
-  );
+  )
 }

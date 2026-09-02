@@ -1,96 +1,130 @@
 @import "tailwindcss";
 
-@theme {
-  /* Sellai brand ramp — "Forest & Mint" (2026-09-01). Overrides Tailwind's stock
-     emerald so every emerald-* class on the site renders the real brand:
-     bright #1EC27A is the accent (dark text on it), forest #0B3F2E the anchor
-     (white text on it). Mirrors mobile-native/src/constants/theme.ts. */
-  --color-emerald-50: #EDFAF2;
-  --color-emerald-100: #D6F5E3;
-  --color-emerald-200: #A7E8C6;
-  --color-emerald-300: #8FE3BB;
-  --color-emerald-400: #3BD991;
-  --color-emerald-500: #1EC27A;
-  --color-emerald-600: #128A58;
-  --color-emerald-700: #0F6B4A;
-  --color-emerald-800: #0F5A40;
-  --color-emerald-900: #0B3F2E;
-  --color-emerald-950: #08301F;
-  --color-surface-bright: #eefdf0;
-  --color-inverse-surface: #26332a;
-  --color-surface-container: #e2f2e4;
-  --color-on-secondary-fixed-variant: #004395;
-  --color-on-primary-fixed: #08301F;
-  --color-error: #ba1a1a;
-  --color-on-surface-variant: #3c4a42;
-  --color-on-error: #ffffff;
-  --color-tertiary-container: #e29100;
-  --color-on-surface: #111e16;
-  --color-inverse-on-surface: #e5f5e7;
-  --color-surface-tint: #0B3F2E;
-  --color-surface-dim: #ceded1;
-  --color-outline-variant: #bbcabf;
-  --color-on-primary: #ffffff;
-  --color-background: #eefdf0;
-  --color-primary: #0B3F2E;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-variant: #d7e7d9;
-  --color-secondary: #0058be;
-  --color-secondary-container: #2170e4;
-  --color-on-secondary: #ffffff;
-  --color-tertiary-fixed: #ffddb8;
-  --color-on-tertiary-fixed-variant: #653e00;
-  --color-primary-container: #1EC27A;
-  --color-tertiary-fixed-dim: #ffb95f;
-  --color-secondary-fixed: #d8e2ff;
-  --color-tertiary: #855300;
-  --color-secondary-fixed-dim: #adc6ff;
-  --color-on-tertiary-container: #523200;
-  --color-surface-container-high: #dcecdf;
-  --color-outline: #6c7a71;
-  --color-on-tertiary: #ffffff;
-  --color-inverse-primary: #3BD991;
-  --color-primary-fixed-dim: #3BD991;
-  --color-on-background: #111e16;
-  --color-primary-fixed: #8FE3BB;
-  --color-on-secondary-container: #fefcff;
-  --color-on-primary-fixed-variant: #0F5A40;
-  --color-on-primary-container: #0A1F14;
-  --color-error-container: #ffdad6;
-  --color-surface: #eefdf0;
-  --color-on-secondary-fixed: #001a42;
-  --color-on-tertiary-fixed: #2a1700;
-  --color-surface-container-low: #e8f8ea;
-  --color-surface-container-highest: #d7e7d9;
-  --color-on-error-container: #93000a;
+/*
+  Sellai marketing site — design tokens.
 
-  --font-family-headline: 'Manrope', sans-serif;
-  --font-family-body: 'Inter', sans-serif;
-  --font-family-label: 'Inter', sans-serif;
+  Mirrors mobile-native/src/constants/theme.ts ("Forest & Mint", 2026-09-01).
+  Two-colour brand: FOREST #0B3F2E is the anchor (white text on it),
+  BRIGHT MINT #1EC27A is the accent (dark text on it, never used as body text —
+  it is only 2.3:1 on white). Green *text* uses `primary-text` #0F6B4A (6.5:1).
+
+  Rule of thumb: if a colour isn't in this block, it doesn't belong on the site.
+*/
+@theme {
+  /* Brand */
+  --color-forest: #0B3F2E;
+  --color-forest-light: #0F5A40;
+  --color-forest-deep: #08301F;
+  --color-mint: #1EC27A;
+  --color-mint-edge: #19B872;
+  --color-mint-light: #8FE3BB;
+  --color-mint-100: #D6F5E3;
+  --color-mint-50: #EDFAF2;
+  --color-mint-dark: #3BD991; /* money / CTA text on dark surfaces */
+
+  /* Ink and surfaces */
+  --color-ink: #0A1F14;
+  --color-muted: #5F6E66;
+  --color-faint: #8A9790;
+  --color-page: #F4F6F4;
+  --color-surface: #FFFFFF;
+  --color-hairline: #DCE5DF;
+  --color-dark: #0E1B13;      /* dark bands */
+  --color-dark-raised: #152419;
+  --color-dark-hairline: #223328;
+
+  /* AA-safe green for text on light surfaces */
+  --color-primary-text: #0F6B4A;
+
+  /* Semantic (fill / text pairs from the app) */
+  --color-error: #D93A2B;
+  --color-error-text: #B42318;
+  --color-error-bg: #FBE9E7;
+  --color-warning: #C77A00;
+  --color-warning-text: #8A5A00;
+  --color-warning-bg: #FBF0DC;
+  --color-info: #2F6FDB;
+  --color-info-text: #24549F;
+  --color-info-bg: #E4EDF9;
+
+  /* Legacy aliases still used by the legal pages */
+  --color-primary: #0F6B4A;
+  --color-on-surface: #0A1F14;
+  --color-on-surface-variant: #5F6E66;
+
+  --font-display: 'Manrope', system-ui, sans-serif;
+  --font-body: 'Noto Sans', system-ui, sans-serif;
+
+  --radius-card: 20px;
+  --radius-button: 12px;
+
+  --shadow-card: 0 1px 2px rgba(10, 31, 20, 0.04), 0 8px 24px -12px rgba(10, 31, 20, 0.10);
+  --shadow-lift: 0 2px 4px rgba(10, 31, 20, 0.06), 0 16px 40px -16px rgba(10, 31, 20, 0.18);
+  --shadow-phone: 0 30px 60px -24px rgba(10, 31, 20, 0.35), 0 0 0 1px rgba(10, 31, 20, 0.06);
 }
+
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-family-body);
   margin: 0;
-  background-color: #eefdf0;
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10C15 15 25 5 35 15C45 25 55 5 65 15C75 25 85 15 85 15' stroke='%23006c49' stroke-width='0.5' fill='none' opacity='0.03'/%3E%3Cpath d='M0 40C10 50 20 30 30 40C40 50 50 30 60 40C70 50 80 30 90 40' stroke='%23006c49' stroke-width='0.5' fill='none' opacity='0.03'/%3E%3Cpath d='M-10 70C0 80 10 60 20 70C30 80 40 60 50 70C60 80 70 60 80 70' stroke='%23006c49' stroke-width='0.5' fill='none' opacity='0.03'/%3E%3C/svg%3E");
-  background-attachment: fixed;
+  font-family: var(--font-body);
+  background-color: var(--color-page);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4, .font-headline {
-  font-family: var(--font-family-headline);
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+p { text-wrap: pretty; }
+
+/* Eyebrow: 12px, +0.08em, AA green — the app's caps-tracked label */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-text);
+}
+.eyebrow-on-dark { color: var(--color-mint-dark); }
+.eyebrow-runner { color: var(--color-warning-text); }
+
+/* Tabular figures wherever numbers line up */
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Entrance: visible at rest, a short rise on load. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: rise 560ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.reveal-2 { animation-delay: 90ms; }
+.reveal-3 { animation-delay: 180ms; }
+.reveal-4 { animation-delay: 270ms; }
+
+/* Runner map dot */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.35); opacity: 0.5; }
+}
+.pulse-dot { transform-origin: center; animation: pulse-dot 2.2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-2, .reveal-3, .reveal-4, .pulse-dot { animation: none; }
+  * { transition-duration: 0.01ms !important; }
 }
 
-.bloom-shadow {
-  box-shadow: 0 20px 48px -10px rgba(17, 30, 22, 0.04);
+/* Focus: visible, brand-coloured, never removed */
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--color-mint);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
+::selection { background: var(--color-mint-100); color: var(--color-ink); }

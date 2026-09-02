@@ -1,190 +1,129 @@
-import { DownloadSection } from "../components/DownloadSection";
+import { useState, type FormEvent } from 'react'
+import { Check, Handshake, Mail, MapPin } from 'lucide-react'
+import { useMeta } from '../hooks/useMeta'
+import { Button, Card, Container, IconDisc, Section } from '../components/ui'
+import { Reveal } from '../components/motion'
+import { CONTACT_EMAIL } from '../constants/downloads'
+import { DownloadSection } from '../components/DownloadSection'
+
+const subjects = [
+  { value: 'General question', label: 'General question' },
+  { value: 'Partnership', label: 'Partnership' },
+  { value: 'Support', label: 'Help with the app' },
+  { value: 'Press', label: 'Press' },
+]
+
+const inputCls = 'w-full h-12 bg-surface rounded-[12px] px-4 text-ink placeholder:text-faint border border-hairline focus:border-mint focus:outline-none focus:ring-2 focus:ring-mint/30 transition-[border-color,box-shadow]'
 
 export default function Contact() {
+  useMeta('Contact Sellai', 'Questions, partnerships, press or help with the app. Email hello@sellai.africa or send a message from this page.', '/contact')
+  const [sent, setSent] = useState(false)
+
+  /*
+   * The site has no server of its own, so the form composes an email in the
+   * visitor's mail app with everything filled in. When a backend contact
+   * endpoint exists, swap this for a fetch and keep the same success state.
+   */
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const f = new FormData(e.currentTarget)
+    const name = String(f.get('name') || '').trim()
+    const email = String(f.get('email') || '').trim()
+    const subject = String(f.get('subject') || 'General question')
+    const message = String(f.get('message') || '').trim()
+    const body = `${message}\n\n— ${name}${email ? ` (${email})` : ''}`
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`${subject} · from the website`)}&body=${encodeURIComponent(body)}`
+    setSent(true)
+  }
+
   return (
-    <main className="pt-32 pb-24 px-6 md:px-8 max-w-7xl mx-auto">
-      {/* -- Hero -- */}
-      <section className="mb-20 text-center">
-        <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-          Get in Touch
-        </span>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
-          We'd love to hear from you.
-        </h1>
-        <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto">
-          Whether you have a question, partnership inquiry, or just want to say
-          hello — we're here for you.
-        </p>
-      </section>
+    <main className="pt-16">
+      <Section className="!pb-10">
+        <Container className="text-center">
+          <Reveal>
+            <div className="eyebrow mb-4">Get in touch</div>
+            <h1 className="text-[2.75rem] leading-[1.02] md:text-[4rem] font-extrabold text-ink max-w-3xl mx-auto">We'd love to hear from you.</h1>
+            <p className="mt-6 text-lg md:text-xl text-muted leading-relaxed max-w-2xl mx-auto">A question, a partnership idea, or something not working in the app. We read everything.</p>
+          </Reveal>
+        </Container>
+      </Section>
 
-      {/* -- Two Column Layout -- */}
-      <section className="mb-24 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        {/* Left: Contact Info */}
-        <div className="space-y-6">
-          {/* Email Card */}
-          <div className="glass-card rounded-2xl p-8 border border-white/40 bloom-shadow">
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                  mail
-                </span>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-on-surface font-[Manrope] mb-1">
-                  Email
-                </h3>
-                <a
-                  href="mailto:hello@sellai.africa"
-                  className="text-primary font-medium hover:underline"
-                >
-                  hello@sellai.africa
-                </a>
-              </div>
+      <Section className="!pt-0">
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <ul className="list-none m-0 p-0">
+                  <li className="flex gap-4 py-5 border-t border-hairline">
+                    <IconDisc icon={Mail} />
+                    <div>
+                      <h2 className="text-[1.05rem] font-bold text-ink mb-1">Email</h2>
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary-text font-semibold hover:underline underline-offset-4">{CONTACT_EMAIL}</a>
+                    </div>
+                  </li>
+                  <li className="flex gap-4 py-5 border-t border-hairline">
+                    <IconDisc icon={MapPin} />
+                    <div>
+                      <h2 className="text-[1.05rem] font-bold text-ink mb-1">Where we are</h2>
+                      <p className="text-muted">Harare, Zimbabwe</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-4 py-5 border-t border-b border-hairline">
+                    <IconDisc icon={Handshake} />
+                    <div>
+                      <h2 className="text-[1.05rem] font-bold text-ink mb-1">Partnerships</h2>
+                      <p className="text-muted leading-relaxed">Working with sellers’ associations, delivery fleets or payment providers? Say so in the subject and we will reply within a working day.</p>
+                    </div>
+                  </li>
+                </ul>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-7">
+              <Reveal delay={0.1}>
+                <Card className="p-7 md:p-9">
+                  {sent ? (
+                    <div className="text-center py-8">
+                      <IconDisc icon={Check} size="lg" className="mx-auto mb-4" />
+                      <h2 className="text-2xl font-extrabold text-ink mb-2">Your email app should be open.</h2>
+                      <p className="text-muted leading-relaxed max-w-md mx-auto">We filled in your message. Hit send there and it lands with us. If nothing opened, email <a className="text-primary-text font-semibold hover:underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> directly.</p>
+                      <Button variant="link" className="mt-6" onClick={() => setSent(false)}>Write another message</Button>
+                    </div>
+                  ) : (
+                    <form onSubmit={onSubmit} className="space-y-5">
+                      <h2 className="text-2xl font-extrabold text-ink">Send us a message</h2>
+                      <div className="grid sm:grid-cols-2 gap-5">
+                        <div>
+                          <label htmlFor="name" className="block text-sm font-semibold text-ink mb-2">Name</label>
+                          <input id="name" name="name" type="text" required autoComplete="name" placeholder="Your name" className={inputCls} />
+                        </div>
+                        <div>
+                          <label htmlFor="email" className="block text-sm font-semibold text-ink mb-2">Email</label>
+                          <input id="email" name="email" type="email" required autoComplete="email" placeholder="you@example.com" className={inputCls} />
+                        </div>
+                      </div>
+                      <div>
+                        <label htmlFor="subject" className="block text-sm font-semibold text-ink mb-2">What is it about?</label>
+                        <select id="subject" name="subject" className={inputCls}>
+                          {subjects.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="message" className="block text-sm font-semibold text-ink mb-2">Message</label>
+                        <textarea id="message" name="message" rows={6} required placeholder="How can we help?" className={`${inputCls} !h-auto py-3 resize-none`} />
+                      </div>
+                      <Button type="submit" variant="forest" size="lg" className="w-full">Send message</Button>
+                      <p className="text-xs text-muted text-center">Opens in your email app, addressed to {CONTACT_EMAIL}.</p>
+                    </form>
+                  )}
+                </Card>
+              </Reveal>
             </div>
           </div>
+        </Container>
+      </Section>
 
-          {/* Location Card */}
-          <div className="glass-card rounded-2xl p-8 border border-white/40 bloom-shadow">
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                  location_on
-                </span>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-on-surface font-[Manrope] mb-1">
-                  Location
-                </h3>
-                <p className="text-on-surface-variant">Harare, Zimbabwe</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Partnership Note */}
-          <div className="glass-card rounded-2xl p-8 border border-white/40 bloom-shadow">
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">
-                  handshake
-                </span>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-on-surface font-[Manrope] mb-1">
-                  Partnerships
-                </h3>
-                <p className="text-on-surface-variant leading-relaxed">
-                  Have a partnership inquiry? Reach out and our team will respond
-                  within 24 hours.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Contact Form */}
-        <div className="glass-card rounded-2xl p-8 md:p-10 border border-white/40 bloom-shadow">
-          <h2 className="text-2xl font-extrabold font-[Manrope] mb-8">
-            Send us a message
-          </h2>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-            className="space-y-5"
-          >
-            {/* Name */}
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-semibold text-on-surface mb-2"
-              >
-                Name
-              </label>
-              <input
-                id="name"
-                type="text"
-                placeholder="Your full name"
-                className="w-full bg-surface-container-lowest rounded-xl px-5 py-3.5 text-on-surface placeholder:text-on-surface-variant/50 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
-              />
-            </div>
-
-            {/* Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold text-on-surface mb-2"
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                className="w-full bg-surface-container-lowest rounded-xl px-5 py-3.5 text-on-surface placeholder:text-on-surface-variant/50 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
-              />
-            </div>
-
-            {/* Subject */}
-            <div>
-              <label
-                htmlFor="subject"
-                className="block text-sm font-semibold text-on-surface mb-2"
-              >
-                Subject
-              </label>
-              <select
-                id="subject"
-                className="w-full bg-surface-container-lowest rounded-xl px-5 py-3.5 text-on-surface border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
-              >
-                <option value="general">General Inquiry</option>
-                <option value="partnership">Partnership</option>
-                <option value="support">Support</option>
-                <option value="press">Press</option>
-              </select>
-            </div>
-
-            {/* Message */}
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-semibold text-on-surface mb-2"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                placeholder="How can we help?"
-                className="w-full bg-surface-container-lowest rounded-xl px-5 py-3.5 text-on-surface placeholder:text-on-surface-variant/50 border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all resize-none"
-              />
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-emerald-500/20"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
-
-      {/* -- Download CTA -- */}
-      <section className="mb-12 text-center">
-        <p className="text-on-surface-variant text-lg">
-          Prefer to download the app?{" "}
-          <a
-            href="#download"
-            className="text-primary font-semibold hover:underline"
-          >
-            Get Sellai now
-          </a>
-        </p>
-      </section>
-
-      {/* -- Download -- */}
-      <DownloadSection />
+      <DownloadSection tone="tint" />
     </main>
-  );
+  )
 }

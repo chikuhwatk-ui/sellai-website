@@ -1,53 +1,41 @@
-import { ANDROID_APK_URL } from '../constants/downloads'
+import { Smartphone } from 'lucide-react'
+import { ANDROID_APK_URL, IOS_WAITLIST_MAILTO } from '../constants/downloads'
+import { Button, BrandIcon, Container, Section } from './ui'
+import { Reveal } from './motion'
 
-export function DownloadSection({ variant = 'default' }: { variant?: 'default' | 'dark' | 'accent' }) {
-  const isDark = variant === 'dark'
-  const isAccent = variant === 'accent'
+type Tone = 'page' | 'tint' | 'dark' | 'forest'
+
+/**
+ * The one place the phone download lives. Android is live (direct .apk);
+ * iPhone is in progress, so instead of a dead App Store button we offer a
+ * one-click "tell me when" email.
+ */
+export function DownloadSection({ tone = 'page', id = 'download', heading = 'Get Sellai on your phone', lede }: { tone?: Tone; id?: string; heading?: string; lede?: string }) {
+  const onDark = tone === 'dark' || tone === 'forest'
+  const text = lede ?? 'Free to download. Buyers never pay Sellai. Sellers buy credits only when they want to send an offer.'
 
   return (
-    <section id="download" className={`py-24 px-8 ${isDark ? 'bg-[#0E1B13]' : isAccent ? 'bg-primary-container' : ''}`}>
-      <div className={`max-w-4xl mx-auto text-center ${isDark ? 'text-white' : isAccent ? 'text-on-primary-container' : 'text-on-background'}`}>
-        <span className={`text-xs font-bold uppercase tracking-widest mb-4 block ${isDark ? 'text-emerald-400' : isAccent ? 'text-on-primary-container/70' : 'text-primary'}`}>
-          Get Started Today
-        </span>
-        <h2 className="text-4xl md:text-5xl font-extrabold font-[Manrope] tracking-tight mb-6">
-          Download the Sellai App
-        </h2>
-        <p className={`text-lg mb-12 max-w-2xl mx-auto leading-relaxed ${isDark ? 'text-slate-400' : isAccent ? 'text-on-primary-container/80' : 'text-on-surface-variant'}`}>
-          Available on iOS and Android. The marketplace where buyers post demands and verified sellers respond.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href={ANDROID_APK_URL}
-            className={`px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all shadow-lg ${
-              isDark
-                ? 'bg-white text-[#0E1B13] shadow-white/10'
-                : isAccent
-                  ? 'bg-on-primary-container text-white shadow-on-primary-container/20'
-                  : 'bg-gradient-to-r from-[#0F5A40] to-[#0B3F2E] text-white shadow-emerald-500/20'
-            }`}
-          >
-            <span className="material-symbols-outlined">android</span>
-            Download for Android
-          </a>
-          <a
-            href="#download"
-            className={`px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all ${
-              isDark
-                ? 'bg-white/10 text-white border border-white/20'
-                : isAccent
-                  ? 'bg-white/20 backdrop-blur-md text-on-primary-container border border-on-primary-container/20'
-                  : 'bg-white border border-outline-variant/30 text-on-surface'
-            }`}
-          >
-            <span className="material-symbols-outlined">phone_iphone</span>
-            App Store
-          </a>
-        </div>
-        <p className={`text-xs mt-6 ${isDark ? 'text-slate-500' : isAccent ? 'text-on-primary-container/50' : 'text-on-surface-variant/60'}`}>
-          Free to download.
-        </p>
-      </div>
-    </section>
+    <Section tone={tone} id={id}>
+      <Container narrow className="text-center">
+        <Reveal>
+          <div className={`eyebrow mb-3 ${onDark ? 'eyebrow-on-dark' : ''}`}>Get started</div>
+          <h2 className={`text-3xl md:text-[2.6rem] md:leading-[1.1] font-extrabold ${onDark ? 'text-white' : 'text-ink'}`}>{heading}</h2>
+          <p className={`mt-4 text-lg leading-relaxed max-w-xl mx-auto ${onDark ? 'text-white/70' : 'text-muted'}`}>{text}</p>
+
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <Button href={ANDROID_APK_URL} variant={onDark ? 'mint' : 'forest'} size="lg" icon={() => <BrandIcon name="android" size={20} />} ariaLabel="Download Sellai for Android">
+              Download for Android
+            </Button>
+            <Button href={IOS_WAITLIST_MAILTO} variant={onDark ? 'ghost-dark' : 'ghost'} size="lg" icon={Smartphone} ariaLabel="iPhone app coming soon, email us to be notified">
+              iPhone · tell me when
+            </Button>
+          </div>
+          <p className={`mt-4 text-sm ${onDark ? 'text-white/55' : 'text-muted'}`}>
+            Android 8 or newer. Direct .apk, so your phone may ask you to allow installs from your browser.
+            <span className="block mt-1">iPhone app in progress.</span>
+          </p>
+        </Reveal>
+      </Container>
+    </Section>
   )
 }

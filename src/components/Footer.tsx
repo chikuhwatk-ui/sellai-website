@@ -1,72 +1,71 @@
 import { Link } from 'react-router-dom'
-import { ANDROID_APK_URL, WINDOWS_MSI_URL } from '../constants/downloads'
+import { Smartphone } from 'lucide-react'
+import { ANDROID_APK_URL, WINDOWS_MSI_URL, IOS_WAITLIST_MAILTO, MAC_WAITLIST_MAILTO, CONTACT_EMAIL } from '../constants/downloads'
+import { BrandIcon } from './ui'
+
+function Chip({ href, children, soon = false, label }: { href: string; children: React.ReactNode; soon?: boolean; label: string }) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      className={`inline-flex items-center gap-2 h-9 px-3 rounded-[10px] text-xs font-bold transition-colors ${soon ? 'bg-white/5 text-white/60 hover:text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
+    >
+      {children}
+      {soon && <span className="text-[9px] uppercase tracking-[0.06em] text-mint-dark">Soon</span>}
+    </a>
+  )
+}
 
 export function Footer() {
   return (
-    <footer className="bg-[#0E1B13] text-white">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8 py-16">
-        <div className="space-y-6">
-          <div className="text-emerald-400 font-bold text-xl font-[Manrope]">Sellai</div>
-          <p className="text-slate-400 text-sm leading-relaxed">
-            Connecting buyers, sellers, and runners across Zimbabwe. Transparent local commerce, built for trust.
+    <footer className="bg-dark text-white">
+      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div className="md:col-span-4 space-y-4">
+          <div className="font-display text-xl font-extrabold tracking-[-0.03em] text-mint-dark">Sellai</div>
+          <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+            Buyers post what they need. Verified local sellers send offers. Runners deliver with a PIN-secured handoff. Built in Harare.
           </p>
         </div>
-        <div className="flex flex-col gap-4">
-          <h5 className="text-emerald-500 font-bold uppercase tracking-widest text-xs">Product</h5>
-          <Link className="text-slate-400 hover:text-white transition-colors text-sm" to="/product">How It Works</Link>
-          <Link className="text-slate-400 hover:text-white transition-colors text-sm" to="/for-sellers">For Sellers</Link>
-          <Link className="text-slate-400 hover:text-white transition-colors text-sm" to="/for-runners">For Runners</Link>
+
+        <div className="md:col-span-2 flex flex-col gap-3">
+          <h2 className="eyebrow eyebrow-on-dark">Product</h2>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/product">How it works</Link>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/for-sellers">For sellers</Link>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/for-runners">For runners</Link>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/desktop">Desktop app</Link>
         </div>
-        <div className="flex flex-col gap-4">
-          <h5 className="text-emerald-500 font-bold uppercase tracking-widest text-xs">Company</h5>
-          <Link className="text-slate-400 hover:text-white transition-colors text-sm" to="/about">About Us</Link>
-          <Link className="text-slate-400 hover:text-white transition-colors text-sm" to="/contact">Contact</Link>
-          <Link className="text-slate-400 hover:text-white transition-colors text-sm" to="/privacy">Privacy Policy</Link>
-          <Link className="text-slate-400 hover:text-white transition-colors text-sm" to="/terms">Terms of Service</Link>
+
+        <div className="md:col-span-2 flex flex-col gap-3">
+          <h2 className="eyebrow eyebrow-on-dark">Company</h2>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/about">About</Link>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/contact">Contact</Link>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/privacy">Privacy policy</Link>
+          <Link className="text-white/70 hover:text-white transition-colors text-sm" to="/terms">Terms of service</Link>
         </div>
-        <div className="flex flex-col gap-4">
-          <h5 className="text-emerald-500 font-bold uppercase tracking-widest text-xs">Get in Touch</h5>
-          <p className="text-slate-400 text-sm">Harare, Zimbabwe</p>
-          <a className="text-slate-400 hover:text-emerald-400 transition-colors text-sm" href="mailto:hello@sellai.africa">hello@sellai.africa</a>
-          <div className="pt-2 space-y-4" id="download">
-            <div>
-              <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-2">Mobile · for everyone</p>
-              <div className="flex flex-wrap gap-2">
-                <a href={ANDROID_APK_URL} title="Android — direct .apk download" aria-label="Download for Android" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
-                  <span className="material-symbols-outlined text-sm">android</span>
-                  <span>Android</span>
-                </a>
-                <a href="#download" title="iOS — App Store" aria-label="Download for iOS" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
-                  <span className="material-symbols-outlined text-sm">phone_iphone</span>
-                  <span>iOS</span>
-                </a>
-              </div>
-            </div>
-            <div>
-              <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-2">Desktop · for sellers</p>
-              <div className="flex flex-wrap gap-2">
-                <Link to="/desktop" title="macOS download" aria-label="Download for Mac" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M16.365 1.43c0 1.14-.46 2.226-1.21 3.013-.81.838-2.13 1.483-3.213 1.398-.13-1.116.42-2.27 1.166-3.046C13.94 1.926 15.27 1.34 16.365 1.43zm3.96 17.058c-.62 1.39-.92 2.01-1.71 3.24-1.1 1.7-2.66 3.81-4.59 3.83-1.71.02-2.15-1.12-4.47-1.1-2.32.01-2.81 1.13-4.52 1.11-1.93-.02-3.4-1.95-4.5-3.65-3.07-4.74-3.39-10.31-1.5-13.27 1.34-2.11 3.46-3.34 5.45-3.34 2.04 0 3.32 1.12 5.01 1.12 1.64 0 2.64-1.12 5-1.12 1.78 0 3.66.97 5 2.65-4.39 2.4-3.68 8.67.83 10.53z" />
-                  </svg>
-                  <span>Mac</span>
-                </Link>
-                <a href={WINDOWS_MSI_URL} title="Windows — direct .msi download" aria-label="Download for Windows" className="bg-white/10 hover:bg-white/20 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M0 3.449L9.75 2.1v9.451H0V3.449zm0 17.052V12h9.75v9.602L0 20.501zm10.949-19.06L24 0v11.4H10.949V1.441zM10.949 24V12.6H24V24l-13.051-1.06z" />
-                  </svg>
-                  <span>Windows</span>
-                </a>
-              </div>
-            </div>
+
+        <div className="md:col-span-4 flex flex-col gap-3" id="download-footer">
+          <h2 className="eyebrow eyebrow-on-dark">Get Sellai</h2>
+          <p className="text-white/50 text-[11px] uppercase tracking-[0.08em] font-bold">Phone · everyone</p>
+          <div className="flex flex-wrap gap-2">
+            <Chip href={ANDROID_APK_URL} label="Download Sellai for Android"><BrandIcon name="android" size={14} /> Android</Chip>
+            <Chip href={IOS_WAITLIST_MAILTO} label="iPhone app coming soon, email us to be notified" soon><Smartphone size={14} aria-hidden="true" /> iPhone</Chip>
+          </div>
+          <p className="text-white/50 text-[11px] uppercase tracking-[0.08em] font-bold mt-2">Computer · sellers</p>
+          <div className="flex flex-wrap gap-2">
+            <Chip href={WINDOWS_MSI_URL} label="Download Sellai Business for Windows"><BrandIcon name="windows" size={13} /> Windows</Chip>
+            <Chip href={MAC_WAITLIST_MAILTO} label="Mac app coming soon, email us to be notified" soon><BrandIcon name="apple" size={14} /> Mac</Chip>
+          </div>
+          <div className="pt-3 text-sm text-white/70">
+            <div>Harare, Zimbabwe</div>
+            <a className="hover:text-mint-dark transition-colors" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-8 py-8 border-t border-white/5 text-slate-500 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
-        <span>&copy; {new Date().getFullYear()} Sellai. All rights reserved.</span>
+      <div className="max-w-6xl mx-auto px-6 py-6 border-t border-white/10 text-white/45 text-xs flex flex-col md:flex-row justify-between items-center gap-3">
+        <span>&copy; {new Date().getFullYear()} Sellai (Pvt) Ltd. All rights reserved.</span>
         <div className="flex gap-6">
-          <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy</Link>
-          <Link to="/terms" className="hover:text-slate-300 transition-colors">Terms</Link>
+          <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+          <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
         </div>
       </div>
     </footer>

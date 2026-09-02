@@ -14,8 +14,8 @@ import { envValue } from '../config/siteMode'
 
 const WANTS = ['a phone', 'a dress for Saturday', 'a plumber', 'a birthday cake', 'school shoes', 'a sofa', 'a mechanic', 'a laptop charger']
 
-const WAITLIST_ENDPOINT = (import.meta.env.VITE_WAITLIST_ENDPOINT || '').trim()
-const WHATSAPP = (import.meta.env.VITE_WHATSAPP_NUMBER || '').replace(/[^\d]/g, '')
+const WAITLIST_ENDPOINT = envValue(import.meta.env.VITE_WAITLIST_ENDPOINT)
+const WHATSAPP = envValue(import.meta.env.VITE_WHATSAPP_NUMBER).replace(/[^\d]/g, '')
 
 function Rings() {
   return (

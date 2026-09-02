@@ -419,10 +419,10 @@ export default function Privacy() {
             <p>
               Email:{" "}
               <a
-                href="mailto:privacy@sellai.app"
+                href="mailto:privacy@sellai.africa"
                 className="text-primary font-semibold hover:underline"
               >
-                privacy@sellai.app
+                privacy@sellai.africa
               </a>
             </p>
             <p>Data Controller: Sellai (Pvt) Ltd</p>

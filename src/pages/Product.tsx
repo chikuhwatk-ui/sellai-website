@@ -1,519 +1,141 @@
+import { Check, History, KeyRound, LocateFixed, Phone, ShieldCheck, Zap, ClipboardPen, ArrowLeftRight, Bike, BellRing, Send, TrendingUp, Route, Banknote, Map } from 'lucide-react'
+import { useMeta } from '../hooks/useMeta'
+import { Card, Container, FeatureList, IconDisc, PhoneFrame, Section, SectionHeader } from '../components/ui'
+import { Reveal, Stagger, StaggerItem } from '../components/motion'
+import { BuyerScreen, SellerScreen, RunnerScreen } from '../components/AppScreens'
 import { DownloadSection } from '../components/DownloadSection'
 import { DesktopDownloadSection } from '../components/DesktopDownloadSection'
 
-export default function Product() {
+const buyer = [
+  { icon: ClipboardPen, title: 'Post your demand', body: 'What you need, one budget number, your area, and a photo if it helps. Sellers nearby see it within minutes.' },
+  { icon: ArrowLeftRight, title: 'Compare offers', body: 'Each offer shows the price, the seller’s distance, and their trust score out of 100. Chat before you decide.' },
+  { icon: Bike, title: 'Collect or get it delivered', body: 'Meet the seller in person, or book a runner. You watch the runner live and confirm the handoff with your 4-digit PIN.' },
+]
+
+const seller = [
+  { icon: BellRing, title: 'Requests come to you', body: 'When a buyer near you posts something in your categories, you get a notification. No scrolling, no guessing.' },
+  { icon: Send, title: 'Send your offer', body: 'Your price and your terms. Sending costs one credit, always. Browsing is free.' },
+  { icon: TrendingUp, title: 'Build a reputation that follows you', body: 'Ratings, response time and deals won feed a trust score out of 100 that buyers see on every offer.' },
+]
+
+const runner = [
+  { icon: Map, title: 'See where the work is', body: 'A live heatmap shows where delivery requests are forming so you can position yourself before they land.' },
+  { icon: Route, title: 'Bid, pick up, deliver', body: 'Place a bid on a request. When the seller accepts, follow the route from pickup to dropoff.' },
+  { icon: Banknote, title: 'Paid in cash at handoff', body: 'The buyer pays you directly when they enter their PIN. Sellai takes 10% of the delivery fee from your wallet. Nothing to wait for.' },
+]
+
+const security = [
+  { icon: ShieldCheck, title: 'Seller identity checks', body: 'Every seller submits an ID and a selfie before they can send an offer. Reviewed by a person, usually within 24 hours.' },
+  { icon: Phone, title: 'Every account is a real phone number', body: 'Buyers, sellers and runners all sign in with a verified number. Buyers can add an ID check to their profile too.' },
+  { icon: KeyRound, title: 'PIN-confirmed handoff', body: 'The buyer holds a 4-digit PIN. The runner cannot mark a delivery complete without it, so nothing goes missing between the two.' },
+  { icon: LocateFixed, title: 'Live tracking', body: 'From pickup to dropoff the runner’s position is shared with the buyer on a map, in real time.' },
+]
+
+const oldWay = ['Search groups and marketplaces', 'Scroll through hundreds of listings', 'DM sellers, wait for replies', 'Negotiate price back and forth', 'Arrange your own transport, no updates', 'Hope it is what you ordered']
+const newWay = ['Post what you need', 'Verified sellers send offers', 'Compare prices and trust scores', 'Accept the best offer', 'Collect in person, or track your runner live', 'Confirm with your PIN. Done.']
+
+function RoleBlock({ eyebrow, title, lede, items, screen, flip = false, dark = false, tone = 'mint' as const, label }: {
+  eyebrow: string; title: string; lede: string; items: typeof buyer; screen: React.ReactNode; flip?: boolean; dark?: boolean; tone?: 'mint' | 'info' | 'warning'; label: string;
+}) {
   return (
-    <main className="pt-32 overflow-hidden">
-      {/* ── Hero ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32 text-center">
-        <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-          Product
-        </span>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Manrope] mb-6">
-          See how Sellai{' '}
-          <span className="bg-gradient-to-r from-[#1EC27A] to-[#0F6B4A] bg-clip-text text-transparent">
-            works.
-          </span>
-        </h1>
-        <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl mx-auto">
-          From posting a demand to receiving your delivery — here's the experience for buyers, sellers, and runners.
-        </p>
-      </section>
+    <div className={`grid lg:grid-cols-12 gap-10 lg:gap-16 items-center ${flip ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+      <Reveal className="lg:col-span-5 flex justify-center">
+        <PhoneFrame label={label}>{screen}</PhoneFrame>
+      </Reveal>
+      <div className="lg:col-span-7">
+        <Reveal>
+          <div className={`eyebrow mb-3 ${dark ? 'eyebrow-on-dark' : ''} ${tone === 'warning' ? 'eyebrow-runner' : ''}`}>{eyebrow}</div>
+          <h2 className={`text-3xl md:text-[2.4rem] md:leading-[1.1] font-extrabold mb-3 ${dark ? 'text-white' : 'text-ink'}`}>{title}</h2>
+          <p className={`text-lg leading-relaxed mb-6 ${dark ? 'text-white/70' : 'text-muted'}`}>{lede}</p>
+          <FeatureList items={items} tone={tone} onDark={dark} />
+        </Reveal>
+      </div>
+    </div>
+  )
+}
 
-      {/* ── For Buyers ── */}
-      <section className="max-w-7xl mx-auto px-6 mb-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            The Buyer Experience
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-            Find what you need, fast
-          </h2>
-        </div>
+export default function Product() {
+  useMeta('How Sellai works', 'From posting a demand to a PIN-confirmed handoff: what buyers, sellers and runners actually see in the Sellai app.', '/product')
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Step 1 — Post Your Demand */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">edit_note</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Post Your Demand</h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Describe what you need and where — sellers nearby will see it instantly.
-            </p>
-            {/* Mockup */}
-            <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 mb-2 block">
-                Your demand
-              </span>
-              <p className="text-on-surface font-semibold text-base mb-3">Floral Dress</p>
-              <div className="flex items-center gap-2 text-xs text-on-surface-variant mb-3 bg-surface-container rounded-lg px-3 py-2 w-fit">
-                <span className="material-symbols-outlined text-base text-primary">attach_file</span>
-                <span className="font-medium">reference.jpg</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-on-surface-variant mb-2">
-                <span className="material-symbols-outlined text-base text-primary">location_on</span>
-                Harare CBD
-              </div>
-              <div className="flex items-center gap-2 text-sm text-on-surface-variant">
-                <span className="material-symbols-outlined text-base text-primary">schedule</span>
-                Today
-              </div>
-            </div>
-          </div>
+  return (
+    <main className="pt-16">
+      <Section className="!pb-8 md:!pb-12">
+        <Container className="text-center">
+          <Reveal>
+            <div className="eyebrow mb-4">How it works</div>
+            <h1 className="text-[2.75rem] leading-[1.02] md:text-[4rem] font-extrabold text-ink max-w-3xl mx-auto">See how Sellai works.</h1>
+            <p className="mt-6 text-lg md:text-xl text-muted leading-relaxed max-w-2xl mx-auto">From posting a demand to a PIN-confirmed handoff. Here is what buyers, sellers and runners actually see.</p>
+          </Reveal>
+        </Container>
+      </Section>
 
-          {/* Step 2 — Compare Offers */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">compare_arrows</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Compare Offers</h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Verified sellers respond with offers. Compare and pick the best fit.
-            </p>
-            {/* Mockup — two offer cards */}
-            <div className="flex flex-col gap-3">
-              <div className="bg-surface-container-lowest rounded-2xl p-5 shadow-lg border-2 border-[#1EC27A]/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold text-sm text-[#111e16]">Lustre Boutique</span>
-                  <span className="text-[#0F6B4A] font-extrabold text-lg">$12.00</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs text-on-surface-variant">
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-amber-500 text-sm">star</span>
-                    4.9
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-sm text-primary">near_me</span>
-                    2.4km
-                  </span>
-                </div>
-              </div>
-              <div className="bg-surface-container-lowest rounded-2xl p-5 shadow-lg">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold text-sm text-[#111e16]">Thread & Soul</span>
-                  <span className="text-on-surface-variant font-extrabold text-lg">$14.50</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs text-on-surface-variant">
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-amber-500 text-sm">star</span>
-                    4.7
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-sm text-primary">near_me</span>
-                    0.8km
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+      <Section>
+        <Container>
+          <RoleBlock eyebrow="Buyers" title="Find what you need, fast." lede="You do the asking once. The sellers do the searching." items={buyer} screen={<BuyerScreen />} tone="info" label="Buyer app showing offers arriving on a demand" />
+        </Container>
+      </Section>
 
-          {/* Step 3 — Track Delivery */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">local_shipping</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Track Your Runner</h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              If you request delivery, track your runner live and confirm the handoff with a secure PIN. Or simply arrange a pickup — your call.
-            </p>
-            {/* Mockup */}
-            <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-[#1EC27A]/15 flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[#0F6B4A] text-xl">electric_bike</span>
-                </div>
-                <div>
-                  <p className="font-bold text-sm text-[#111e16]">Marcus N.</p>
-                  <p className="text-xs text-on-surface-variant">Your runner</p>
-                </div>
-              </div>
-              <div className="bg-[#1EC27A]/10 rounded-xl p-3 mb-3">
-                <p className="text-sm font-semibold text-[#0F6B4A] text-center">5 minutes away</p>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-on-surface-variant">Handoff PIN</span>
-                <span className="font-mono font-bold text-[#111e16] tracking-widest">****</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Section tone="tint">
+        <Container>
+          <RoleBlock eyebrow="Sellers" title="Reach buyers who already want what you sell." lede="No ads, no boosting, no posting into the void. A credit is spent only when you choose to reply." items={seller} screen={<SellerScreen />} flip label="Seller app showing a matched request and the offer form" />
+        </Container>
+      </Section>
 
-      {/* ── For Sellers ── */}
-      <section className="bg-surface-container-low py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-              The Seller Experience
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-              Reach buyers who need you
-            </h2>
-          </div>
+      <Section tone="dark">
+        <Container>
+          <RoleBlock eyebrow="Runners" title="Deliver where the demand is." lede="Stop waiting outside the mall. See requests forming on the map and go where the work is." items={runner} screen={<RunnerScreen />} dark tone="warning" label="Runner app showing the demand heatmap and a delivery request" />
+        </Container>
+      </Section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 — See Live Demands */}
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">feed</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">See Live Demands</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-                See real-time buyer requests in your area, matched to exactly what you sell.
-              </p>
-              {/* Mockup */}
-              <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-blue-600 text-lg">smartphone</span>
-                  </div>
+      <Section>
+        <Container>
+          <Reveal><SectionHeader eyebrow="Built on trust" title="Security at every step" /></Reveal>
+          <Stagger className="grid md:grid-cols-2 gap-x-12 gap-y-2">
+            {security.map((s) => (
+              <StaggerItem key={s.title}>
+                <div className="flex gap-4 py-5 border-t border-hairline">
+                  <IconDisc icon={s.icon} />
                   <div>
-                    <p className="font-bold text-sm text-[#111e16]">iPhone 15 Pro Max</p>
-                    <p className="text-xs text-on-surface-variant mt-1">256GB, Space Black — 1 unit</p>
+                    <h3 className="text-[1.05rem] font-bold text-ink mb-1">{s.title}</h3>
+                    <p className="text-muted leading-relaxed text-[0.95rem]">{s.body}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-xs text-on-surface-variant pt-3 border-t border-outline-variant/20">
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-sm text-primary">near_me</span>
-                    0.8km away
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-sm text-primary">schedule</span>
-                    12 min ago
-                  </span>
-                </div>
-              </div>
-            </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </Section>
 
-            {/* Card 2 — Send Your Offer */}
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">send</span>
+      <Section tone="tint">
+        <Container>
+          <Reveal><SectionHeader eyebrow="The shift" title="The old way, and the Sellai way" /></Reveal>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Reveal>
+              <div className="rounded-[20px] border border-hairline p-7 h-full">
+                <div className="flex items-center gap-3 mb-6"><IconDisc icon={History} tone="error" size="sm" /><h3 className="text-lg font-bold text-muted">The old way</h3></div>
+                <ol className="list-none m-0 p-0 space-y-3">
+                  {oldWay.map((s, i) => (
+                    <li key={s} className="flex items-center gap-3 text-muted"><span className="w-7 h-7 rounded-full bg-page text-muted text-xs font-bold flex items-center justify-center tnum shrink-0">{i + 1}</span>{s}</li>
+                  ))}
+                </ol>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">Send Your Offer</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-                Set your price and terms. One credit per offer.
-              </p>
-              {/* Mockup */}
-              <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-on-surface-variant">Your price</span>
-                    <span className="font-extrabold text-lg text-[#0F6B4A]">$980.00</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-on-surface-variant">Condition</span>
-                    <span className="font-semibold text-sm text-[#111e16]">Brand new, sealed</span>
-                  </div>
-                  <div className="pt-3 border-t border-outline-variant/20 flex items-center justify-between">
-                    <span className="text-xs text-on-surface-variant">Credit cost</span>
-                    <span className="flex items-center gap-1 text-sm font-semibold text-amber-600">
-                      <span className="material-symbols-outlined text-sm">toll</span>
-                      1 credit
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 — Grow Your Reputation */}
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">trending_up</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">Grow Your Reputation</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-                Build trust and win more orders with a strong profile.
-              </p>
-              {/* Mockup */}
-              <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg text-center">
-                <div className="flex items-center justify-center gap-1 mb-1">
-                  <span className="material-symbols-outlined text-amber-500 text-2xl">star</span>
-                  <span className="font-extrabold text-3xl text-[#111e16]">4.9</span>
-                </div>
-                <p className="text-xs text-on-surface-variant mb-4">Trust Score</p>
-                <div className="flex items-center justify-center gap-6">
-                  <div>
-                    <p className="font-bold text-lg text-[#111e16]">120+</p>
-                    <p className="text-[10px] text-on-surface-variant uppercase tracking-wider">Orders</p>
-                  </div>
-                  <div className="w-px h-8 bg-outline-variant/30" />
-                  <div className="flex flex-col items-center">
-                    <span className="material-symbols-outlined text-[#0F6B4A] text-2xl mb-0.5">verified</span>
-                    <p className="text-[10px] text-on-surface-variant uppercase tracking-wider">Verified</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Card lift className="p-7 h-full border-mint-light">
+                <div className="flex items-center gap-3 mb-6"><IconDisc icon={Zap} size="sm" /><h3 className="text-lg font-bold text-primary-text">The Sellai way</h3></div>
+                <ol className="list-none m-0 p-0 space-y-3">
+                  {newWay.map((s) => (
+                    <li key={s} className="flex items-center gap-3 text-ink font-medium"><span className="w-7 h-7 rounded-full bg-mint-100 text-primary-text flex items-center justify-center shrink-0"><Check size={14} strokeWidth={3} aria-hidden="true" /></span>{s}</li>
+                  ))}
+                </ol>
+              </Card>
+            </Reveal>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* ── For Runners ── */}
-      <section className="max-w-7xl mx-auto px-6 py-32">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            The Runner Experience
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-            Deliver and earn
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Card 1 — Accept Deliveries */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">assignment</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Accept Deliveries</h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Browse available tasks near you and pick what works.
-            </p>
-            {/* Mockup */}
-            <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-[#0F6B4A] text-lg mt-0.5">trip_origin</span>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-wider text-on-surface-variant/60">Pickup</p>
-                    <p className="font-semibold text-sm text-[#111e16]">Market Square</p>
-                  </div>
-                </div>
-                <div className="ml-[11px] border-l-2 border-dashed border-outline-variant/40 h-4" />
-                <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined text-primary text-lg mt-0.5">location_on</span>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-wider text-on-surface-variant/60">Dropoff</p>
-                    <p className="font-semibold text-sm text-[#111e16]">5th Avenue</p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-sm">
-                <span className="text-on-surface-variant">Distance</span>
-                <span className="font-bold text-[#111e16]">3.2km</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2 — Navigate & Deliver */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">map</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Navigate & Deliver</h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Follow the optimized route and deliver with confidence.
-            </p>
-            {/* Mockup — stylized map */}
-            <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-              <div className="relative bg-[#e8f8ea] rounded-xl h-36 overflow-hidden">
-                {/* Stylized route lines */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 120" fill="none">
-                  <path d="M30 90 Q60 90 80 60 Q100 30 140 40 Q170 48 175 30" stroke="#1EC27A" strokeWidth="3" strokeLinecap="round" strokeDasharray="0" />
-                  <circle cx="30" cy="90" r="6" fill="#1EC27A" />
-                  <circle cx="175" cy="30" r="6" fill="#0B3F2E" />
-                  {/* Animated runner dot */}
-                  <circle cx="110" cy="38" r="4" fill="#128A58" opacity="0.6">
-                    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
-                  </circle>
-                </svg>
-                <div className="absolute bottom-2 left-3 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-[10px] font-bold text-[#0F6B4A]">
-                  ETA: 8 min
-                </div>
-              </div>
-              <div className="mt-3 flex items-center justify-between text-xs text-on-surface-variant">
-                <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#1EC27A]" />
-                  Pickup
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-[#0B3F2E]" />
-                  Dropoff
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3 — Get Paid */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-[#0F6B4A] text-3xl">payments</span>
-            </div>
-            <h3 className="text-xl font-bold mb-3 text-[#111e16]">Earn Cash Directly</h3>
-            <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-              Your client pays you in person. Sellai deducts a transparent 10% commission — no waiting, no platform payouts, cash in hand.
-            </p>
-            {/* Mockup */}
-            <div className="bg-surface-container-lowest rounded-2xl p-6 shadow-lg">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-on-surface-variant">Order value</span>
-                  <span className="font-semibold text-[#111e16]">$50.00</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-on-surface-variant">Commission (10%)</span>
-                  <span className="font-semibold text-error">— $5.00</span>
-                </div>
-                <div className="flex items-center justify-between text-sm pt-3 border-t border-outline-variant/20">
-                  <span className="text-on-surface-variant font-semibold">You keep</span>
-                  <span className="font-extrabold text-[#0F6B4A] text-lg">$45.00</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Security & Trust ── */}
-      <section className="bg-surface-container-low py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-              Built on Trust
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-              Security at every step
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-16 h-16 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6 mx-auto">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-4xl">verified_user</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">Seller Identity Checks</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">
-                Every seller passes identity verification before they can respond to demands, so you always know who you're dealing with.
-              </p>
-            </div>
-
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-16 h-16 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6 mx-auto">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-4xl">how_to_reg</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">Verified Buyers Too</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
-                Every buyer confirms their identity before posting a demand. No ghost listings, no time-wasters — only real people with real needs.
-              </p>
-              {/* Mockup */}
-              <div className="bg-surface-container-lowest rounded-2xl p-5 shadow-lg text-left">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-[#1EC27A]/15 flex items-center justify-center shrink-0">
-                    <span className="font-bold text-sm text-[#0F6B4A]">TM</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <p className="font-bold text-sm text-[#111e16]">Tendai M.</p>
-                      <span className="material-symbols-outlined text-[#0F6B4A] text-base">verified</span>
-                    </div>
-                    <p className="text-xs text-on-surface-variant">Identity confirmed</p>
-                  </div>
-                </div>
-                <div className="bg-[#1EC27A]/8 rounded-xl px-4 py-2.5 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-[#0F6B4A] text-base">edit_note</span>
-                  <p className="text-xs font-semibold text-[#0F6B4A]">Demand posted by a verified buyer</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-16 h-16 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6 mx-auto">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-4xl">pin_drop</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">PIN-Verified Handoffs</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">
-                Every delivery is confirmed with a unique PIN code shared only between buyer and runner — no mix-ups, no disputes.
-              </p>
-            </div>
-
-            <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border border-white/40 text-center hover:shadow-xl hover:shadow-emerald-900/5 transition-all">
-              <div className="w-16 h-16 rounded-2xl bg-[#1EC27A]/10 flex items-center justify-center mb-6 mx-auto">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-4xl">my_location</span>
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#111e16]">Real-Time Tracking</h3>
-              <p className="text-on-surface-variant text-sm leading-relaxed">
-                Follow your delivery from pickup to dropoff on a live map. Know exactly where your order is at all times.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Old Way vs Sellai Way ── */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-            The Shift
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight font-[Manrope]">
-            The old way vs the Sellai way
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Old Way */}
-          <div className="bg-surface-container-low rounded-[2rem] p-8 border border-outline-variant/20">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
-                <span className="material-symbols-outlined text-red-500 text-xl">history</span>
-              </div>
-              <h3 className="text-xl font-bold text-on-surface-variant">The old way</h3>
-            </div>
-            <div className="flex flex-col gap-4">
-              {[
-                "Search groups & marketplaces",
-                "Scroll through hundreds of listings",
-                "DM sellers, wait for replies",
-                "Negotiate price back and forth",
-                "Arrange your own transport — no updates, no tracking",
-                "Hope it's what you ordered",
-              ].map((step, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <div className="w-8 h-8 rounded-full bg-on-surface-variant/10 flex items-center justify-center shrink-0">
-                    <span className="text-sm font-bold text-on-surface-variant">{i + 1}</span>
-                  </div>
-                  <p className="text-on-surface-variant text-sm">{step}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Sellai Way */}
-          <div className="bg-white/55 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-[#1EC27A]/30 shadow-lg shadow-emerald-900/5">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-[#1EC27A]/10 flex items-center justify-center">
-                <span className="material-symbols-outlined text-[#0F6B4A] text-xl">bolt</span>
-              </div>
-              <h3 className="text-xl font-bold text-[#0F6B4A]">The Sellai way</h3>
-            </div>
-            <div className="flex flex-col gap-4">
-              {[
-                "Post what you need",
-                "Verified sellers send offers",
-                "Compare prices & trust scores",
-                "Accept the best offer",
-                "Collect in person, or track your runner live",
-                "Confirm with PIN — done",
-              ].map((step, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <div className="w-8 h-8 rounded-full bg-[#1EC27A]/15 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-[#0F6B4A] text-lg">check</span>
-                  </div>
-                  <p className="text-on-surface font-medium text-sm">{step}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Sellai Business Desktop ── */}
       <DesktopDownloadSection />
-
-      {/* ── Mobile Download ── */}
-      <DownloadSection variant="accent" />
+      <DownloadSection tone="forest" />
     </main>
   )
 }

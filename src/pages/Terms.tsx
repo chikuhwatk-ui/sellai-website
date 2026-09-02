@@ -376,10 +376,10 @@ export default function Terms() {
             <p>
               Email:{" "}
               <a
-                href="mailto:support@sellai.app"
+                href="mailto:support@sellai.africa"
                 className="text-primary font-semibold hover:underline"
               >
-                support@sellai.app
+                support@sellai.africa
               </a>
             </p>
             <p>Company: Sellai (Pvt) Ltd</p>

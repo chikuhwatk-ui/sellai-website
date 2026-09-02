@@ -41,3 +41,28 @@ the runner in cash at handoff. Sellai only ever charges sellers (credits) and ru
 `public/og.png` is the social preview (1200×630). Regenerate it from `scripts/og.html` with a
 headless browser screenshot if the headline changes. `favicon.svg` is the forest tile with the
 mint S.
+
+## Coming-soon mode (the default)
+
+One variable decides which site people see:
+
+| `VITE_SITE_MODE` | What is served |
+| --- | --- |
+| unset or `coming-soon` | The pre-launch page at every address. `/privacy` and `/terms` stay reachable behind a quiet header. |
+| `full` | The full marketing site. |
+
+To launch: set `VITE_SITE_MODE=full` in the Railway service variables. Railway rebuilds on a
+variable change, and the value is read at build time. To go back to the teaser, remove it.
+
+Optional variables, also set on Railway:
+
+- `VITE_PREVIEW_KEY` — with this set, `https://sellai.africa/?preview=<key>` unlocks the full site
+  for one browser tab while the public still sees the teaser. Good for showing partners.
+- `VITE_WAITLIST_ENDPOINT` — a POST URL (Formspree or similar) that receives `{ contact, source, city }`
+  from the teaser's form. Without it the form composes an email to hello@sellai.africa.
+- `VITE_WHATSAPP_NUMBER` — digits only, international format. Adds a "say hello on WhatsApp" link.
+
+Locally: `npm run dev` shows the teaser, `npm run dev:full` the full site (`.env.full`). Same for
+`npm run build` / `npm run build:full`. The crawler-facing tags in `index.html` (title, description,
+social image) are swapped per mode by the small plugin in `vite.config.ts`, so a link shared on
+WhatsApp pre-launch shows `og-soon.png`, not the product.

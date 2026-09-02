@@ -14,12 +14,13 @@ const steps = [
   { n: '03', title: 'Choose and close', body: 'Pick the offer you like. Meet the seller to collect, or book a runner and confirm the handoff with your PIN.' },
 ]
 
-/* Weights from backend/src/matching/wave-config.ts: distance 40, trust 20, subcategory 15, rating 10, repeat buyer 10, tag overlap 5 */
-const matching = [
-  { icon: Navigation, title: 'Distance first', body: 'Closer sellers rank higher. A phone two blocks away beats one across town.' },
-  { icon: Tags, title: 'Category and tag overlap', body: 'Sellers pick the same product tags buyers do. More overlap, better match.' },
-  { icon: TrendingUp, title: 'Trust score and rating', body: 'A score out of 100 built from ratings, response time and deals completed.' },
-  { icon: Handshake, title: 'People you have dealt with', body: 'A seller who served you well before gets a nudge up the list.' },
+/* Buyer-side benefits. Each one maps to something an offer really carries:
+   price, seller distance, trust score and rosette, chat, and the collect-or-deliver choice. */
+const choosing = [
+  { icon: Tags, title: 'Real prices, up front', body: 'Every offer comes with a price. No “DM for price”, no guessing, no chasing.' },
+  { icon: Navigation, title: 'Sellers near you, not across the country', body: 'Offers come from sellers close enough to collect from today. You see the distance on each one.' },
+  { icon: TrendingUp, title: 'Compare before you commit', body: 'Price, distance and trust score side by side. Chat with any seller before you say yes.' },
+  { icon: Handshake, title: 'Your call on how it ends', body: 'Meet the seller and collect, or book a runner and confirm the handoff with your PIN.' },
 ]
 
 const trust = [
@@ -148,14 +149,14 @@ export default function Home() {
       {/* Matching + trust */}
       <Section tone="tint" className="!pt-0 md:!pt-0">
         <Container className="pt-20 md:pt-28">
-          <Reveal><SectionHeader eyebrow="Why Sellai" title="Matched on what matters. Protected at every step." /></Reveal>
+          <Reveal><SectionHeader eyebrow="Why Sellai" title="You choose. Sellers compete. Every step is protected." /></Reveal>
           <div className="grid lg:grid-cols-2 gap-6">
             <Reveal>
               <Card className="p-8 h-full">
                 <IconDisc icon={Sparkles} size="lg" className="mb-5" />
-                <h3 className="text-2xl font-bold text-ink mb-2">How offers get ranked</h3>
-                <p className="text-muted leading-relaxed mb-4">Sellai does not show buyers everyone. It scores each seller against the demand and sends it to the best matches first.</p>
-                <FeatureList items={matching} />
+                <h3 className="text-2xl font-bold text-ink mb-2">The offers come to you</h3>
+                <p className="text-muted leading-relaxed mb-4">You post once. The sellers who actually stock what you asked for reply with real prices, and you pick the one you like.</p>
+                <FeatureList items={choosing} />
               </Card>
             </Reveal>
             <Reveal delay={0.1}>

@@ -11,7 +11,7 @@ import { DesktopDownloadSection } from '../components/DesktopDownloadSection'
 const steps = [
   { n: '01', title: 'Post a demand', body: 'Say what you need, your budget and where you are. Add a photo if it helps. Takes under a minute.' },
   { n: '02', title: 'Sellers send offers', body: 'Verified sellers near you who stock what you asked for get notified and reply with a price.' },
-  { n: '03', title: 'Choose and close', body: 'Pick the offer you like. Meet the seller to collect, or ask them to send it with a Sellai runner. You track the runner live and confirm the handoff with your PIN.' },
+  { n: '03', title: 'Choose and close', body: 'Pick the offer you like. Meet the seller to collect, or have a Sellai runner bring it to you. Track the runner live and confirm the handoff with your PIN.' },
 ]
 
 /* Buyer-side benefits. Each one maps to something an offer really carries:
@@ -20,7 +20,7 @@ const choosing = [
   { icon: Tags, title: 'Real prices, up front', body: 'Every offer comes with a price. No “DM for price”, no guessing, no chasing.' },
   { icon: Navigation, title: 'Sellers near you, not across the country', body: 'Offers come from sellers close enough to collect from today. You see the distance on each one.' },
   { icon: TrendingUp, title: 'Compare before you commit', body: 'Price, distance and trust score side by side. Chat with any seller before you say yes.' },
-  { icon: Handshake, title: 'Your call on how it ends', body: 'Meet the seller and collect, or have a Sellai runner bring it. You never arrange transport yourself, and you confirm the handoff with your PIN.' },
+  { icon: Handshake, title: 'Your call on how it ends', body: 'Meet the seller and collect, or have a Sellai runner bring it to you. Confirm the handoff with your PIN.' },
 ]
 
 const trust = [
@@ -39,7 +39,7 @@ const roles = [
 const valueProps = [
   { icon: Megaphone, title: 'Post once, get offers', body: 'No more posting in 20 groups and being ignored. Sellers come to you with real prices. No “DM for price”.' },
   { icon: Radio, title: 'Real demand only', body: 'Every buyer on Sellai is actively looking. Sellers reply to people who already want what they sell.' },
-  { icon: LocateFixed, title: 'Delivery inside the app', body: 'Ask the seller to send it with a Sellai runner. Verified runners bid for the job, you watch the delivery live, and nothing leaves the app.' },
+  { icon: LocateFixed, title: 'Delivery inside the app', body: 'Have a Sellai runner bring it to you. Watch the delivery live on a map and confirm it with your PIN.' },
   { icon: BadgeCheck, title: 'Accountable on both sides', body: 'Sellers are ID-checked. Every account is a real phone number. Ratings follow people around.' },
 ]
 

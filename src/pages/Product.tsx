@@ -9,7 +9,7 @@ import { DesktopDownloadSection } from '../components/DesktopDownloadSection'
 const buyer = [
   { icon: ClipboardPen, title: 'Post your demand', body: 'What you need, one budget number, your area, and a photo if it helps. Sellers nearby see it within minutes.' },
   { icon: ArrowLeftRight, title: 'Compare offers', body: 'Each offer shows the price, the seller’s distance, and their trust score out of 100. Chat before you decide.' },
-  { icon: Bike, title: 'Collect, or have it delivered', body: 'Meet the seller in person, or ask them to send it with a Sellai runner. Runners on Sellai are ID-checked and bid for the job. You watch yours live and confirm the handoff with your 4-digit PIN.' },
+  { icon: Bike, title: 'Collect, or have it delivered', body: 'Meet the seller in person, or have a Sellai runner bring it to you. Watch the runner live and confirm the handoff with your 4-digit PIN.' },
 ]
 
 const seller = [

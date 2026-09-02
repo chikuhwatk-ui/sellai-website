@@ -11,6 +11,16 @@
  */
 export type SiteMode = 'full' | 'coming-soon'
 
+/**
+ * Railway carries optional variables as visible placeholders (REPLACE_ME) until
+ * the real value exists. A placeholder must read as "not set": never as a
+ * preview password anyone could guess, never as a form endpoint.
+ */
+export function envValue(raw: string | undefined): string {
+  const v = (raw ?? '').trim()
+  return /^(REPLACE_ME|PLACEHOLDER|CHANGE_ME|TODO|xxx+|<[^>]*>)$/i.test(v) ? '' : v
+}
+
 const PREVIEW_FLAG = 'sellai-preview'
 
 export function getSiteMode(): SiteMode {
@@ -19,7 +29,7 @@ export function getSiteMode(): SiteMode {
 
   if (typeof window === 'undefined') return 'coming-soon'
   try {
-    const key = (import.meta.env.VITE_PREVIEW_KEY || '').trim()
+    const key = envValue(import.meta.env.VITE_PREVIEW_KEY)
     if (key) {
       const supplied = new URLSearchParams(window.location.search).get('preview')
       if (supplied && supplied === key) {

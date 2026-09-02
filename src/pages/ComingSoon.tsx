@@ -10,6 +10,7 @@ import { ArrowRight, Check, MapPin, MessageCircle } from 'lucide-react'
 import { useMeta } from '../hooks/useMeta'
 import { EASE } from '../components/ease'
 import { CONTACT_EMAIL } from '../constants/downloads'
+import { envValue } from '../config/siteMode'
 
 const WANTS = ['a phone', 'a dress for Saturday', 'a plumber', 'a birthday cake', 'school shoes', 'a sofa', 'a mechanic', 'a laptop charger']
 

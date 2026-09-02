@@ -13,7 +13,11 @@
 const RELEASES_BASE =
   'https://github.com/chikuhwatk-ui/sellai-downloads/releases/latest/download'
 
+// sellai.apk is the 64-bit build (every phone since about 2017). The 32-bit
+// build for older phones is published as sellai-arm32.apk; keep this null
+// until that file exists on the release so the site never links to a 404.
 export const ANDROID_APK_URL = `${RELEASES_BASE}/sellai.apk`
+export const ANDROID_APK_ARM32_URL: string | null = null
 export const WINDOWS_MSI_URL = `${RELEASES_BASE}/sellai-business-setup.msi`
 
 // iPhone and Mac builds are in progress (2026-09). Until they ship, the site

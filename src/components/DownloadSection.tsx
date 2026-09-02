@@ -1,5 +1,5 @@
 import { Smartphone } from 'lucide-react'
-import { ANDROID_APK_URL, IOS_WAITLIST_MAILTO } from '../constants/downloads'
+import { ANDROID_APK_URL, ANDROID_APK_ARM32_URL, IOS_WAITLIST_MAILTO } from '../constants/downloads'
 import { Button, BrandIcon, Container, Section } from './ui'
 import { Reveal } from './motion'
 
@@ -32,6 +32,9 @@ export function DownloadSection({ tone = 'page', id = 'download', heading = 'Get
           </div>
           <p className={`mt-4 text-sm ${onDark ? 'text-white/55' : 'text-muted'}`}>
             Android 8 or newer. Direct .apk, so your phone may ask you to allow installs from your browser.
+            {ANDROID_APK_ARM32_URL && (
+              <span className="block mt-1">Older phone from before 2017? <a href={ANDROID_APK_ARM32_URL} className={`font-semibold hover:underline underline-offset-4 ${onDark ? 'text-mint-dark' : 'text-primary-text'}`}>Get the 32-bit version</a>.</span>
+            )}
             <span className="block mt-1">iPhone app in progress.</span>
           </p>
         </Reveal>

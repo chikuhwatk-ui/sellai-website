@@ -10,7 +10,7 @@ export default function Privacy() {
           Privacy Policy
         </h1>
         <p className="text-on-surface-variant text-base">
-          Last updated: April 1, 2026
+          Last updated: September 2, 2026
         </p>
       </section>
 
@@ -229,6 +229,14 @@ export default function Privacy() {
               complete the transaction is shared.
             </li>
             <li>
+              <strong className="text-on-surface">With identity-check processors:</strong>{" "}
+              When you submit an ID check, the photos are sent to Anthropic
+              (document reading) and, where enabled, Amazon Web Services (face
+              comparison) solely to run the automated checks described in
+              section 8. They act as our processors, do not use the images for
+              any other purpose, and receive no other account data.
+            </li>
+            <li>
               <strong className="text-on-surface">With law enforcement:</strong>{" "}
               If required by Zimbabwean law, a court order, or to protect the
               safety of our users.
@@ -247,12 +255,35 @@ export default function Privacy() {
           <h2 className="text-2xl font-extrabold font-[Manrope] mb-4">
             8. ID Verification
           </h2>
-          <p className="text-on-surface-variant">
+          <p className="text-on-surface-variant mb-4">
             If you submit identification documents or photos for verification,
             these are stored securely and used only for the purpose of verifying
             your identity and building trust on the Platform. Verification data
             is handled with strict access controls and is not shared with other
-            users.
+            users. Other users only ever see whether your account is verified,
+            never your documents or ID number.
+          </p>
+          <p className="text-on-surface-variant mb-4">
+            <strong className="text-on-surface">Automated checks.</strong>{" "}
+            To verify most people in minutes, we run automated checks on what
+            you submit: reading the ID card, comparing it with the details you
+            typed, confirming the same card appears in your selfie, checking the
+            small gesture the app asks you to make (so we know the photo is
+            taken live), and comparing the face on the card with your selfie.
+            Clear problems such as a blurry photo are returned to you straight
+            away so you can retake it. Anything uncertain is reviewed by a
+            member of the Sellai team, who makes the final decision. You can
+            ask us to review any automated outcome by writing to
+            privacy@sellai.africa.
+          </p>
+          <p className="text-on-surface-variant">
+            <strong className="text-on-surface">Biometric data.</strong>{" "}
+            The face comparison produces a similarity score only. We do not
+            store facial templates or embeddings. The photo of your ID is
+            deleted once your check is approved; the selfies are kept for the
+            period in section 9 so a decision can be reviewed. By submitting an
+            ID check you consent to this processing, which is necessary to
+            protect other users from fraud.
           </p>
         </section>
 
